@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href = "styling.css">
+</head>
+<body>
+    <!-- Entire Quiz -->
+    <div id = "quiz">
+        <header>
+            <h1 id = "Title"> Math Quiz </h1>
+        </header>
+        <!--Tracks the questions -->
+        <div id = "tracker">
+            <div id="question-circles">
+                <div class = "question" id = "no1">1</div>
+                <div class = "question" id = "no2">2</div>
+                <div class = "question" id = "no3">3</div>
+                <div class = "question" id = "no4">4</div>
+                <div class = "question" id = "no5">5</div>
+                <div class = "question" id = "no6">6</div>
+                <div class = "question" id = "no7">7</div>
+                <div class = "question" id = "no8">8</div>
+                <div class = "question" id = "no9">9</div>
+                <div class = "question" id = "no10">10</div>
+            </div>
+            <div id="score">Score: 0/10</div>
+        </div>
+        <!--Conatins the a line , question text, question options , line , and two div  -->
+        <hr id = "topline">
+            <div id = "quizset">
+                <p id = "question-text">Question 1</p>
+                <div id ="options" class = "options">
+                    <button id = "btn1" class = "button">
+                        <span id = "option1">Opt 1</span>
+                    </button>
+                    <button id = "btn2" class = "button">
+                        <span id = "option2">Opt 2</span>
+                    </button>
+                    <button id = "btn3" class = "button">
+                        <span id = "option3">Opt 3</span>
+                    </button>
+                    <button id = "btn4" class = "button">
+                        <span id = "option4">Opt 4</span>
+                    </button>
+                </div>
+                <button id="submit"> Next Question </button>
+            </div>
+            <div id = "resultbox">
+                <p id = "result">Congrats. You passed. <br> Your score is 0. </p>
+                <button id="retake"> Retake button </button>
+            </div>
+        <hr id = "bottomline">
+        <footer>
+            <p id = "progress">Question 1 out of 10 </p>
+            <div id = "timer">Timer</div>
+        </footer>
+    </div>
+    <script src = "questions.js"></script>
+    <script src="javascript.js"></script>
+</body>
+</html>
