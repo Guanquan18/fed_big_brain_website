@@ -11,20 +11,7 @@ body {
 }
 
 /* Navigation Styling Starts Here */
-.container-fluid{
-    background-color: black;
-    width: 100%;
-    height: 50px;
-}
-.navbar-brand img{
-    width: fit-content;
 
-}
-.navbar-brand{
-    width: 100%;
-    height: 50px;
-    background-color: #99ceff;
-}
 /* Navigation Styling Ends Here */
 
 /* question page Starts Here */
