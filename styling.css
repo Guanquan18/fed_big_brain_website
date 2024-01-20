@@ -10,7 +10,24 @@ body {
     overflow-x: hidden; /* Prevent horizontal scrolling */
 }
 
+/* Navigation Styling Starts Here */
+.container-fluid{
+    background-color: black;
+    width: 100%;
+    height: 50px;
+}
+.navbar-brand img{
+    width: fit-content;
 
+}
+.navbar-brand{
+    width: 100%;
+    height: 50px;
+    background-color: #99ceff;
+}
+/* Navigation Styling Ends Here */
+
+/* question page Starts Here */
 #quiz{
     background-color: #001a33;
     position: relative;
@@ -176,3 +193,5 @@ footer{
 	border: 2px solid #FAF0DC;
   background-color: darkorange;
 }
+
+/* question page Ends Here */
