@@ -5,26 +5,205 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href = "styling.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat&family=Oswald:wght@200;300&family=Playpen+Sans:wght@500&family=Poppins&family=Ubuntu:wght@500&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/@dotlottie/player-component@latest/dist/dotlottie-player.mjs" type="module"></script> 
+    <!-- Link to Font Awesome for icons -->
+    <script src="https://kit.fontawesome.com/543bcc20b3.js" crossorigin="anonymous"></script>
+</head>
 <body>
-    <nav class = "navbar navbar-expand-md navbar-dark bg-dark">
-        <div class = "container">
-            <img src="clipart-brain-muscle-4.png" alt="image logo" style="max-height: 70px; width: auto;">
-            <a href="#" class = "navbar-brand">Big Brain</a>
-            <button class = "navbar-toggler" data-bs-toggle="collapse" data-bs-target="#nav" aria-controls="nav" aria-label="Expand Navigation">
-                <span class = "navbar-toggler-icon"></span>
-            </button>
-            <div class = "collapse navbar-collapse" id="nav">
-                <ul class = "navbar-nav">
-                    <li class ="nav-item">
-                        <a href="#" class="nav-link active">Home</a>
-                    </li>
-                    <li class ="nav-item">
-                        <a href="#" class="nav-link">Store</a>
-                    </li>
-                </ul>
-            </div>
+      <!-- Header section with logo, title, and search bar -->
+      <header class="header-main">
+        <div class="header-main-logo">
+            <dotlottie-player src="https://lottie.host/c8de3e83-6ad0-4247-93a0-cbdcd42610b1/IeCb6wJM4Z.json" background="transparent" speed="1" style="width: 200px; height: 200px;" loop autoplay></dotlottie-player>
+            <nav class="header-main-nav">
+                <h1 class="header-main-title">Big Brain</h1>
+            </nav>
         </div>
-    </nav>
+        <div class="main-header-search">
+            <input type="text" id="mySearch" oninput="myFunction()" placeholder="Search">
+            <ul id="myMenu">
+                <li><a href="#">Math</a></li>
+                <li><a href="#">Science</a></li>
+                <li><a href="#english_quiz_tag">English</a></li>
+                <li><a href="#">Geography</a></li>
+                <li><a href="#">History</a></li>
+                <li><a href="#">Chinese</a></li>
+                <li><a href="#">Malay</a></li>
+                <li><a href="#">Tamil</a></li>
+            </ul>
+        </div>
+    </header>
+     <!-- Background section with a title and description -->
+     <section class = "Page_01_background">
+        <div class = "Page_01_Title">
+            <h1><strong>BIG</strong> Brain Quizzes <br>
+                Where Learning Feels Like <strong>Fun!</strong>"</h1>
+
+            <p> Explore, Discover, Learn: BIG Brain Quiz, <br>
+                A Dynamic Path to Knowledge..</p>
+            <div class="header-main-button">
+                <a href="#quiz_Section">Choose a question <i class="fa-solid fa-chevron-down"></i></a>
+            </div>
+                
+        </div>
+    </section>
+     <!-- Different quiz categories section -->
+     
+    <section class="Page_01_Main_Content_Quiz_Categories" id = "quiz_Section">
+        <div class="container">
+               <!-- 01 English -->
+            <div class="quiz_category" id="english_quiz_category">
+                <div class= "header_quiz_category">
+                    <h1 class="text-left mb-4 category_title" id = "english_quiz_title">English</h1>
+                    <dotlottie-player class = "header_animation" src="https://lottie.host/f136878a-33c0-4df4-813c-4fb0630902ec/8eL7sPmowS.json" background="transparent" speed="1" style="width: 200px; height: 200px;" loop autoplay></dotlottie-player>
+                </div>         
+                <!-- 01-01 Grammer -->
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="card" id="english_grammar_card">
+                            <img src="Photos/card_top_english_quiz_img.png  " class="card-img-top" alt="English Image">
+                            <div class="card-body">
+                                <h5 class="card-text">Grammar</h5>
+                            </div>
+                            <div class="card-footer">
+                                <p class="card-text">Play and learn! Test your words, find the right matches, and discover cool things about sentences. Let's make English even more awesome together!"</p>
+                                <button class="btn btn-hover view_quiz"  id="start_english_quiz">Start Quiz</button>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- 01-02 Vocabulary -->
+                    <div class="col-md-4">
+                        <div class="card" id="english_vocabulary_card">
+                            <img src="Photos/card_top_english_voacb_quiz_img.png" class="card-img-top" alt="English Image">
+                            <div class="card-body">
+                                <h5 class="card-text">Vocabulary</h5>
+                            </div>
+                            <div class="card-footer">
+                                <p class="card-text">Join the word quest! Explore new words, match them up, and uncover the magic of language. Ready for a fun-filled journey into the world of words?"</p>
+                                <button class="btn btn-hover view_quiz" id = "view_english_quiz">Start Quiz</button>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- 01-03 Spelling Bee -->
+                    <div class="col-md-4">
+                        <div class="card" id="english_spelling_bee_card">
+                            <img src="Photos/card_top_english_spelling_quiz_img.png" class="card-img-top" alt="English Image">
+                            <div class="card-body">
+                                <h5 class="card-text">Spelling bee</h5>
+                            </div>
+                            <div class="card-footer">
+                                <p class="card-text">Spell It Right Bee: Ready, set, spell! Challenge yourself with words of all kinds. Join the spelling bee and show off your spelling skills. Let the buzzing begin!"</p>
+                                <button class="btn btn-hover view_quix" id = "view_english_quiz">Start Quiz</button>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+            <!-- 02 Maths -->
+            <div class="quiz_category" id="english_quiz_category">
+                <div class= "header_quiz_category">
+                    <h1 class="text-left mb-4 category_title" id = "english_quiz_title">Mathematics</h1>
+                    <dotlottie-player src="https://lottie.host/6c49eb17-d19a-487c-8dca-2d68d6aef99d/op1MMeloeA.json" background="transparent" speed="1" style="width: 200px; height: 200px;" loop autoplay></dotlottie-player>
+                </div>         
+                <!-- 01-01 Grammer -->
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="card" id="english_grammar_card">
+                            <img src="Photos/card_top_english_quiz_img.png  " class="card-img-top" alt="English Image">
+                            <div class="card-body">
+                                <h5 class="card-text">Grammar</h5>
+                            </div>
+                            <div class="card-footer">
+                                <p class="card-text">Play and learn! Test your words, find the right matches, and discover cool things about sentences. Let's make English even more awesome together!"</p>
+                                <button class="btn btn-hover view_quiz"  id="start_english_quiz">Start Quiz</button>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- 01-02 Vocabulary -->
+                    <div class="col-md-4">
+                        <div class="card" id="english_vocabulary_card">
+                            <img src="Photos/card_top_english_voacb_quiz_img.png" class="card-img-top" alt="English Image">
+                            <div class="card-body">
+                                <h5 class="card-text">Vocabulary</h5>
+                            </div>
+                            <div class="card-footer">
+                                <p class="card-text">Join the word quest! Explore new words, match them up, and uncover the magic of language. Ready for a fun-filled journey into the world of words?"</p>
+                                <button class="btn btn-hover view_quiz" id = "view_english_quiz">Start Quiz</button>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- 01-03 Spelling Bee -->
+                    <div class="col-md-4">
+                        <div class="card" id="english_spelling_bee_card">
+                            <img src="Photos/card_top_english_spelling_quiz_img.png" class="card-img-top" alt="English Image">
+                            <div class="card-body">
+                                <h5 class="card-text">Spelling bee</h5>
+                            </div>
+                            <div class="card-footer">
+                                <p class="card-text">Spell It Right Bee: Ready, set, spell! Challenge yourself with words of all kinds. Join the spelling bee and show off your spelling skills. Let the buzzing begin!"</p>
+                                <button class="btn btn-hover view_quix" id = "view_english_quiz">Start Quiz</button>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+             
+        </div>
+    </section>
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     <script>
+        document.addEventListener('click', function (event) {
+    // Close the list if clicking outside the input or the list itself
+    if (!event.target.closest('.main-header-search') && !event.target.closest('#myMenu')) {
+        document.getElementById('myMenu').style.display = 'none';
+    }
+});
+
+function myFunction() {
+    var input, filter, ul, li, a, i;
+    input = document.getElementById("mySearch");
+    filter = input.value.toUpperCase();
+    ul = document.getElementById("myMenu");
+    li = ul.getElementsByTagName("li");
+
+    // Display the list
+    ul.style.display = "Block";
+
+    // Loop through all list items, and hide/show those who don't match the search query
+    for (i = 0; i < li.length; i++) {
+        a = li[i].getElementsByTagName("a")[0];
+        if (a.innerHTML.toUpperCase().indexOf(filter) > -1) {
+            li[i].style.display = "block";
+        } else {
+            li[i].style.display = "none";
+        }
+    }
+}
+
+        
+        </script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
 </body>
 </html>

@@ -11,8 +11,240 @@ body {
 }
 
 /* Navigation Styling Starts Here */
+.header-main {
+    width: 100%;
+    max-height: 120px;
+    background-color: #33186B;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: fixed;
+    z-index: 2;
+  }
+  
+  .header-main-logo {
+    width: fit-content;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    padding-left: 20px;
+  }
+  
+  
+  .header-main-nav {
+    display: flex;
+    align-items: center;
+    height: 100%;
+  }
+  
+  .header-main-title {
+    font-size: 50px;
+    font-weight: bold;
+    margin-left: 10px;
+    color: white;
+  }
+  #myMenu {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    display: none; /* Initially hide the list */
+}
+
+#myMenu li a {
+    padding: 12px;
+    text-decoration: none;
+    color: black;
+    display: block; /* Display the list items as blocks */
+}
+
+.main-header-search {
+    width: 30%;
+    height: 100%;
+    padding: 0 10px;
+    display: flex;
+    align-items: center;
+    position: relative;
+}
+
+.main-header-search input {
+    width: 100%;
+    height: 50px;
+    font-size: 20px;
+    font-weight: bold;
+    padding: 10px;
+    margin: 0;
+    border: 0.5px solid rgb(53, 53, 53);
+    border-radius: 30px;
+    background-color: #ffffff;
+}
+
+.main-header-search:hover i {
+    opacity: 1;
+}
+
+.main-header-search:hover input::placeholder {
+    color: transparent;
+}
+
+/* Display the list when the input is focused */
+.main-header-search:focus-within #myMenu {
+    display: block;
+}
 
 /* Navigation Styling Ends Here */
+
+/* Background  Styling Starts here Here */
+.Page_01_background{
+    background-image: linear-gradient(rgba(10, 18, 50, 0.7),rgba(4,9,30,0.7 )),url("Photos/index_background_top.jpg");
+    }
+.Page_01_background{
+    background-size:cover;
+    width: 100%;
+    height: 690px; 
+    background-position: center top;
+    padding: 1px 0;
+    position: relative;
+}
+/* Same background text styling for page 1,3,4,5 with media queries */
+.Page_01_Title{
+  color: #fff;
+  position: absolute;
+  top: 55%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  width: 100%;
+  height: auto;
+}
+
+.Page_01_Title h1{
+  font-size: 60px;
+  font-weight: 400;
+}
+.Page_01_Title h1 strong {
+border-bottom: 5px solid  #ff9600;
+}
+
+.Page_01_Title p{
+  font-size: 25px;
+}
+
+.header-main-button a {
+    font-weight: 600;
+    text-decoration: none;
+    font-size: 20px;
+    color: black;
+    padding: 10px 20px; 
+    border-radius: 200px;
+    background-color: #ff9600;
+    transition: background-color 0.3s, color 0.3s;
+}
+.header-main-button i{
+    margin-left: 5px;
+}
+
+  
+.header-main-button a:hover {
+    background-color: #ff7b00;
+    color: black;
+}
+
+/* bckground styling   media queries*/
+@media only screen and (max-width: 768px) {
+.Page_01_background,{
+    height: 500px; 
+}
+
+.Page_01_Title h1 {
+    font-size: 35px; 
+}
+
+.Page_01_Title p,{
+    font-size: 16px; 
+}
+}
+/* Media query for even smaller screens */
+@media only screen and (max-width: 480px) {
+.Page_01_background{
+    height: 400px; /* Further adjust the height for even smaller screens */
+}
+
+
+.Page_01_Title{
+    margin-top: 10px;
+    font-size: 20px; /* Further adjust the font size for even smaller screens */
+}
+
+.Page_01_Title p{
+    font-size: 14px; /* Further adjust the font size for even smaller screens */
+}
+}
+/* Background  Styling ends here Here */
+
+
+/* Main_Content_Different Categories start here */
+.Page_01_Main_Content_Quiz_Categories{
+    width: 100%;
+    height: auto;
+    margin: 40px 0;
+}
+.Page_01_Main_Content_Quiz_Categories .category_title {
+    font-size: 50px;
+    font-weight: 600;
+    border-bottom: 5px solid #ff9600;
+    display: inline-block; 
+    margin-right: 10px;
+}
+.quiz_category{
+    width: 100%;
+    height: auto;
+    margin: 20px 0;
+}
+.header_quiz_category {
+    display: flex;
+    align-items: center;
+    width: 600px;
+    height: 100px;
+}
+
+.Page_01_Main_Content_Quiz_Categories .card-footer {
+    background-color: #f3e9fc; /* Light purple color */
+    padding: 15px; /* Add padding for better spacing */
+}
+
+.Page_01_Main_Content_Quiz_Categories .btn-hover {
+    font-size: 15px;
+    font-weight: 500;
+    background-color: #ff9600; /* Button color */
+    color: black;
+    border-radius: 30px;
+    padding: 5px 15px;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.Page_01_Main_Content_Quiz_Categories .btn-hover:hover {
+    background-color: #ff7b00; /* Darker shade on hover */
+}
+
+.Page_01_Main_Content_Quiz_Categories .card {
+    border-radius: 20px; /* Rounded corners for the card */
+    overflow: hidden; /* Ensure content doesn't overflow rounded corners */
+}
+.Page_01_Main_Content_Quiz_Categories .card img {
+    width:auto;
+    height:300px;
+    object-fit: cover;
+}
+/* Main_Content_Different Categories ends here */
+
+
+
+
+
+
+
 
 /* question page Starts Here */
 #quiz{
