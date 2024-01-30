@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Login Page</title>
+    <link rel="stylesheet" href="styling.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <script src="https://kit.fontawesome.com/cc3cb1dbea.js" crossorigin="anonymous"></script>
+</head>
+<body>
+    
+
+    <article class="login-page-content1">
+
+        <section class="form-container">
+            <div id="form-container-login">
+                <h1>Login</h1>
+                <form id="login-form">
+                    
+                    <div>
+                        <div class="form-floating col-12 ">
+                            <input type="text" id="login-username" name="login-username" class="form-control" 
+                            placeholder="Enter username">
+                            <label for="login-username">Username</label>
+                            <i class="fa-solid fa-user"></i>
+                        </div>
+                        <p id="login-username-error">Error Message</p>
+                    </div>
+                    
+                    <div>
+                        <div class="form-floating col-12">
+                            <input type="password" id="login-password" name="login-password" class="form-control"
+                            placeholder="Enter password">
+                            <label for="login-password">Password</label>
+                            <i class="fa-solid fa-lock"></i>
+                        </div>
+                        <p id="login-password-error">Error Message</p>
+                    </div>
+        
+                    <div class="form-remember-forget">
+                        <label><input type="checkbox">Remember me</label>
+                        <a href="#">Forget Password?</a>
+                    </div>
+                    
+                    <button type="submit" id="login-submit" class="btn col-12">Login</button>
+    
+                    <div id="login-signup">
+                        <p>Don't have an account? <a href="" id="signup-link">Sign up</a></p>
+                    </div>
+                </form>
+            </div>
+
+            <div id="form-container-signup">
+                <h1>Sign Up</h1>
+                <form id="signup-form">
+                    
+                    <div>
+                        <div class="form-floating col-12">
+                            <input type="text" id="signup-username" name="signup-username" class="form-control" 
+                            placeholder="Enter username">
+                            <label for="signup-username">Username</label>
+                            <i class="fa-solid fa-user"></i>
+                        </div>
+                        <p id="signup-username-error">Error Message</p>
+                    </div>
+                    
+                    <div>
+                        <div class="form-floating col-12">
+                            <input type="password" id="signup-password" name="signup-password"  class="form-control"
+                            placeholder="Enter password">
+                            <label for="signup-password">Password</label>
+                            <i class="fa-solid fa-lock"></i>
+                        </div>
+                        <p id="signup-password-error">Error Message</p>
+                    </div>
+
+                    <div class="form-remember-forget">
+                        <label><input type="checkbox">Agree to terms and conditions</label>
+                    </div>
+                    
+                    <button type="submit" id="signup-submit" class="btn col-12">Sign Up</button>
+    
+                    <div id="login-signup">
+                        <p>Already have an account? <a id="login-link">Login</a></p>
+                    </div>
+                </form>
+            </div>
+        </section>
+
+    </article>
+   
+    <script>
+/* For contact us input form */
+
+
+        
+
+        // Get error messages
+       
+
+        // signUpFormName.addEventListener("submit", function(event) {
+        //     //Get values for signup form
+        //     var isError=false;
+        //     event.preventDefault();
+        //     validateInput(signUpFormName);
+            
+        // },false)
+        
+        document.addEventListener("DOMContentLoaded", function () {
+            // What kind of interface we want at the start 
+            var url= "https://interactivedatabase-9b39.restdb.io/rest/leaderboard"
+            const APIKEY = "65957b07313b9f38cfa33ccb";
+            // Store sign up values in json format
+            var loginFormName = document.getElementById('login-form');
+            var loginFormUsername = document.getElementById('login-username');
+            var loginFormPassword = document.getElementById('login-password');
+            var loginFormUsernameError = document.getElementById('login-username-error');
+            var loginFormPasswordError = document.getElementById('login-password-error');
+
+            var signUpFormName = document.getElementById('signup-form');
+            var signUpFormUsername = document.getElementById('signup-username');
+            var signUpFormPassword = document.getElementById('signup-password');
+            var signUpFormUsernameError = document.getElementById('signup-username-error');
+            var signUpFormPasswordError = document.getElementById('signup-password-error');
+            
+
+            //[STEP 1]: Create our submit form listener
+            
+
+            loginFormName.addEventListener("submit", function(event) {
+                //Get values for login form
+                var isError=false;
+                event.preventDefault();
+                validateInput(loginFormName);
+                
+            },false)
+
+
+            signUpFormName.addEventListener("submit", function(event) {
+                //[STEP 2]: Let's retrieve form data
+                // For now, we assume all information is valid
+                // You are to do your own data validation
+                
+                // Prevent default action of the button 
+                event.preventDefault();
+                
+                if (validateInput(signUpFormName)) {
+                    return;
+                }
+
+                if (!checkUser()){
+                    // [STEP 3]: Get form values when the user clicks on send
+                    // Adapted from restdb API
+                    let jsondata = {
+                        "username": signUpFormUsername.value,
+                        "password": signUpFormPassword.value,
+                        "score": 0,
+                    };
+    
+                    // [STEP 4]: Create our AJAX settings. Take note of API key
+                    let settings = {
+                        method: "POST", // [cher] we will use post to send info
+                        headers: {
+                            "Content-Type": "application/json",
+                            "x-apikey": APIKEY,
+                            "Cache-Control": "no-cache"
+                        },
+                        body: JSON.stringify(jsondata),
+                        beforeSend: function () {
+                            // @TODO use loading bar instead
+                            // Disable our button or show loading bar
+                            //document.getElementById("signup-submit").disabled = true;
+                            // Clear our form using the form ID and triggering its reset feature
+                            this.reset();
+                        }
+                    }
+    
+                    // [STEP 5]: Send our AJAX request over to the DB and print response of the RESTDB storage to console.
+                    fetch(url, settings)
+                    .then(response => response.json())
+                    .then(data => {
+                        console.log(data);
+                        //document.getElementById("signup-submit").disabled = false;
+                        // @TODO update frontend UI 
+    
+                        // document.getElementById("add-update-msg").style.display = "block";
+                        // setTimeout(function () {
+                        // document.getElementById("add-update-msg").style.display = "none";
+                        // }, 10000);
+
+                        location.href = "index.html";
+                        
+                    });
+
+                }
+            },false);//end click 
+
+            function checkUser() {
+                //[STEP 7]: Create our AJAX settings
+                let settings = {
+                method: "GET", //[cher] we will use GET to retrieve info
+                headers: {
+                    "Content-Type": "application/json",
+                    "x-apikey": APIKEY,
+                    "Cache-Control": "no-cache"
+                },
+                }
+
+                var ExistingUser = false;
+                //[STEP 8]: Make our AJAX calls
+                // Once we get the response, we modify our table content by creating the content internally. We run a loop to continuously add on data
+                // RESTDb/NoSql always adds in a unique id for each data; we tap on it to have our data and place it into our links 
+                fetch(url, settings)
+                    .then(response => response.json())
+                    .then(response => {
+                        for (var i = 0; i < response.length; i++) {
+                            if (signUpFormUsername.value == response[i].username){
+                                setEror(signUpFormUsernameError, 'Username already exists');
+                                ExistingUser = true;
+                                break;
+                            }
+                        }
+                        //[STEP 9]: Update our HTML content
+                        // Let's dump the content into our table body
+                        //document.getElementById("contact-list").getElementsByTagName("tbody")[0].innerHTML = content;
+
+                        //document.getElementById("total-contacts").innerHTML = response.length;
+                });
+                return ExistingUser;
+            }
+
+            function validateInput(formName){
+                /* First name validation */
+                var isError =false
+                if (formName.id == "login-form")
+                {
+                    // Username validation
+                    if (loginFormUsername.value.trim()==''){
+                        setEror(loginFormUsernameError, 'Username cannot be blank');
+                        isError = true;
+                    }
+                    else if (loginFormUsername.value.length > 25 ) {
+                        setEror(loginFormUsernameError, 'username cannot be more than 30 characters');
+                        isError = true;
+                    }
+                    else{
+                        setSuccess(loginFormUsernameError);
+                        isError = false;
+                    }
+                    /* Password validation */
+                    if (loginFormPassword.value.trim() == "") {
+                        setEror(loginFormPasswordError, 'Password is required');
+                        isError = true;
+                    }
+                    else if (loginFormPassword.value.length <= 5 ) {
+                        setEror(loginFormPasswordError, 'Password must be at least 6 characters');
+                        isError = true;
+                    }
+                    else{
+                        setSuccess(loginFormPasswordError);
+                    }
+                }
+                else if (formName.id == "signup-form")
+                {
+                    // Username validation
+                    if (signUpFormUsername.value.trim()==''){
+                        setEror(signUpFormUsernameError, 'Username cannot be empty');
+                        isError = true;
+                    }
+                    else if (signUpFormUsername.value.length > 25 ) {
+                        setEror(signUpFormUsernameError, 'username cannot be more than 30 characters');
+                        isError = true;
+                    }
+                    else{
+                        setSuccess(signUpFormUsernameError);
+                        isError = false;
+                    }
+                    /* Password validation */
+                    if (signUpFormPassword.value.trim() == "") {
+                        setEror(signUpFormPasswordError, 'Password is required');
+                        isError = true;
+                    }
+                    else if (signUpFormPassword.value.length <= 5 ) {
+                        setEror(signUpFormPasswordError, 'Password must be at least 6 characters');
+                        isError = true;
+                    }
+                    else{
+                        setSuccess(signUpFormPasswordError);
+                    }
+                }
+                return isError;
+            }
+
+            function setEror(element, errorMessage) {
+                var parentDiv = element.parentElement;
+                var child = parentDiv.querySelector(".form-control");
+
+                if (child.classList.contains("success")){
+                    child.classList.remove("success");
+                }
+
+                child.classList.add("error");
+                element.innerHTML = errorMessage;
+                element.style.visibility = "visible";
+            }
+
+            function setSuccess(element) {
+                var parentDiv = element.parentElement;
+                var child = parentDiv.querySelector(".form-control");
+
+                if (child.classList.contains("error")){
+                    child.classList.remove("error");
+                }
+                
+                child.classList.add("success");           
+                element.style.visibility = "hidden";
+            }
+        });//end DOMContentLoaded
+
+        
+        
+
+        const formContainer = document.querySelector(".form-container");
+        let loginLink = document.querySelector("#login-link");
+        let signupLink = document.querySelector("#signup-link");
+
+        signupLink.addEventListener("click", () => {
+            event.preventDefault();
+            formContainer.classList.add("active");
+        });
+
+        loginLink.addEventListener("click", () => {
+            event.preventDefault();
+            formContainer.classList.remove("active");
+        });
+
+    </script>
+</body>
+</html>
