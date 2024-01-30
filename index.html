@@ -24,9 +24,9 @@
         <div class="main-header-search">
             <input type="text" id="mySearch" oninput="myFunction()" placeholder="Search">
             <ul id="myMenu">
-                <li><a href="#">Math</a></li>
-                <li><a href="#">Science</a></li>
-                <li><a href="#english_quiz_tag">English</a></li>
+                <li><a href="#math_quiz_category">Math</a></li>
+                <li><a href="#science_quiz_category">Science</a></li>
+                <li><a href="#english_quiz_category">English</a></li>
                 <li><a href="#">Geography</a></li>
                 <li><a href="#">History</a></li>
                 <li><a href="#">Chinese</a></li>
@@ -56,46 +56,46 @@
                <!-- 01 English -->
             <div class="quiz_category" id="english_quiz_category">
                 <div class= "header_quiz_category">
-                    <h1 class="text-left mb-4 category_title" id = "english_quiz_title">English</h1>
+                    <h1 class="text-left mb-4 category_title" id = "quiz_title">English</h1>
                     <dotlottie-player class = "header_animation" src="https://lottie.host/f136878a-33c0-4df4-813c-4fb0630902ec/8eL7sPmowS.json" background="transparent" speed="1" style="width: 200px; height: 200px;" loop autoplay></dotlottie-player>
                 </div>         
                 <!-- 01-01 Grammer -->
                 <div class="row">
                     <div class="col-md-4">
                         <div class="card" id="english_grammar_card">
-                            <img src="Photos/card_top_english_quiz_img.png  " class="card-img-top" alt="English Image">
+                            <img src="Photos/card_top_english_quiz_img.png" class="card-img-top" alt="Grammer Image">
                             <div class="card-body">
                                 <h5 class="card-text">Grammar</h5>
                             </div>
                             <div class="card-footer">
-                                <p class="card-text">Play and learn! Test your words, find the right matches, and discover cool things about sentences. Let's make English even more awesome together!"</p>
-                                <button class="btn btn-hover view_quiz"  id="start_english_quiz">Start Quiz</button>
+                                <p class="card-text">Play and learn! Test your words, find the right matches, and discover cool things about sentences. Let's make English even more awesome together!</p>
+                                <button class="btn btn-hover view_quiz" data-popup-target="#pop_up" data-quiz-title="Grammar" data-quiz-image="Photos/pop_up_quiz_background.png" id="start_grammar_quiz">View Quiz</button>
                             </div>
                         </div>
                     </div>
                     <!-- 01-02 Vocabulary -->
                     <div class="col-md-4">
                         <div class="card" id="english_vocabulary_card">
-                            <img src="Photos/card_top_english_voacb_quiz_img.png" class="card-img-top" alt="English Image">
+                            <img src="Photos/card_top_english_voacb_quiz_img.png" class="card-img-top" alt="Vocabulary Image">
                             <div class="card-body">
                                 <h5 class="card-text">Vocabulary</h5>
                             </div>
                             <div class="card-footer">
-                                <p class="card-text">Join the word quest! Explore new words, match them up, and uncover the magic of language. Ready for a fun-filled journey into the world of words?"</p>
-                                <button class="btn btn-hover view_quiz" id = "view_english_quiz">Start Quiz</button>
+                                <p class="card-text">Join the word quest! Explore new words, match them up, and uncover the magic of language. Ready for a fun-filled journey into the world of words?</p>
+                                <button class="btn btn-hover view_quiz" data-popup-target="#pop_up" data-quiz-title="Vocabulary" data-quiz-image="Photos/pop_up_quiz_background.png" id = "start_vocabulary_quiz">View Quiz</button>
                             </div>
                         </div>
                     </div>
                     <!-- 01-03 Spelling Bee -->
                     <div class="col-md-4">
                         <div class="card" id="english_spelling_bee_card">
-                            <img src="Photos/card_top_english_spelling_quiz_img.png" class="card-img-top" alt="English Image">
+                            <img src="Photos/card_top_english_spelling_quiz_img.png" class="card-img-top" alt="Spelling Bee Image">
                             <div class="card-body">
                                 <h5 class="card-text">Spelling bee</h5>
                             </div>
                             <div class="card-footer">
-                                <p class="card-text">Spell It Right Bee: Ready, set, spell! Challenge yourself with words of all kinds. Join the spelling bee and show off your spelling skills. Let the buzzing begin!"</p>
-                                <button class="btn btn-hover view_quix" id = "view_english_quiz">Start Quiz</button>
+                                <p class="card-text">Spell It Right Bee: Ready, set, spell! Challenge yourself with words of all kinds. Join the spelling bee and show off your spelling skills. Let the buzzing begin!</p>
+                                <button class="btn btn-hover view_quiz" data-popup-target="#pop_up" data-quiz-title="Spelling Bee" data-quiz-image="Photos/pop_up_quiz_background.png"  id = "start_spelling_bee_quiz">View Quiz</button>
                             </div>
                         </div>
                     </div>
@@ -104,59 +104,132 @@
             </div>
 
             <!-- 02 Maths -->
-            <div class="quiz_category" id="english_quiz_category">
+            <div class="quiz_category" id="math_quiz_category">
                 <div class= "header_quiz_category">
-                    <h1 class="text-left mb-4 category_title" id = "english_quiz_title">Mathematics</h1>
+                    <h1 class="text-left mb-4 category_title" id = "math_quiz_title">Mathematics</h1>
                     <dotlottie-player src="https://lottie.host/6c49eb17-d19a-487c-8dca-2d68d6aef99d/op1MMeloeA.json" background="transparent" speed="1" style="width: 200px; height: 200px;" loop autoplay></dotlottie-player>
                 </div>         
-                <!-- 01-01 Grammer -->
+                <!-- 02-01 Addition -->
                 <div class="row">
                     <div class="col-md-4">
-                        <div class="card" id="english_grammar_card">
-                            <img src="Photos/card_top_english_quiz_img.png  " class="card-img-top" alt="English Image">
+                        <div class="card" id="math_addition_card">
+                            <img src="Photos/card_top_math_quiz_img.png  " class="card-img-top" alt="Addition Image">
                             <div class="card-body">
-                                <h5 class="card-text">Grammar</h5>
+                                <h5 class="card-text">Addition</h5>
                             </div>
                             <div class="card-footer">
-                                <p class="card-text">Play and learn! Test your words, find the right matches, and discover cool things about sentences. Let's make English even more awesome together!"</p>
-                                <button class="btn btn-hover view_quiz"  id="start_english_quiz">Start Quiz</button>
+                                <p class="card-text">Explore numbers, match them up, and discover the magic of addition. Ready for a thrilling journey into the world of math fun? Let's get counting!</p>
+                                <button class="btn btn-hover view_quiz"  data-popup-target="#pop_up" data-quiz-title="Addition" data-quiz-image="Photos/pop_up_math_quiz_background.png"  id="start_addition_quiz">View Quiz</button>
                             </div>
                         </div>
                     </div>
-                    <!-- 01-02 Vocabulary -->
+                    <!-- 02-02 Subtraction-->
                     <div class="col-md-4">
-                        <div class="card" id="english_vocabulary_card">
-                            <img src="Photos/card_top_english_voacb_quiz_img.png" class="card-img-top" alt="English Image">
+                        <div class="card" id="math_subtraction_card">
+                            <img src="Photos/card_top_math_quiz_subtract_img.png" class="card-img-top" alt="Subtraction Image">
                             <div class="card-body">
-                                <h5 class="card-text">Vocabulary</h5>
+                                <h5 class="card-text">Subtraction</h5>
                             </div>
                             <div class="card-footer">
-                                <p class="card-text">Join the word quest! Explore new words, match them up, and uncover the magic of language. Ready for a fun-filled journey into the world of words?"</p>
-                                <button class="btn btn-hover view_quiz" id = "view_english_quiz">Start Quiz</button>
+                                <p class="card-text"> Discover math magic. Ready for a journey into the world of subtraction? Let's start subtracting and have fun together!</p>
+                                <button class="btn btn-hover view_quiz"  data-popup-target="#pop_up" data-quiz-title="Subtraction" data-quiz-image="Photos/pop_up_math_quiz_background.png" id = "start_subtraction_quiz">View Quiz</button>
                             </div>
                         </div>
                     </div>
-                    <!-- 01-03 Spelling Bee -->
+                    <!-- 02-03 Multiplication -->
                     <div class="col-md-4">
-                        <div class="card" id="english_spelling_bee_card">
-                            <img src="Photos/card_top_english_spelling_quiz_img.png" class="card-img-top" alt="English Image">
+                        <div class="card" id="math_multiplication_card">
+                            <img src="Photos/card_top_math_quiz_multiply_img.png" class="card-img-top" alt="Multiplication Image">
                             <div class="card-body">
-                                <h5 class="card-text">Spelling bee</h5>
+                                <h5 class="card-text">Multiplication</h5>
                             </div>
                             <div class="card-footer">
-                                <p class="card-text">Spell It Right Bee: Ready, set, spell! Challenge yourself with words of all kinds. Join the spelling bee and show off your spelling skills. Let the buzzing begin!"</p>
-                                <button class="btn btn-hover view_quix" id = "view_english_quiz">Start Quiz</button>
+                                <p class="card-text">Solve exciting problems, multiply with joy, and discover the magic of numbers. Ready for a fun-filled journey into the world of multiplication?</p>
+                                <button class="btn btn-hover view_quiz" <button class="btn btn-hover view_quiz"  data-popup-target="#pop_up" data-quiz-title="Divisiom" data-quiz-image="Photos/pop_up_math_quiz_background.png" id = "start_multiplication_quiz">View Quiz</button>
                             </div>
                         </div>
                     </div>
 
                 </div>
-            </div>
-             
+
+                 <!-- 03 Science -->
+            <div class="quiz_category" id="science_quiz_category">
+                <div class= "header_quiz_category">
+                    <h1 class="text-left mb-4 category_title" id = "science_quiz_title">Science</h1>
+                    <dotlottie-player src="https://lottie.host/89ea3418-7379-44ad-8e0d-8e5e2fbbf808/HTUFoL2ptS.json" background="transparent" speed="1" style="width: 150px; height: 150px;" loop autoplay></dotlottie-player>
+                </div>         
+                <!-- 03-01 living n Non-Living Things -->
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="card" id="science_living_things_card">
+                            <img src="Photos/card_top_science_quiz_img.png" class="card-img-top" alt="Living Things Image">
+                            <div class="card-body">
+                                <h5 class="card-text">Living and Non-Living Things</h5>
+                            </div>
+                            <div class="card-footer">
+                                <p class="card-text">Dive into the living world! Explore creatures, match them up, and discover the wonders of life. Ready for an exciting journey into the world of living things?</p>
+                                <button class="btn btn-hover view_quiz"  data-popup-target="#pop_up" data-quiz-title="Living Things" data-quiz-image="Photos/pop_up_science_quiz_background.png" id="start_living_thing_quiz">View Quiz</button>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- 02-02 Plants-->
+                    <div class="col-md-4">
+                        <div class="card" id="science_Plants_card">
+                            <img src="Photos/card_top_science_plants_quiz_img.png" class="card-img-top" alt="Plants Image">
+                            <div class="card-body">
+                                <h5 class="card-text">Plants</h5>
+                            </div>
+                            <div class="card-footer">
+                                <p class="card-text">  Step into the green world of plants! Explore leaves, stems, and flowers, match them up, and uncover the secrets of nature.</p>
+                                <button class="btn btn-hover view_quiz" data-popup-target="#pop_up" data-quiz-title="Plants" data-quiz-image="Photos/pop_up_science_quiz_background.png" id = "start_plants_quiz">View Quiz</button>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- 02-03 Magnet -->
+                    <div class="col-md-4">
+                        <div class="card" id="science_magnet_card">
+                            <img src="Photos/card_top_science_magnet_quiz_img.png" class="card-img-top" alt="Magnet Image">
+                            <div class="card-body">
+                                <h5 class="card-text">Magnets</h5>
+                            </div>
+                            <div class="card-footer">
+                                <p class="card-text">Explore the powers of magnets, match them up, and reveal the wonders of attraction. Ready for a quiz that sticks with magnetic marvels?</p>
+                                <button class="btn btn-hover view_quiz" data-popup-target="#pop_up" data-quiz-title="Magnets" data-quiz-image="Photos/pop_up_science_quiz_background.png" id = "start_magnets_quiz">View Quiz</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>        
         </div>
     </section>
      
-     
+    <div class = "pop-up" id = "pop_up">
+        <div class = 'pop_up_flex_box'>
+            <div class = 'pop_up_left_img_container'>
+                <img id = "pop_up_image" src="" alt = "pop image">
+            </div>
+            <div class = "pop_up_right_container">
+                <div class = "pop_up_header">
+                    <h1 class = "quiz_name">Header</h1>
+                    <button class = "close-button" data-close-button >&times;</button>
+                </div>
+               <div class = "pop-up-body">
+                <h3>Game Rules</h3>
+                <ol>
+                    <li>Answer as much questions within 30 seconds.</li>
+                    <li>20 points awarded for each correct answer.</li>
+                    <li>5 points deducted for wrong answers.</li>
+                    <li>Climb to the top with your score.</li>
+                    <li>Cannot return to previous questions.</li>
+                </ol>
+               </div>
+                <div class="start-quiz">
+                    <a>Start Quiz</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id = "overlay"></div>
      
      
      
@@ -179,17 +252,17 @@
     if (!event.target.closest('.main-header-search') && !event.target.closest('#myMenu')) {
         document.getElementById('myMenu').style.display = 'none';
     }
-});
+    });
 
-function myFunction() {
-    var input, filter, ul, li, a, i;
-    input = document.getElementById("mySearch");
-    filter = input.value.toUpperCase();
-    ul = document.getElementById("myMenu");
-    li = ul.getElementsByTagName("li");
+    function myFunction() {
+        var input, filter, ul, li, a, i;
+        input = document.getElementById("mySearch");
+        filter = input.value.toUpperCase();
+        ul = document.getElementById("myMenu");
+        li = ul.getElementsByTagName("li");
 
     // Display the list
-    ul.style.display = "Block";
+     ul.style.display = "Block";
 
     // Loop through all list items, and hide/show those who don't match the search query
     for (i = 0; i < li.length; i++) {
@@ -200,10 +273,18 @@ function myFunction() {
             li[i].style.display = "none";
         }
     }
-}
+    }
+    var listItems = document.querySelectorAll('#myMenu li');
+        listItems.forEach(function (item) {
+        item.addEventListener('click', function () {
+            document.getElementById('mySearch').value = '';
+            document.getElementById('myMenu').style.display = 'none';
+        });
+        });
 
         
-        </script>
+    </script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+    <script src = "javascript.js"></script>
 </body>
 </html>
