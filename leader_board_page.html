@@ -34,38 +34,136 @@
     </article>
 
     <article class="container" id="leader-board">
-        <section class="form">
-            <input type="search">
+
+        <section class="row">
+            <div class="col">
+                <input type="text" class="form-control" id="search-input">
+            </div>
         </section>
+        
         <section>
             <table class="table table-striped" id="leader-board">
                 <thead>
                     <tr>
                         <th scope="col">Rank</th>
                         <th scope="col">Username</th>
+                        <th scope="col">Quiz</th>
                         <th scope="col">Score</th>
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <th scope="row">1st</th>
-                        <td>Mark</td>
-                        <td>100</td>
-                    </tr>
-                    <tr>
-                        <th scope="row">2nd</th>
-                        <td>Jacob</td>
-                        <td>99</td>
-                    </tr>
-                    <tr>
-                        <th scope="row">3rd</th>
-                        <td>Larry</td>
-                        <td>98</td>
-                    </tr>
+                    
                 </tbody>
             </table>
         </section>
     </article>
     
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const url = "https://fedassignment-85eb.restdb.io/rest/leaderboard";
+            const APIKEY = "65bdfc153339b13e2a73c82b";
+
+            var searchBar = document.getElementById("search-input");
+
+            let settings = {
+                method: "GET",
+                headers: {
+                    "Content-Type": "application/json",
+                    "x-apikey": APIKEY,
+                    "Cache-Control": "no-cache"
+                }
+            };
+
+            // Fetch data and update rank
+            // Fetch data and update rank
+            // fetch(url, settings)
+            //     .then(response => response.json())
+            //     .then(response => {
+            //         rank = 1;
+            //         for (var score = 100; score >= 0; score--) {
+            //             for (var i = 0; i < response.length; i++) {
+            //                 if (response[i].score === score) {
+            //                     id = response[i]._id;
+
+            //                     var jsondata = {
+            //                         "username": response[i].username,
+            //                         "score": response[i].score,
+            //                         "quiz": response[i].quiz,
+            //                         "rank": rank,
+            //                     };
+            //                     let updateSettings = {
+            //                         method: "PUT",
+            //                         headers: {
+            //                             "Content-Type": "application/json",
+            //                             "x-apikey": APIKEY,
+            //                             "Cache-Control": "no-cache"
+            //                         },
+            //                         body: JSON.stringify(jsondata)
+            //                     };
+
+            //                     fetch(`${url}/${id}`, updateSettings)
+            //                         .then(response => response.json())
+            //                         .then(data => {
+            //                             console.log(data);
+            //                             // You might want to handle the response here
+            //                         });
+                                
+            //                     rank++;
+            //                 }
+            //             }
+            //         }
+            //     })
+            //     .catch(error => {
+            //         console.error("Error fetching data:", error);
+            //     });
+
+
+            // Fetch data for the table
+            fetch(url, settings)
+                .then(response => response.json())
+                .then(response => {
+                    searchBar.addEventListener("keyup", function (event) {
+                        searchValue = searchBar.value.toLowerCase();
+                        var filteredResponse = searchTable(searchValue, response);
+                        buildTable(filteredResponse);
+                    });
+
+                    buildTable(response);
+                })
+                .catch(error => {
+                    console.error("Error fetching data:", error);
+                });
+
+            function searchTable(searchValue, response) {
+                let filteredResponse = [];
+                for (var i = 0; i < response.length; i++) {
+                    if (response[i].username.toLowerCase().includes(searchValue)) {
+                        filteredResponse.push(response[i]);
+                    }
+                }
+                return filteredResponse;
+            }
+
+            function buildTable(response) {
+                let content = "";
+                for (var i = 0; i < response.length; i++) {
+                    content = `${content}<tr id='${response[i]._id}'>
+                        <th scope="row">${response[i].rank}</th>
+                        <td>${response[i].username}</td>
+                        <td>${response[i].quiz}</td>
+                        <td>${response[i].score}</td></tr>`;
+                }
+
+                document.getElementById("leader-board").getElementsByTagName("tbody")[0].innerHTML = content;
+            }
+        });
+
+
+    //[STEP 8]: Make our AJAX calls
+    // Once we get the response, we modify our table content by creating the content internally. We run a loop to continuously add on data
+    // RESTDb/NoSql always adds in a unique id for each data; we tap on it to have our data and place it into our links 
+
+
+    </script>
 </body>
 </html>
