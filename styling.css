@@ -98,9 +98,23 @@ body {
 
 /* Login Page styling Starts Here */
 
+.login-page-image{
+    width: 600px;
+    height: auto;
+    position: relative;
+}
+
+.login-page-image img{
+    width: 100%;
+    height: 100%;
+}
+
 .login-page-content1{
     width: 100%;
     height: 100vh;
+    padding: 50px;
+    background-color: rgb(110, 39, 224);
+    background-color: #791ebf;
 
     display: flex;
     justify-content: center;
@@ -108,9 +122,12 @@ body {
 }
 
 .form-container{
-    width: 500px;
+
+    width: 550px;
+
     height: fit-content;
     padding: 20px 40px;
+    background-color: rgb(255, 255, 255,0.97);
     border: 1px solid rgb(182, 182, 182);
     border-radius: 20px;
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
@@ -166,12 +183,13 @@ body {
     border-radius: 24px;
     background-color: #b1d9ff;
 }
-.form-floating input{
+.form-floating input, .form-floating input:focus{
+    color: #C21292;
     font-weight: 600;
 }
 .form-floating i{
     font-size: 17px;
-    color: black;
+    color: #711DB0;
 
     position: absolute;
     top: 50%;
@@ -188,15 +206,19 @@ body {
 }
 
 .form-remember-forget label input{
-    accent-color: #8447ff;
+    accent-color: #C21292;
     margin-right: 3px;
 }
+
 .form-remember-forget a{
-    color: black;
+    color: #8447ff;
+    font-weight: 600;
     text-decoration: none;
 }
 .form-remember-forget a:hover{
+    color: #C21292;
     text-decoration: underline;
+    transition: all 0.2s ease;
 }
 #login-submit, #signup-submit{
     font-size: 17px;
@@ -204,7 +226,16 @@ body {
     color: white;
     padding: 5px 0;
     margin-bottom: 5px;
-    background-color:#8447ff;
+    background-color:#8447ff ;
+
+    transition: all 0.3s ease;
+}
+#login-submit:hover, #signup-submit:hover{
+    transform: translateY(-5px);
+    background-color: #C21292;
+    box-shadow: 0 2px 7px 0 rgba(0, 0, 0, 0.2);
+
+    transition: all 0.3s ease;
 }
 
 #login-signup{
@@ -214,11 +245,14 @@ body {
 }
 #login-signup p a{
     color:#8447ff;
-    font-weight: 600;
+    font-weight: 650;
     text-decoration: none;
 }
 #login-signup p a:hover{
     text-decoration: underline;
+    color: #C21292;
+
+    transition: all 0.2s ease;
 }
 
 #form-container-signup{

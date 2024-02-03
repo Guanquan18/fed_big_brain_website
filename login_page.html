@@ -8,15 +8,26 @@
     <script src="https://kit.fontawesome.com/cc3cb1dbea.js" crossorigin="anonymous"></script>
     <style>
 
-        .login-page-image{
-            max-width: 600px;
-            height: auto;
-            position: relative;
+        @media screen and (max-width: 768px) {
+            .login-page-image {
+                width: auto;
+                height: auto;
+                position: absolute;
+            }
         }
-        .login-page-image img{
-            width: 100%;
-            height: 100%;
+        @media screen and (max-width: 576px) {
+
+            
+            .form-container {
+                width: 80%;
+            }
+            .form-remember-forget{
+                display: flex;
+                flex-direction: column;
+            }
+            
         }
+        
     </style>
 </head>
 <body>
@@ -105,7 +116,7 @@
     </article>
    
     <script>
-/* For contact us input form */
+
         localStorage.clear();
         sessionStorage.clear();
         
@@ -204,7 +215,7 @@
                             }
                             
                             if (!existingUser){
-                                setEror(loginFormUsernameError, 'Username does not exist.');
+                                setEror(loginFormUsernameError, 'Username does not exist');
                             }
                             else if (correctPassword){
                                 sessionStorage.setItem("username", loginFormUsername.value);
