@@ -64,6 +64,15 @@
             const url = "https://fedassignment-85eb.restdb.io/rest/leaderboard";
             const APIKEY = "65bdfc153339b13e2a73c82b";
 
+            const data = sessionStorage.getItem('quizResult');
+            const username = data.username;
+            const score = data.score;
+            const quiz = data.quizTitle;
+            console.log("Username:", username);
+            console.log("score:",score);
+            console.log("quiz:",quiz);
+
+
             var searchBar = document.getElementById("search-input");
 
             let settings = {
@@ -74,11 +83,71 @@
                     "Cache-Control": "no-cache"
                 }
             };
-            fetch()
 
             // Fetch data for the table
             fetch(url, settings)
                 .then(response => response.json())
+                .then(response => {
+                    // Check if the username and quiz already exists in the database
+                    
+                    for (var i = 0; i < response.length; i++) {
+                        if (response[i].username === username && response[i].quiz === quiz) {
+                            
+                            if (response[i].score < score) {
+                                response[i].score = score;
+                                userId = response[i]._id;
+                                rank = 0;
+
+                                var jsonData= {
+                                    "username": username,
+                                    "score": score,
+                                    "quiz": quiz,
+                                };
+                                let Settings = {
+                                    method: "PUT",
+                                    headers: {
+                                        "Content-Type": "application/json",
+                                        "x-apikey": APIKEY,
+                                        "Cache-Control": "no-cache"
+                                    },
+                                    body: JSON.stringify(jsonData)
+                                };
+                                return fetch(url + "/" + userId, Settings)
+                                    .then(response => response.json())
+                                    .then(response => {
+                                        console.log("Updated data:", response);
+                                    })
+                                    .catch(error => {
+                                        console.error("Error updating data:", error);
+                                    });
+                            }
+                        }
+                        else{
+                            var jsonData = {
+                                "username": username,
+                                "score": score,
+                                "quiz": quiz,
+                            };
+                            let settings = {
+                                method: "POST",
+                                headers: {
+                                    "Content-Type": "application/json",
+                                    "x-apikey": APIKEY,
+                                    "Cache-Control": "no-cache"
+                                },
+                                body: JSON.stringify(data)
+                            };
+                            return fetch(url, settings)
+                                .then(response => response.json())
+                                .then(response => {
+                                    console.log("Added data:", response);
+                                })
+                                .catch(error => {
+                                    console.error("Error adding data:", error);
+                                });
+                        }
+                    }
+                })
                 .then(response => {
 
 
@@ -110,12 +179,11 @@
                     for (var i = 0; i < response.length; i++) {
                         if (response[i].score === score) {
 
-                            response[i].rank = rank;    // Add rank to the json data
                             jasonData = {
                                 "username": response[i].username,
                                 "score": response[i].score,
                                 "quiz": response[i].quiz,
-                                "rank": response[i].rank,
+                                "rank": rank,   // Add rank to the data
                             };
                             finalJasonData.push(jasonData);
                             gotUser = true;
