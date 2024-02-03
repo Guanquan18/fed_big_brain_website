@@ -83,8 +83,6 @@ startQuizButton.addEventListener('click', () => {
 
 
 
-
-
 // 1 Set  and intilaise variable
 var questionCount = 0;
 var score = 0;

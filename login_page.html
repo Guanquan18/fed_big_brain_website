@@ -197,7 +197,7 @@
 
                                     if (loginFormPassword.value == response[i].password){
                                         correctPassword = true;
-                                        window.location.href = "leader_board_page.html";
+                                        window.location.href = "index.html";
                                     }
                                     break;
                                 }
@@ -209,7 +209,7 @@
                             else if (correctPassword){
                                 sessionStorage.setItem("username", loginFormUsername.value);
                                 sessionStorage.setItem("password", loginFormPassword.value);
-                                window.location.href = "leader_board_page.html";
+                                window.location.href = "index.html";
                             }
                             else {
                                 setEror(loginFormPasswordError, 'Incorrect password');

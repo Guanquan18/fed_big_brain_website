@@ -16,8 +16,9 @@
  const restart_quiz = result_box.querySelector(".restart");
  const quit_quiz = result_box.querySelector(".quit");
 
- const next_btn = document.getElementById("next_question")
-const bottom_ques_counter = document.querySelector(".progress")
+ const next_btn = document.getElementById("next_question");
+const bottom_ques_counter = document.querySelector(".progress");
+const leaderboard_button = document.querySelector(".leaderboard_button");
 
 let timeValue = 15;
 let que_count = 0;
@@ -70,9 +71,11 @@ restart_quiz.onclick = () =>{
     timeText.textContent = "Time Left";
     resetQuestionCircles();
     next_btn.classList.remove("show"); // hide the next button
+    sessionStorage.removeItem('quizResult');
 }
 quit_quiz.onclick = ()=>{
     window.location.href = 'index.html';
+    sessionStorage.removeItem('quizResult');
 }
 
 
@@ -216,6 +219,13 @@ function showResult() {
             circularProgress.style.background = `conic-gradient(#7d2ae8 ${progressStartValue * 3.6}deg, #c8c8c8 0deg)`;
         }
     }, speed);
+    const playername = sessionStorage.getItem('username');
+    sessionStorage.setItem('quizResult', JSON.stringify({
+        username:playername,
+        score: userScore,
+        quizTitle: questionheader
+    }));
+    console.log('Stored Quiz Result:', sessionStorage.getItem('quizResult'));
 }
 
 
