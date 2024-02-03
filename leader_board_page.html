@@ -64,10 +64,10 @@
             const url = "https://fedassignment-85eb.restdb.io/rest/leaderboard";
             const APIKEY = "65bdfc153339b13e2a73c82b";
 
-            const data = sessionStorage.getItem('quizResult');
-            const username = data.username;
-            const score = data.score;
-            const quiz = data.quizTitle;
+             const array = JSON.parse(data);
+            const username = array.username;
+            const score = array.score;
+            const quiz = array.quizTitle;
             console.log("Username:", username);
             console.log("score:",score);
             console.log("quiz:",quiz);
