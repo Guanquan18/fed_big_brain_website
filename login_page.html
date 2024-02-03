@@ -135,99 +135,81 @@
                 
             },false)
 
+            signUpFormName.addEventListener("submit", async function (event) {
+    event.preventDefault();
 
-            signUpFormName.addEventListener("submit", function(event) {
-                //[STEP 2]: Let's retrieve form data
-                // For now, we assume all information is valid
-                // You are to do your own data validation
-                
-                // Prevent default action of the button 
-                event.preventDefault();
-                
-                if (validateInput(signUpFormName)) {
-                    return;
-                }
+    if (await checkUser()) {
+        // Existing user, do not proceed with the registration
+        return;
+    }
 
-                if (!checkUser()){
-                    // [STEP 3]: Get form values when the user clicks on send
-                    // Adapted from restdb API
-                    let jsondata = {
-                        "username": signUpFormUsername.value,
-                        "password": signUpFormPassword.value,
-                        "score": 0,
-                    };
-    
-                    // [STEP 4]: Create our AJAX settings. Take note of API key
-                    let settings = {
-                        method: "POST", // [cher] we will use post to send info
-                        headers: {
-                            "Content-Type": "application/json",
-                            "x-apikey": APIKEY,
-                            "Cache-Control": "no-cache"
-                        },
-                        body: JSON.stringify(jsondata),
-                        beforeSend: function () {
-                            // @TODO use loading bar instead
-                            // Disable our button or show loading bar
-                            //document.getElementById("signup-submit").disabled = true;
-                            // Clear our form using the form ID and triggering its reset feature
-                            this.reset();
-                        }
-                    }
-    
-                    // [STEP 5]: Send our AJAX request over to the DB and print response of the RESTDB storage to console.
-                    fetch(url, settings)
-                    .then(response => response.json())
-                    .then(data => {
-                        console.log(data);
-                        //document.getElementById("signup-submit").disabled = false;
-                        // @TODO update frontend UI 
-    
-                        // document.getElementById("add-update-msg").style.display = "block";
-                        // setTimeout(function () {
-                        // document.getElementById("add-update-msg").style.display = "none";
-                        // }, 10000);
+    // Continue with the registration process
+    let jsondata = {
+        "username": signUpFormUsername.value,
+        "password": signUpFormPassword.value,
+        "score": 0,
+    };
 
-                        location.href = "index.html";
-                        
-                    });
+    let settings = {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json",
+            "x-apikey": APIKEY,
+            "Cache-Control": "no-cache"
+        },
+        body: JSON.stringify(jsondata),
+        beforeSend: function () {
+            this.reset();
+        }
+    };
 
-                }
-            },false);//end click 
+    try {
+        // Send the registration request
+        let response = await fetch(url, settings);
+        let data = await response.json();
+        console.log(data);
+
+        // Redirect to index.html or update the UI as needed
+        location.href = "index.html";
+    } catch (error) {
+        console.error(error);
+        // Handle errors if necessary
+    }
+}, false);
+
 
             function checkUser() {
-                //[STEP 7]: Create our AJAX settings
-                let settings = {
-                method: "GET", //[cher] we will use GET to retrieve info
-                headers: {
-                    "Content-Type": "application/json",
-                    "x-apikey": APIKEY,
-                    "Cache-Control": "no-cache"
-                },
+    return new Promise((resolve, reject) => {
+        let settings = {
+            method: "GET",
+            headers: {
+                "Content-Type": "application/json",
+                "x-apikey": APIKEY,
+                "Cache-Control": "no-cache"
+            },
+        };
+
+        fetch(url, settings)
+            .then(response => response.json())
+            .then(response => {
+                var ExistingUser = false;
+                for (var i = 0; i < response.length; i++) {
+                    if (signUpFormUsername.value == response[i].username) {
+                        setEror(signUpFormUsernameError, 'Username already exists');
+                        ExistingUser = true;
+                        break;
+                    }
                 }
 
-                var ExistingUser = false;
-                //[STEP 8]: Make our AJAX calls
-                // Once we get the response, we modify our table content by creating the content internally. We run a loop to continuously add on data
-                // RESTDb/NoSql always adds in a unique id for each data; we tap on it to have our data and place it into our links 
-                fetch(url, settings)
-                    .then(response => response.json())
-                    .then(response => {
-                        for (var i = 0; i < response.length; i++) {
-                            if (signUpFormUsername.value == response[i].username){
-                                setEror(signUpFormUsernameError, 'Username already exists');
-                                ExistingUser = true;
-                                break;
-                            }
-                        }
-                        //[STEP 9]: Update our HTML content
-                        // Let's dump the content into our table body
-                        //document.getElementById("contact-list").getElementsByTagName("tbody")[0].innerHTML = content;
+                // Move the return statement inside the then block
+                resolve(ExistingUser);
+            })
+            .catch(error => {
+                reject(error);
+            });
+    });
+}
 
-                        //document.getElementById("total-contacts").innerHTML = response.length;
-                });
-                return ExistingUser;
-            }
 
             function validateInput(formName){
                 /* First name validation */
