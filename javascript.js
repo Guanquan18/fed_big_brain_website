@@ -41,6 +41,23 @@ overlay.addEventListener('click',() =>{
         closepopup(modal)
     })
 })
+startQuizButton.addEventListener('click', () => {
+    const quizCategory = popupTitle.textContent;
+
+    // Find the selected quiz questions based on the quiz category
+    const selectedQuizQuestions = quizData.filter(question => question.Quiz === quizCategory);
+
+    if (selectedQuizQuestions.length > 0) {
+        // Save the selected quiz questions to localStorage
+        localStorage.setItem('quizQuestions', JSON.stringify(selectedQuizQuestions));
+    } else {
+        console.error('Selected quiz questions not found.');
+    }
+
+    // Redirect to the quiz page
+    window.location.href = 'loading_page.html';
+});
+
 
 
 

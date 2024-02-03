@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styling.css">
+    <script src="https://kit.fontawesome.com/543bcc20b3.js" crossorigin="anonymous"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/@dotlottie/player-component@latest/dist/dotlottie-player.js"></script>
+</head>
+<body style="margin: 0; overflow: hidden;">
+
+    <dotlottie-player
+        src="https://lottie.host/c6be0bba-7044-4314-8b2b-2c4e238294e5/JbJZhX1aMp.json"
+        background="transparent"
+        speed="1"
+        style="width: 100vw; height: 100vh;"
+        loop="1"
+        autoplay
+    ></dotlottie-player>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const player = document.querySelector('dotlottie-player');
+
+            // Set up an event listener for the animation end
+            player.addEventListener('complete', onAnimationComplete);
+
+            function onAnimationComplete() {
+                // Redirect to the question page
+                window.location.href = 'question_page.html';
+            }
+        });
+    </script>
+</body>
+</html>
