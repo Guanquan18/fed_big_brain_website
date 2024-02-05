@@ -191,18 +191,21 @@
     <script>
         console.log('Stored Quiz Result:', sessionStorage.getItem('quizResult'));
         document.addEventListener("DOMContentLoaded", function () {
-            const url = "https://fedassignment-85eb.restdb.io/rest/leaderboard";
-            const APIKEY = "65bdfc153339b13e2a73c82b";
+            const url = "https://fedassignment-5bdb.restdb.io/rest/leaderboard";
+            const APIKEY = "65bde101c029b87c5966cdc6";
 
-            //const array = JSON.parse(sessionStorage.getItem('quizResult'));
-            const username = "GuanQuan"; //array.username;
-            const score = 30;//array.score;
-            const quiz = "Grammar";//array.quizTitle;
+            const results = sessionStorage.getItem('quizResult');
+            const resultsArray = JSON.parse(results);
+
+            const username = resultsArray.username; 
+            const score = resultsArray.score;  
+            const quiz = resultsArray.quizTitle;  
             console.log("Username:", username);
             console.log("score:",score);
             console.log("quiz:",quiz);
 
-
+            //const array = JSON.parse(sessionStorage.getItem('quizResult'));
+            
             updateTable();
             async function updateTable(){
                 let settings = {
@@ -343,16 +346,26 @@
                     }
                 })
 
-                function sortTable(column, sortAsc) {
-                    [...tableRows].sort((a, b) => {
-                        let firstRow = a.querySelectorAll('td')[column].textContent.toLowerCase();
-                        let secondRow = b.querySelectorAll('td')[column].textContent.toLowerCase();
-                        console.log(firstRow,secondRow);
-                        
-                        return sortAsc ? (firstRow < secondRow ? 1 : -1) : (firstRow < secondRow ? -1 : 1);
+                    function sortTable(column, sortAsc) {
+                        [...tableRows].sort((a, b) => {
+                        let firstRow, secondRow;
+
+                         // Check if the column is the "score" column
+                        if (column === 3) {
+                    // If it's the "score" column, parse the score as a number
+                    firstRow = parseFloat(a.querySelectorAll('td')[column].textContent);
+                    secondRow = parseFloat(b.querySelectorAll('td')[column].textContent);
+                        } else {
+                            // If it's not the "score" column, use text content as before
+                            firstRow = a.querySelectorAll('td')[column].textContent.toLowerCase();
+                            secondRow = b.querySelectorAll('td')[column].textContent.toLowerCase();
+                        }
+
+                        return sortAsc ? (firstRow > secondRow ? 1 : -1) : (firstRow > secondRow ? -1 : 1);
                     })
-                        .map(sortedRow => document.querySelector('tbody').appendChild(sortedRow));
+                    .map(sortedRow => document.querySelector('tbody').appendChild(sortedRow));
                 }
+
             };
 
             function search(){
@@ -393,12 +406,13 @@
             
             function rankTable(response){
                 var finalJasonData = [];
-                var quizes=["Grammar","1"]
-                
+                var quizes=["Grammar","Vocabulary","1","2"]
+                console.log(response);
+
                 // Rank the table based on quiz and score
                 for (var i = 0; i <quizes.length; i++){
-                    var quiz = quizes[i];
                     var rank = 1;
+                    var quiz = quizes[i];
                     for (var score = 100; score >= 0; score--) {
                         
                         gotUser = false;
@@ -408,7 +422,7 @@
                                 jasonData = {
                                     "username": response[j].username,
                                     "score": response[j].score,
-                                    "quiz": response[j].quiz,
+                                    "quiz": quiz,
                                     "rank": rank,   // Add rank to the data
                                 };
                                 finalJasonData.push(jasonData);

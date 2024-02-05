@@ -122,8 +122,8 @@
         
         document.addEventListener("DOMContentLoaded", function () {
             // What kind of interface we want at the start 
-            var url= "https://fedassignment-85eb.restdb.io/rest/account"
-            const APIKEY = "65bdfc153339b13e2a73c82b";
+            var url= "https://fedassignment-5bdb.restdb.io/rest/account"
+            const APIKEY = "65bde101c029b87c5966cdc6";
             // Store sign up values in json format
             var loginFormName = document.getElementById('login-form');
             var loginFormUsername = document.getElementById('login-username');
@@ -258,7 +258,7 @@
                         console.log(data);
                         sessionStorage.setItem("username", signUpFormUsername.value);
                         sessionStorage.setItem("password", signUpFormPassword.value);
-                        window.location.href = "leader_board_page.html";
+                        window.location.href = "index.html";
                     });
             }
 
