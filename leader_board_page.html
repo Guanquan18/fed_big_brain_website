@@ -6,6 +6,137 @@
     <title>Document</title>
     <link rel="stylesheet" href = "styling.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <script src="https://kit.fontawesome.com/543bcc20b3.js" crossorigin="anonymous"></script>
+    <style>
+
+        .leaderboard-header h1{
+            text-align: center;
+            margin-top: 20px;
+            margin-bottom: 20px;
+        }
+
+        #search-input-group{
+            position: relative;
+        }
+
+        #search-input-group input, #search-input-group input:focus{
+            color: #C21292;
+            font-weight: 500;
+        }
+        #search-input-group i{
+            font-size: 17px;
+            color: #711DB0;
+
+            position: absolute;
+            top: 50%;
+            left: calc(100% - 30px);
+            transform: translateY(-50%);
+        }
+        #leaderboard{
+            width: 100%;
+            max-height: 550px;
+            margin: 20px 0;
+
+            background-color: rgb(252, 252, 252);
+            border-radius: 12px;
+            box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.1);
+            
+            overflow: auto;
+        }
+        
+        #leaderboard::-webkit-scrollbar{
+            width: 0.5rem;
+            height: 0.5rem;
+        }
+        #leaderboard::-webkit-scrollbar-thumb{
+            background-color: #cdcdcd;
+            border-radius: 10px;
+            visibility: hidden;
+        }
+        #leaderboard:hover::-webkit-scrollbar-thumb{
+            visibility: visible ;
+        }
+
+        table{
+            width: 100%;
+            min-width: max-content;
+            max-height: 100px;
+            padding: 10px;
+        }
+        
+        #leaderboard table th, #leaderboard table td{
+            border-collapse: collapse;
+            text-align: left;
+            padding: 10px 20px;
+        }
+
+        #leaderboard thead th{
+            position: sticky;
+            background-color: rgb(110, 39, 224);
+            /* background-color: rgb(170, 117, 255); */
+            color: white;
+            font-size: large;
+        }
+
+        #leaderboard thead tr th i{
+            width:20px;
+            height:20px;
+            padding-top: 3px;
+            font-size: small;
+            text-align: center;
+
+            border-radius: 50%;
+            transition: 0.2s ease-in-out;
+            
+        }
+
+        #leaderboard tbody tr:nth-child(even){
+            background-color: rgb(110, 39, 224,0.03);
+        }
+
+        #leaderboard tbody tr:hover{
+            background-color: #c212935b;
+            transition: 0 ;
+        }
+
+        #leaderboard tbody tr{
+            transition: 0.5s var(--delay) ease-in-out;
+            --delay: 0.1s; 
+        }
+
+        #leaderboard tbody tr.hide{
+            opacity: 0;
+            transition: 0.5s var(--delay) ease-in-out;
+            width: 0;
+            height: 0;
+        }
+        #leaderboard tbody tr.hide td{
+            
+            transition: all 0.5s ease-in-out 1s;
+        }
+        
+
+        #leaderboard thead th.active{
+            color: #C21292;
+            transition: 0.2s ease-in-out;
+        }
+        #leaderboard thead th.active i{
+            background-color: #b881ff;
+            transition: 0.2s ease-in-out;
+        }
+        #leaderboard thead th.active.asc i{
+            background-color: #b881ff;
+            transform: rotate(90deg);
+            transition: 0.2s ease-in-out;
+        }
+
+        #leaderboard tbody td.active{
+            color: #EF4040;
+            transition: 0.2s ease-in-out;
+        }
+
+
+    </style>
 </head>
 
 <body>
@@ -29,26 +160,25 @@
         </nav>
     </header>
 
-    <article>
+    <section class="leaderboard-header">
+        <h1>LeaderBoard</h1>
+    </section>
 
-    </article>
-
-    <article class="container" id="leader-board">
-
-        <section class="row">
-            <div class="col">
-                <input type="text" class="form-control" id="search-input">
-            </div>
-        </section>
+    <article class="container" id="leaderboard-container">
+        <div class="col" id="search-input-group">
+            <input type="text" class="form-control" id="search-input" 
+            placeholder="Seach for username....">
+            <i class="fa-solid fa-search"></i>
+        </div>
         
-        <section>
-            <table class="table table-striped" id="leader-board">
+        <section id="leaderboard">
+            <table>
                 <thead>
-                    <tr>
-                        <th scope="col">Rank</th>
-                        <th scope="col">Username</th>
-                        <th scope="col">Quiz</th>
-                        <th scope="col">Score</th>
+                    <tr>    
+                        <th> Rank <i class="fa-solid fa-arrow-right fa-rotate-270"></i></th>
+                        <th> Username <i class="fa-solid fa-arrow-right fa-rotate-270"></i></th>
+                        <th> Quiz <i class="fa-solid fa-arrow-right fa-rotate-270"></i></th>
+                        <th> Score <i class="fa-solid fa-arrow-right fa-rotate-270"></i></th>
                     </tr>
                 </thead>
                 <tbody>
@@ -64,139 +194,235 @@
             const url = "https://fedassignment-85eb.restdb.io/rest/leaderboard";
             const APIKEY = "65bdfc153339b13e2a73c82b";
 
-             const array = JSON.parse(data);
-            const username = array.username;
-            const score = array.score;
-            const quiz = array.quizTitle;
+            //const array = JSON.parse(sessionStorage.getItem('quizResult'));
+            const username = "GuanQuan"; //array.username;
+            const score = 30;//array.score;
+            const quiz = "Grammar";//array.quizTitle;
             console.log("Username:", username);
             console.log("score:",score);
             console.log("quiz:",quiz);
 
 
-            var searchBar = document.getElementById("search-input");
+            updateTable();
+            async function updateTable(){
+                let settings = {
+                    method: "GET",
+                    headers: {
+                        "Content-Type": "application/json",
+                        "x-apikey": APIKEY,
+                        "Cache-Control": "no-cache"
+                    }
+                };
 
-            let settings = {
-                method: "GET",
-                headers: {
-                    "Content-Type": "application/json",
-                    "x-apikey": APIKEY,
-                    "Cache-Control": "no-cache"
-                }
-            };
-
-            // Fetch data for the table
-            fetch(url, settings)
+                await fetch(url,settings)
                 .then(response => response.json())
                 .then(response => {
                     // Check if the username and quiz already exists in the database
-                    
+                    existingScore = false;
+                    requireUpdate = false;
                     for (var i = 0; i < response.length; i++) {
                         if (response[i].username === username && response[i].quiz === quiz) {
-                            
+                            console.log("Existing score:", response[i].score);
+                            existingScore = true;
                             if (response[i].score < score) {
                                 response[i].score = score;
                                 userId = response[i]._id;
-                                rank = 0;
-
-                                var jsonData= {
-                                    "username": username,
-                                    "score": score,
-                                    "quiz": quiz,
-                                };
-                                let Settings = {
-                                    method: "PUT",
-                                    headers: {
-                                        "Content-Type": "application/json",
-                                        "x-apikey": APIKEY,
-                                        "Cache-Control": "no-cache"
-                                    },
-                                    body: JSON.stringify(jsonData)
-                                };
-                                return fetch(url + "/" + userId, Settings)
-                                    .then(response => response.json())
-                                    .then(response => {
-                                        console.log("Updated data:", response);
-                                    })
-                                    .catch(error => {
-                                        console.error("Error updating data:", error);
-                                    });
+                                requireUpdate = true;
                             }
                         }
-                        else{
-                            var jsonData = {
-                                "username": username,
-                                "score": score,
-                                "quiz": quiz,
-                            };
-                            let settings = {
-                                method: "POST",
-                                headers: {
-                                    "Content-Type": "application/json",
-                                    "x-apikey": APIKEY,
-                                    "Cache-Control": "no-cache"
-                                },
-                                body: JSON.stringify(data)
-                            };
-                            return fetch(url, settings)
-                                .then(response => response.json())
-                                .then(response => {
-                                    console.log("Added data:", response);
-                                })
-                                .catch(error => {
-                                    console.error("Error adding data:", error);
-                                });
-                        }
+                    }
+                    if (existingScore && requireUpdate){
+                        var jsonData= {
+                            "username": username,
+                            "score": score,
+                            "quiz": quiz,
+                        };
+                        let Settings = {
+                            method: "PUT",
+                            headers: {
+                                "Content-Type": "application/json",
+                                "x-apikey": APIKEY,
+                                "Cache-Control": "no-cache"
+                            },
+                            body: JSON.stringify(jsonData)
+                        };
+                        fetch(url + "/" + userId, Settings)
+                            .then(response => response.json())
+                            .then(response => {
+                                console.log("Updated data:", response);
+                            })
+                            .catch(error => {
+                                console.error("Error updating data:", error);
+                            });
+                    }
+                    else if (!existingScore){
+                        var jsonData = {
+                            "username": username,
+                            "score": score,
+                            "quiz": quiz,
+                        };
+                        let settings = {
+                            method: "POST",
+                            headers: {
+                                "Content-Type": "application/json",
+                                "x-apikey": APIKEY,
+                                "Cache-Control": "no-cache"
+                            },
+                            body: JSON.stringify(jsonData)
+                        };
+                        fetch(url, settings)
+                            .then(response => response.json())
+                            .then(response => {
+                                console.log("Added data:", response);
+                            })
+                            .catch(error => {
+                                console.error("Error adding data:", error);
+                            });
                     }
                 })
+            }
+
+            loadTable();
+            async function loadTable(){
+                let settings = {
+                    method: "GET",
+                    headers: {
+                        "Content-Type": "application/json",
+                        "x-apikey": APIKEY,
+                        "Cache-Control": "no-cache"
+                    }
+                };
+    
+                // Fetch data for the table
+                await fetch(url, settings)
+                .then(response => response.json())
                 .then(response => {
-
-
+    
+    
                     // Rank Table based on score
                     var rankedData = rankTable(response);  
                     
                     // Filter the table based on search input
-                    searchBar.addEventListener("keyup", function (event) {
-                        searchValue = searchBar.value.toLowerCase();
-                        var filteredResponse = searchTable(searchValue, rankedData);
-                        buildTable(filteredResponse);
-                    });
-
+                    // searchBar.addEventListener("keyup", function (event) {
+                    //     searchValue = searchBar.value.toLowerCase();
+                    //     var filteredResponse = searchTable(searchValue, rankedData);
+                    //     buildTable(filteredResponse);
+                    // });
+    
                     // Build the table and display it on the page
                     buildTable(rankedData);
+                    filter();
+                    search();
+                    
                 })
                 .catch(error => {
                     console.error("Error fetching data:", error);
                 });
+            }
+
+            // Testing for searching table
+            function filter(){
+                const tableHeadings = document.querySelectorAll('thead th');
+                const tableRows = document.querySelectorAll('tbody tr');
+                tableHeadings.forEach((head, i) => {
+                    let sortAsc = true;
+                    head.onclick = () => {
+                        tableHeadings.forEach(head => head.classList.remove('active'));
+                        head.classList.add('active');
+
+                        document.querySelectorAll('td').forEach(td => td.classList.remove('active'));
+
+                        tableRows.forEach(row => {
+                            row.querySelectorAll('td')[i].classList.add('active');
+                        });
+
+                        head.classList.toggle('asc', sortAsc);
+                        sortAsc = head.classList.contains('asc') ? false : true;
+
+                        sortTable(i, sortAsc);
+                    }
+                })
+
+                function sortTable(column, sortAsc) {
+                    [...tableRows].sort((a, b) => {
+                        let firstRow = a.querySelectorAll('td')[column].textContent.toLowerCase();
+                        let secondRow = b.querySelectorAll('td')[column].textContent.toLowerCase();
+                        console.log(firstRow,secondRow);
+                        
+                        return sortAsc ? (firstRow < secondRow ? 1 : -1) : (firstRow < secondRow ? -1 : 1);
+                    })
+                        .map(sortedRow => document.querySelector('tbody').appendChild(sortedRow));
+                }
+            };
+
+            function search(){
+                const searchBar = document.getElementById("search-input");
+                var tableRows = document.querySelectorAll("#leaderboard tbody tr");
+
+                // Search for data in the table
+                searchBar.addEventListener("input", function (event) {
+                    searchValue = searchBar.value.toLowerCase();
+                    valuesFound = false;
+                    tableRows.forEach((row, i) => {
+                        let rowData = row.textContent.toLowerCase();
+                        searchValue = searchBar.value.toLowerCase();
+
+                        row.classList.toggle("hide",rowData.includes(searchValue) === false);
+                        row.style.setProperty("--delay", i/25 + "s");
+
+                    });
+                });
+
+                // Search for username in table
+                // searchBar.addEventListener("keyup", function (event) {
+                //     searchValue = searchBar.value.toLowerCase();
+                //     for (var i = 0; i < tableRows.length; i++) {
+                //         var username = tableRows[i].getElementsByTagName("td")[0].innerText.toLowerCase();
+                //         if (username.includes(searchValue)) {
+                //             tableRows[i].style.display = "";
+                //         } else {
+                //             tableRows[i].style.display = "none";
+                //         }
+                //     }
+                // });
+            }
+
+            // Tesing for searching table ends Here
 
                         
-            // Testing to modify json data for ranking table
+            
             function rankTable(response){
                 var finalJasonData = [];
-                rank = 1;
-                for (var score = 100; score >= 0; score--) {
-                    
-                    gotUser = false;
-                    for (var i = 0; i < response.length; i++) {
-                        if (response[i].score === score) {
-
-                            jasonData = {
-                                "username": response[i].username,
-                                "score": response[i].score,
-                                "quiz": response[i].quiz,
-                                "rank": rank,   // Add rank to the data
-                            };
-                            finalJasonData.push(jasonData);
-                            gotUser = true;
+                var quizes=["Grammar","1"]
+                
+                // Rank the table based on quiz and score
+                for (var i = 0; i <quizes.length; i++){
+                    var quiz = quizes[i];
+                    var rank = 1;
+                    for (var score = 100; score >= 0; score--) {
+                        
+                        gotUser = false;
+                        for (var j = 0; j < response.length; j++) {
+                            if (response[j].score === score && response[j].quiz === quiz) {
+    
+                                jasonData = {
+                                    "username": response[j].username,
+                                    "score": response[j].score,
+                                    "quiz": response[j].quiz,
+                                    "rank": rank,   // Add rank to the data
+                                };
+                                finalJasonData.push(jasonData);
+                                gotUser = true;
+                            }
                         }
-                    }
-                    if (gotUser){
-                        rank++;
+                        if (gotUser){
+                            rank++;
+                        }
                     }
                 }
                 console.log(finalJasonData);
                 return finalJasonData;
             }
-            // Testing ends here
             
             // Search the table
             function searchTable(searchValue, response) {
@@ -214,14 +440,14 @@
                 let content = "";
                 for (var i = 0; i < response.length; i++) {
                     content = `${content}<tr id='${response[i]._id}'>
-                        <th scope="row">${response[i].rank}</th>
+                        <td scope="row">${response[i].rank}</td>
                         <td>${response[i].username}</td>
                         <td>${response[i].quiz}</td>
                         <td>${response[i].score}</td></tr>`;
                 }
 
                 // Display the table on the page
-                document.getElementById("leader-board").getElementsByTagName("tbody")[0].innerHTML = content;
+                document.getElementById("leaderboard").getElementsByTagName("tbody")[0].innerHTML = content;
             }
         });
 
