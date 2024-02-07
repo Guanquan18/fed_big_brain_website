@@ -731,7 +731,7 @@ border-bottom: 5px solid  #ff9600;
     }
 .pop_up_left_img_container {
     padding: 20px; 
-    width: calc(80% - 40px); 
+    width: calc(80% - 40px); /* Calculate the width with 40px (20px padding on both sides) subtracted */
 }
 #pop_up_image{
     height: auto;
@@ -739,8 +739,8 @@ border-bottom: 5px solid  #ff9600;
     border-radius: 5px;
 }
  .pop_up_right_container {
-    padding: 20px; 
-    width: calc(80% - 40px); 
+    padding: 20px; /* Optional: Add padding to the right container */
+    width: calc(80% - 40px); /* Calculate the width with 40px (20px padding on both sides) subtracted */
 }
 .pop_up_header{
     display: flex;
@@ -866,8 +866,6 @@ border-bottom: 5px solid  #ff9600;
 
 
 
-
-
 /* question page Starts Here */
 .quiz{
     background-color:rgb(251, 239, 224);
@@ -875,6 +873,7 @@ border-bottom: 5px solid  #ff9600;
     height: auto;
     width: 1050px;
     margin: 70px auto;
+    margin-left: 70px !important;
     border-radius: 40px;
     box-shadow: 5px 7px 5px 5px rgba(0,26, 51, 0.5);
     padding: 2px 50px 50px 50px;
@@ -889,7 +888,7 @@ border-bottom: 5px solid  #ff9600;
     font-size: 45px;
     background-color:#FFA33C;
     color: black;
-    border-radius: 40px;
+    border-radius: 20px;
     margin: 30px 10px;
     padding: 2px 0px;
 }
@@ -919,11 +918,11 @@ border-bottom: 5px solid  #ff9600;
     border: 1.5px solid rgb(18, 18, 18);
 }
 .question.correct_circle{
-    background-color: #23903c;
+    background-color: #98e3a9;
     color: white;
 }
 .question.incorrect_circle{
-    background-color: red;
+    background-color: rgb(251, 127, 127);
     color: white;
 }
 #score {
@@ -945,7 +944,7 @@ border-bottom: 5px solid  #ff9600;
 hr{
     border: 2px solid #B15EFF;
     position: relative;
-    clear: both; /* prevents the botom line covering the next question button */
+    clear: both; /
 }
 #question-text{
     position: relative;
@@ -958,40 +957,42 @@ hr{
 .option_list{
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-between; /* Adjust alignment as needed */
+    justify-content: space-between; 
     margin-top: 15px;
 }
 .option_list .option{
-    flex-basis: calc(50% - 20px); /* Adjust spacing as needed */
+    flex-basis: calc(50% - 20px); 
     position: relative;
-    background-color: rgb(194, 236, 252);
     width: 100%;
     height: auto;
+    background-color: transparent;
     border-radius: 5px;
-    border: none;
+    border: 1.5px solid black;
     margin: 20px 0;
     font-size: 20px;
     padding: 10px;
     font-weight: bold;
     color: black;
     display: flex;
-    align-items: center; /* Center align items vertically */
-    justify-content: space-between; /* Add space between text and icon */
+    align-items: center;
+    justify-content: space-between;
 }
 .option_list .option:hover{
     cursor: pointer;
-    background-color: #99ceff;
+    background-color: rgb(194, 236, 252);
     border: 1.5px solid black;
 }
 .option_list .option.correct{
     color:#155724;
     background-color: #d4edda;
     border: 1px solid #c3e6cb;
+    border: 1.5px solid black;
 }
 .option_list .option.incorrect{
     color:#721c24;
     background-color: #f8d7da;
     border: 1px solid #f5c6cb;
+    border: 1.5px solid black;
 }
 .option_list .option.disabled{
     pointer-events: none;
@@ -1084,13 +1085,38 @@ footer{
     line-height: 30px;
     text-align: center;
     background-color: #343a40;
-    border: 1px solid #343a60"
-
+    border: 1px solid #343a60;
 }
+@media screen and (max-width: 768px) {
+    .quiz {
+        width: 100%; /* Adjusted width for smaller screens */
+    }
+
+    .question {
+        font-size: 16px; /* Adjusted font size */
+        width: 30px; /* Adjusted width */
+        height: 30px; /* Adjusted height */
+        padding: 7px; /* Adjusted padding */
+        margin: 0px 10px; /* Adjusted margin */
+    }
+
+    .option_list {
+        flex-direction: column; /* Display options in a column layout */
+    }
+
+    .option_list .option {
+        flex-basis: auto; /* Reset flex-basis */
+        margin: 10px 0; /* Adjusted margin */
+        font-size: 16px; /* Adjusted font size */
+        padding: 8px; /* Adjusted padding */
+    }
+}
+
+
 
 .result_box{
     position: fixed;
-    top: 35%;
+    top: 40%;
     left: 50%;
     width: 1050px;
     height: auto;
@@ -1167,7 +1193,7 @@ footer{
     height: 250px;
     width: 250px;
     border-radius: 50%;
-    background: conic-gradient(#7d2ae8 3.6deg, #c8c8c8 0deg);
+    background: conic-gradient(#7d2ae8 3.6deg, #afaeae 0deg);
     display: flex;
     align-items: center;
     justify-content: center;    
@@ -1202,3 +1228,19 @@ footer{
         height: 45px;
         margin: 10px;
     }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

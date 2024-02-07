@@ -72,32 +72,25 @@ restart_quiz.onclick = () =>{
     resetQuestionCircles();
     next_btn.classList.remove("show"); // hide the next button
 
-    showLoadingLottie();
+    //showLoadingLottie();
     updateTable();
     //sessionStorage.removeItem('quizResult');
 
 }
 quit_quiz.onclick = ()=>{
-    showLoadingLottie();
+    //showLoadingLottie();
     updateTable("index.html");
     //window.location.href = 'index.html';
     //sessionStorage.removeItem('quizResult');
 
 }
 leaderboard_button.onclick = () => {
-    showLoadingLottie();
+    //showLoadingLottie();
     updateTable("leader_board_page.html");
     //window.location.href = 'leader_board_page.html';
 }
 
-function showLoadingLottie() {
-    let lottiePlayerContainer = document.getElementById("login-lottie-player");
-    lottiePlayerContainer.innerHTML = `<dotlottie-player src="https://lottie.host/5fb4ee71-0ba7-40c0-8bfc-9572526bfa50/eNR1nTg3yr.json" background="transparent" speed="1" style="width: 300px; height: 300px;" loop="1" autoplay></dotlottie-player>`;
-    lottiePlayerContainer.style.zIndex = "2"; 
 
-    // Stop here for now and wait for sairam's permission to continue
-    // Need to add a lottie container to the quiz page and style it
-}
 
 async function updateTable(anotherPage = null){
     const url = "https://fedassignment-5bdb.restdb.io/rest/leaderboard";
@@ -158,7 +151,7 @@ async function updateTable(anotherPage = null){
                 .then(response => {
                     console.log("Updated data:", response);
 
-                    if (anotherPage == "index.html" || anotherPage == "null"){
+                    if (anotherPage == "index.html" || anotherPage == null){
                         sessionStorage.removeItem('quizResult');
                     }
 
@@ -169,6 +162,15 @@ async function updateTable(anotherPage = null){
                 .catch(error => {
                     console.error("Error updating data:", error);
                 });
+        }
+        else if (existingScore && !requireUpdate){
+            if (anotherPage == "index.html" || anotherPage == null){
+                sessionStorage.removeItem('quizResult');
+            }
+
+            if (anotherPage != null){
+                window.location.href = anotherPage;
+            }
         }
         else if (!existingScore){
             var jsonData = {
@@ -190,7 +192,7 @@ async function updateTable(anotherPage = null){
                 .then(response => {
                     console.log("Added data:", response);
 
-                    if (anotherPage == "index.html" || anotherPage == "null"){
+                    if (anotherPage == "index.html" || anotherPage == null){
                         sessionStorage.removeItem('quizResult');
                     }
 
