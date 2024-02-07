@@ -28,7 +28,7 @@
                 <h1 class="header-main-title">Big Brain</h1>
             </nav>
         </div>
-        <div class="search_icon" onclick="toggleMobileSearch()"">
+        <div class="search_icon" onclick="toggleMobileSearch()">
         </div>
         <div class="main-header-search">
             <input type="text" id="mySearch" oninput="myFunction()" placeholder="Search">
@@ -185,7 +185,7 @@
                             </div>
                             <div class="card-footer">
                                 <p class="card-text">Solve exciting problems, multiply with joy, and discover the magic of numbers. Ready for a fun-filled journey into the world of multiplication?</p>
-                                <button class="btn btn-hover view_quiz" <button class="btn btn-hover view_quiz"  data-popup-target="#pop_up" data-quiz-title="Division" data-quiz-image="Photos/pop_up_math_quiz_background.png" id = "start_multiplication_quiz">View Quiz</button>
+                                <button class="btn btn-hover view_quiz" data-popup-target="#pop_up" data-quiz-title="Division" data-quiz-image="Photos/pop_up_math_quiz_background.png" id = "start_multiplication_quiz">View Quiz</button>
                             </div>
                         </div>
                     </div>
@@ -338,6 +338,11 @@
         document.querySelector(".search_icon").style.display = 'block';
     }
 });
+
+    document.querySelector('.index-page-loading-lottie-player dotlottie-player').addEventListener('complete', function () {
+        document.querySelector('.index-page-loading-lottie-player').style.display = 'none';
+    });
+    
         document.addEventListener('click', function (event) {
     // Close the list if clicking outside the input or the list itself
     if (!event.target.closest('.main-header-search') && !event.target.closest('#myMenu')) {

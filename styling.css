@@ -7,6 +7,7 @@
 body {
     font-family: Montserrat;
     background-color: white;
+    position: relative;
 }
 
 /* Navigation Styling Starts Here */
@@ -168,8 +169,6 @@ body {
     background-color: #ff9600;
 }
 
-
-
 /* Responive starts here */
 @media screen and (max-width: 768px) {
     .header-main-logo {
@@ -210,6 +209,121 @@ body {
     }
 }
 /* Navigation Styling Ends Here */
+
+/* Footer Starts Here */
+.ul-nostyle, .ul-nostyle a{
+    list-style: none;
+    text-decoration: none;
+    padding: 0px;
+    margin: 0px;
+}
+
+.main-footer-container{
+    width: 100%;
+    height: fit-content;
+    padding:25px 100px;
+    margin-top: 50px;
+
+    background-color: #33186B;
+    
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.main-footer-container h1{
+    font-size: 40px;
+    text-align: center;
+    color: white;
+}
+
+
+.main-footer-container li a{
+    color: white;
+    transition: all 0.3s ease;
+}
+
+.main-footer-container ul li:nth-child(1),.main-footer-app{
+    width: max-content;
+    margin: 20px 0;
+    font-size: larger;
+    font-weight: bolder;
+    color: #ff9600;
+    border-bottom: 2px solid #ff9600 ;
+}
+
+.main-footer-container ul li:not(:nth-child(1)){
+    margin: 10px 0;
+    color: #f1f1f1;
+}
+
+.main-footer-container #main-footer-sitemap li a:hover{
+    color: rgb(241, 158, 41);
+    padding-left: 10px;
+
+    border-left: 2px solid #ff9600;
+    transition: all 0.3s ease;
+}
+
+#main-footer-sm li:not(:nth-child(1)){
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px
+    
+
+}
+#main-footer-sm li a{
+    width: fit-content;
+    height: fit-content;
+}
+#main-footer-sm li a i{
+
+    font-size: 20px;
+    width: 40px;
+    height: 40px;
+    padding: 10px;
+    text-align: center;
+    vertical-align: middle;
+    border-radius: 100%;
+}
+
+#main-footer-sm li a i:hover{
+    background-color: #ff7b00;
+    border:1px  solid #ff7b00;
+    transition: all 0.3s ease;
+}
+.main-footer-container div{
+    
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.main-footer-container div i{
+    text-align: center;
+    font-size: 100px;
+    color: white;
+}
+
+
+
+/* Tablet Version */
+@media screen and (max-width: 768px){
+    .main-footer-container ul{
+        flex-basis: 45%;
+    }
+    .main-footer-container ul li:nth-child(1),.main-footer-app{
+        margin:10px 0 10px ;
+        font-size: x-large;
+    }   
+}
+/* Footer Stops Here */
 
 
 /* Login Page styling Starts Here */
@@ -468,7 +582,7 @@ body {
   font-weight: 400;
 }
 .Page_01_Title h1 strong {
-border-bottom: 5px solid  #ff9600;
+    border-bottom: 5px solid  #ff9600;
 }
 
 .Page_01_Title p{
@@ -493,6 +607,19 @@ border-bottom: 5px solid  #ff9600;
 .header-main-button a:hover {
     background-color: #ff7b00;
     color: black;
+}
+
+.index-page-loading-lottie-player{
+    width: 100%;
+    height: 100%;
+
+    position: fixed;
+    z-index: 3;
+    background-color: #33186B;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 /* bckground styling   media queries*/

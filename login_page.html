@@ -147,8 +147,13 @@
         
         document.addEventListener("DOMContentLoaded", function () {
             // What kind of interface we want at the start 
-            var url= "https://fedassignment-5bdb.restdb.io/rest/account"
-            const APIKEY = "65bde101c029b87c5966cdc6";
+
+            //var url= "https://fedassignment-5bdb.restdb.io/rest/account"
+            var url2 = "https://fedassignment-85eb.restdb.io/rest/account"
+
+            //const APIKEY = "65bde101c029b87c5966cdc6";
+            const APIKEY2 = "65bdfc153339b13e2a73c82b";
+
             // Store sign up values in json format
             var loginFormName = document.getElementById('login-form');
             var loginFormUsername = document.getElementById('login-username');
@@ -204,14 +209,14 @@
                 method: "GET", //[cher] we will use GET to retrieve info
                 headers: {
                     "Content-Type": "application/json",
-                    "x-apikey": APIKEY,
+                    "x-apikey": APIKEY2,
                     "Cache-Control": "no-cache"
                 },
                 }
 
                 var existingUser = false;
                 var correctPassword = false;
-                fetch(url, settings)
+                fetch(url2, settings)
                     .then(response => response.json())
                     .then(response => {
                         if (newUser){
@@ -274,19 +279,20 @@
                 let jsondata = {
                     "username": signUpFormUsername.value,
                     "password": signUpFormPassword.value,
+                    "vbucks": 0,
                 };
 
                 let settings = {
                 method: "POST", //[cher] we will use GET to retrieve info
                 headers: {
                     "Content-Type": "application/json",
-                    "x-apikey": APIKEY,
+                    "x-apikey": APIKEY2,
                     "Cache-Control": "no-cache"
                 },
                 body: JSON.stringify(jsondata),
                 }
 
-                fetch(url, settings)
+                fetch(url2, settings)
                     .then(response => response.json())
                     .then(data => {
                         console.log(data);

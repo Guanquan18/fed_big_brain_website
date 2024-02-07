@@ -6,6 +6,11 @@
     <title>Document</title>
     <link rel="stylesheet" href = "styling.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat&family=Oswald:wght@200;300&family=Playpen+Sans:wght@500&family=Poppins&family=Ubuntu:wght@500&display=swap" rel="stylesheet">
+    <!-- Link to Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"/>
     <script src="https://kit.fontawesome.com/543bcc20b3.js" crossorigin="anonymous"></script>
     <script src="https://unpkg.com/@dotlottie/player-component@latest/dist/dotlottie-player.mjs" type="module"></script> 
     <style>
@@ -181,24 +186,28 @@
 </head>
 
 <body>
-    <header>
-        <nav class = "navbar navbar-expand navbar-dark bg-dark">
-            <div class = "container">
-                <img src="clipart-brain-muscle-4.png" alt="image logo" style="max-height: 70px; width: auto;">
-                <a href="#" class = "navbar-brand">Big Brain</a>
-                
-                
-                <ul class = "navbar-nav">
-                    <li class ="nav-item">
-                        <a href="#" class="nav-link active">Home</a>
-                    </li>
-                    <li class ="nav-item">
-                        <a href="#" class="nav-link">Store</a>
-                    </li>
-                </ul>
-                
-            </div>
-        </nav>
+    <header class="header-main">
+        <div class="header-main-logo">
+            <dotlottie-player src="https://lottie.host/c8de3e83-6ad0-4247-93a0-cbdcd42610b1/IeCb6wJM4Z.json" background="transparent" speed="1" style="width: 150px; height: 150px;" loop autoplay></dotlottie-player>
+            <nav class="header-main-nav">
+                <h1 class="header-main-title">Big Brain</h1>
+            </nav>
+        </div>
+        <div class="search_icon" onclick="toggleMobileSearch()">
+        </div>
+        <div class="main-header-search">
+            <input type="text" id="mySearch" oninput="myFunction()" placeholder="Search">
+            <ul id="myMenu">
+                <li><a href="#math_quiz_category">Math</a></li>
+                <li><a href="#science_quiz_category">Science</a></li>
+                <li><a href="#english_quiz_category">English</a></li>
+                <li><a href="#">Geography</a></li>
+                <li><a href="#">History</a></li>
+                <li><a href="#">Chinese</a></li>
+                <li><a href="#">Malay</a></li>
+                <li><a href="#">Tamil</a></li>
+            </ul>
+        </div>
     </header>
 
     <section class="leaderboard-header">
@@ -236,35 +245,76 @@
             <a href="index.html" class="btn col-3">Exit</a>
         </section>
     </article>
+
+    <footer class="main-footer-container">
+
+
+            <!--Site Map-->
+            <ul class="ul-nostyle" id="main-footer-sitemap">
+                <li>Category</li>
+                <li><a href="index.html">English</a></li>
+                <li><a href="index.html">Mathematics</a></li>
+                <li><a href="index.html">Science</a></li>
+            </ul>
+            <!-- Site Map Ends Here -->
+
+            <!--Social Media-->
+            <ul class="ul-nostyle" id="main-footer-sm">
+                <li>Follow Us</li>
+                <li>
+                    <a href="https://www.facebook.com/">
+                        <i class="fa-brands fa-facebook-f" style="color: white;">
+                        </i>
+                    </a>
+                    <a href="https://www.instagram.com/">
+                        <i class="fa-brands fa-instagram" style="color: white;"></i>
+                    </a>
+                    <a href="https://twitter.com/">
+                        <i class="fa-brands fa-twitter" style="color: white;"></i>
+                    </a>
+                </li>
+            </ul>
+            <!-- Social Media Ends Here -->
+
+            <!-- Download App -->
+            <div>
+                <p class="main-footer-app">Download App</p>
+                <i class="fa-solid fa-qrcode"></i>
+            </div>
+            <!-- Download App Ends Here -->
+
+    </footer>
     
     <script>
         console.log('Stored Quiz Result:', sessionStorage.getItem('quizResult'));
         document.addEventListener("DOMContentLoaded", function () {
-            const url = "https://fedassignment-5bdb.restdb.io/rest/leaderboard";
+            //const url = "https://fedassignment-5bdb.restdb.io/rest/leaderboard";
+            const url2 = "https://fedassignment-85eb.restdb.io/rest/leaderboard";
             const APIKEY = "65bde101c029b87c5966cdc6";
+            const APIKEY2 = "65bdfc153339b13e2a73c82b";
 
             const results = sessionStorage.getItem('quizResult');
             const resultsArray = JSON.parse(results);
-            const username = resultsArray.username; 
-            const score = resultsArray.score;  
-            const quiz = resultsArray.quizTitle;  
+            const username = "GuanQuan";//resultsArray.username; 
+            const score = 2;//resultsArray.score;  
+            const quiz = "Grammar";//resultsArray.quizTitle;  
             console.log("Username:", username, 
             "\nScore:", score, 
             "\nQuiz:", quiz);
 
 
-            //updateTable();
+            updateTable();
             async function updateTable(){
                 let settings = {
                     method: "GET",
                     headers: {
                         "Content-Type": "application/json",
-                        "x-apikey": APIKEY,
+                        "x-apikey": APIKEY2,
                         "Cache-Control": "no-cache"
                     }
                 };
 
-                await fetch(url,settings)
+                await fetch(url2,settings)
                 .then(response => response.json())
                 .then(response => {
                     // Check if the username and quiz already exists in the database
@@ -291,12 +341,12 @@
                             method: "PUT",
                             headers: {
                                 "Content-Type": "application/json",
-                                "x-apikey": APIKEY,
+                                "x-apikey": APIKEY2,
                                 "Cache-Control": "no-cache"
                             },
                             body: JSON.stringify(jsonData)
                         };
-                        fetch(url + "/" + userId, Settings)
+                        fetch(url2 + "/" + userId, Settings)
                             .then(response => response.json())
                             .then(response => {
                                 console.log("Updated data:", response);
@@ -315,12 +365,12 @@
                             method: "POST",
                             headers: {
                                 "Content-Type": "application/json",
-                                "x-apikey": APIKEY,
+                                "x-apikey": APIKEY2,
                                 "Cache-Control": "no-cache"
                             },
                             body: JSON.stringify(jsonData)
                         };
-                        fetch(url, settings)
+                        fetch(url2, settings)
                             .then(response => response.json())
                             .then(response => {
                                 console.log("Added data:", response);
@@ -346,21 +396,21 @@
             //     sessionStorage.setItem("password", loginFormPassword.value);
             //     window.location.href = "index.html";
             // });
-            //filter();
-            //search();
+            // filter();
+            // search();
 
             async function loadTable(){
                 let settings = {
                     method: "GET",
                     headers: {
                         "Content-Type": "application/json",
-                        "x-apikey": APIKEY,
+                        "x-apikey": APIKEY2,
                         "Cache-Control": "no-cache"
                     }
                 };
     
                 // Fetch data for the table
-                await fetch(url, settings)
+                await fetch(url2, settings)
                 .then(response => response.json())
                 .then(response => {
     
