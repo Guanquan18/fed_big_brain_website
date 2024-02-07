@@ -1,24 +1,24 @@
- const storedQuestions = localStorage.getItem('quizQuestions');
- console.log('Selected Quiz Questions:', storedQuestions);
- const questionsArray = JSON.parse(storedQuestions);
- const questionheader = questionsArray[0].Quiz;  
- var header = document.getElementById("question-header");
- header.textContent = questionheader
+const storedQuestions = localStorage.getItem('quizQuestions');
+console.log('Selected Quiz Questions:', storedQuestions);
+const questionsArray = JSON.parse(storedQuestions);
+const questionheader = questionsArray[0].Quiz;  
+var header = document.getElementById("question-header");
+header.textContent = questionheader
 
- const quiz_box = document.querySelector(".quiz");
- const result_box = document.querySelector(".result_box");
- const option_list = document.querySelector(".option_list");
- const time_line = document.querySelector(".time_line");
- const timeText = document.querySelector(".timer_left_txt");
- const timeCount = document.querySelector(".timer_sec");
- const score = document.getElementById("score");
+const quiz_box = document.querySelector(".quiz");
+const result_box = document.querySelector(".result_box");
+const option_list = document.querySelector(".option_list");
+const time_line = document.querySelector(".time_line");
+const timeText = document.querySelector(".timer_left_txt");
+const timeCount = document.querySelector(".timer_sec");
+const score = document.getElementById("score");
 
- const restart_quiz = result_box.querySelector(".restart");
- const quit_quiz = result_box.querySelector(".quit");
-
- const next_btn = document.getElementById("next_question");
-const bottom_ques_counter = document.querySelector(".progress");
+const restart_quiz = result_box.querySelector(".restart");
+const quit_quiz = result_box.querySelector(".quit");
 const leaderboard_button = document.querySelector(".leaderboard_button");
+
+const next_btn = document.getElementById("next_question");
+const bottom_ques_counter = document.querySelector(".progress");
 
 let timeValue = 15;
 let que_count = 0;
@@ -67,15 +67,142 @@ restart_quiz.onclick = () =>{
     clearInterval(counter); // clear counter
     clearInterval(counterLine); // clear counterline
     startTimer(timeValue); // calling start timer function 
-    startTimerLine(widthValue); // calling startTimerline function
+    startTimerLine(widthValue); // calling startTimerline function  
     timeText.textContent = "Time Left";
     resetQuestionCircles();
     next_btn.classList.remove("show"); // hide the next button
-    sessionStorage.removeItem('quizResult');
+
+    showLoadingLottie();
+    updateTable();
+    //sessionStorage.removeItem('quizResult');
+
 }
 quit_quiz.onclick = ()=>{
-    window.location.href = 'index.html';
-    sessionStorage.removeItem('quizResult');
+    showLoadingLottie();
+    updateTable("index.html");
+    //window.location.href = 'index.html';
+    //sessionStorage.removeItem('quizResult');
+
+}
+leaderboard_button.onclick = () => {
+    showLoadingLottie();
+    updateTable("leader_board_page.html");
+    //window.location.href = 'leader_board_page.html';
+}
+
+function showLoadingLottie() {
+    let lottiePlayerContainer = document.getElementById("login-lottie-player");
+    lottiePlayerContainer.innerHTML = `<dotlottie-player src="https://lottie.host/5fb4ee71-0ba7-40c0-8bfc-9572526bfa50/eNR1nTg3yr.json" background="transparent" speed="1" style="width: 300px; height: 300px;" loop="1" autoplay></dotlottie-player>`;
+    lottiePlayerContainer.style.zIndex = "2"; 
+
+    // Stop here for now and wait for sairam's permission to continue
+    // Need to add a lottie container to the quiz page and style it
+}
+
+async function updateTable(anotherPage = null){
+    const url = "https://fedassignment-5bdb.restdb.io/rest/leaderboard";
+    const APIKEY = "65bde101c029b87c5966cdc6";
+    
+    var results = sessionStorage.getItem('quizResult');
+    var resultsArray = JSON.parse(results);
+    var username = resultsArray.username; 
+    var score = resultsArray.score;  
+    var quiz = resultsArray.quizTitle;  
+    console.log("Username:", username,
+                "\nScore:", score,
+                "\nQuiz:", quiz);
+
+    let settings = {
+        method: "GET",
+        headers: {
+            "Content-Type": "application/json",
+            "x-apikey": APIKEY,
+            "Cache-Control": "no-cache"
+        }
+    };
+
+    await fetch(url,settings)
+    .then(response => response.json())
+    .then(response => {
+        // Check if the username and quiz already exists in the database
+        existingScore = false;
+        requireUpdate = false;
+        for (var i = 0; i < response.length; i++) {
+            if (response[i].username === username && response[i].quiz === quiz) {
+                console.log("Existing score:", response[i].score);
+                existingScore = true;
+                if (response[i].score < score) {
+                    response[i].score = score;
+                    userId = response[i]._id;
+                    requireUpdate = true;
+                }
+            }
+        }
+        if (existingScore && requireUpdate){
+            var jsonData= {
+                "username": username,
+                "score": score,
+                "quiz": quiz,
+            };
+            let Settings = {
+                method: "PUT",
+                headers: {
+                    "Content-Type": "application/json",
+                    "x-apikey": APIKEY,
+                    "Cache-Control": "no-cache"
+                },
+                body: JSON.stringify(jsonData)
+            };
+            fetch(url + "/" + userId, Settings)
+                .then(response => response.json())
+                .then(response => {
+                    console.log("Updated data:", response);
+
+                    if (anotherPage == "index.html" || anotherPage == "null"){
+                        sessionStorage.removeItem('quizResult');
+                    }
+
+                    if (anotherPage != null){
+                        window.location.href = anotherPage;
+                    }
+                })
+                .catch(error => {
+                    console.error("Error updating data:", error);
+                });
+        }
+        else if (!existingScore){
+            var jsonData = {
+                "username": username,
+                "score": score,
+                "quiz": quiz,
+            };
+            let settings = {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                    "x-apikey": APIKEY,
+                    "Cache-Control": "no-cache"
+                },
+                body: JSON.stringify(jsonData)
+            };
+            fetch(url, settings)
+                .then(response => response.json())
+                .then(response => {
+                    console.log("Added data:", response);
+
+                    if (anotherPage == "index.html" || anotherPage == "null"){
+                        sessionStorage.removeItem('quizResult');
+                    }
+
+                    if (anotherPage != null){
+                        window.location.href = anotherPage;
+                    }
+                })
+                .catch(error => {
+                    console.error("Error adding data:", error);
+                });
+        }
+    })
 }
 
 
