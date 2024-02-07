@@ -429,6 +429,18 @@ body {
 
 
 /* Background  Styling Starts here Here */
+.index-page-loading-lottie-player{
+    width: 100%;
+    height: 100%;
+
+    position: fixed;
+    z-index: 3;
+    background-color: #33186B;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
 .Page_01_background{
     background-image: linear-gradient(rgba(10, 18, 50, 0.7),rgba(4,9,30,0.7 )),url("Photos/index_background_top.jpg");
     }
@@ -867,13 +879,15 @@ border-bottom: 5px solid  #ff9600;
 
 
 /* question page Starts Here */
+/* question page Starts Here */
+/* question page Starts Here */
 .quiz{
     background-color:rgb(251, 239, 224);
     position: relative;
     height: auto;
     width: 1050px;
     margin: 70px auto;
-    margin-left: 70px !important;
+    margin-left: 70px;
     border-radius: 40px;
     box-shadow: 5px 7px 5px 5px rgba(0,26, 51, 0.5);
     padding: 2px 50px 50px 50px;
@@ -1044,7 +1058,7 @@ cursor: pointer;
     opacity: 1;
     pointer-events: auto;
 }
-footer{
+.quiz-footer{
     position: relative;
     margin-bottom: 30px;
 }
@@ -1089,29 +1103,78 @@ footer{
 }
 @media screen and (max-width: 768px) {
     .quiz {
-        width: 100%; /* Adjusted width for smaller screens */
+        width: 90%;
+        padding-left: 15px;
+        margin-left: 20px;
     }
 
     .question {
-        font-size: 16px; /* Adjusted font size */
-        width: 30px; /* Adjusted width */
-        height: 30px; /* Adjusted height */
-        padding: 7px; /* Adjusted padding */
-        margin: 0px 10px; /* Adjusted margin */
+        font-size: 16px; 
+        width: 30px; 
+        height: 30px; 
+        padding: 7px; 
+        margin: 0px 10px; 
     }
 
     .option_list {
-        flex-direction: column; /* Display options in a column layout */
+        flex-direction: column; 
     }
 
     .option_list .option {
-        flex-basis: auto; /* Reset flex-basis */
-        margin: 10px 0; /* Adjusted margin */
+        flex-basis: auto; 
+        margin: 10px 0; 
+        font-size: 16px; 
+        padding: 8px; 
+    }
+    #question-header {
+        font-size: 20px; 
+        margin: 20px 5px; 
+        padding: 10px;
+    }
+
+    #tracker {
+        margin: 5px 5px; 
+        padding: 0; 
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .question {
+        width: 23px; 
+        height: 23px; 
+        font-size: 10px; 
+        padding: 5px; 
+        margin: 10px 5px; 
+    }
+    #question-text{
+        font-size: 15px;
+    }
+    #score {
+        font-size: 25px;
+        margin-bottom: 10px;
+        border-bottom: 2px solid  #8447ff;
+    }
+    #topline{
+        display: none;
+    }
+    .progress{
+        font-size: 15px;
+    }
+    #timer {
+        width: 150px; /* Adjusted width for smaller screens */
+    }
+
+    #timer .timer_left_txt {
+        width: 80px;
+        height: 15px;
+        font-size: 15px;
+    }
+
+    #timer .timer_sec {
         font-size: 16px; /* Adjusted font size */
-        padding: 8px; /* Adjusted padding */
+        width: 35px; 
     }
 }
-
 
 
 .result_box{
@@ -1165,6 +1228,7 @@ footer{
     border-radius: 5px;
     background-color: #FFA33C;
     transition: all 0.3s ease;
+    z-index: 6;
 }
 .buttons button:hover{
     border: 2px solid black;
@@ -1228,7 +1292,22 @@ footer{
         height: 45px;
         margin: 10px;
     }
+.leaderboard_button a:hover{
+        border: 2px solid black;
+        background-color: darkorange;
+    }
+    @media screen and (max-width: 768px) {
 
+        .result_box{
+            width: 400px;
+        }
+        .complete_text{
+            font-size: 15px;
+        }
+        .score_text span{
+            font-size: 10px;
+        }
+    }
 
 
 

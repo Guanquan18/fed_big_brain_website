@@ -346,8 +346,8 @@
             //     sessionStorage.setItem("password", loginFormPassword.value);
             //     window.location.href = "index.html";
             // });
-            filter();
-            search();
+            //filter();
+            //search();
 
             async function loadTable(){
                 let settings = {
@@ -377,8 +377,8 @@
     
                     // Build the table and display it on the page
                     buildTable(rankedData);
-                    // filter();
-                    // search();
+                    filter();
+                    search();
                     
                 })
                 .catch(error => {
