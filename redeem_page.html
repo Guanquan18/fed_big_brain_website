@@ -17,13 +17,46 @@
 <body>
       <!-- Header section with logo, title, and search bar -->
       <header class="header-main">
-        <div class="header-main-logo">
+        
+        <nav class="header-main-navigation-container">
+            <div class="header-main-menu-button">
+            </div>
             <dotlottie-player src="https://lottie.host/c8de3e83-6ad0-4247-93a0-cbdcd42610b1/IeCb6wJM4Z.json" background="transparent" speed="1" style="width: 150px; height: 150px;" loop autoplay></dotlottie-player>
-            <nav class="header-main-nav">
-                <h1 class="header-main-title">Big Brain</h1>
-            </nav>
+            <div class="header-main-nav">
+                <a href="index.html"><h1 class="header-main-title">Big Brain</h1></a>
+                <ul>
+                    <li>
+                        <a href="redeem_page.html">Redeemption (<label class="header-main-vbucks"></label> Vbucks)</a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+        <div class="search_icon" onclick="toggleMobileSearch()">
         </div>
-      </header>
+        <div class="main-header-search">
+            <input type="text" id="mySearch" oninput="myFunction()" placeholder="Search">
+            <ul id="myMenu">
+                <li><a href="#math_quiz_category">Math</a></li>
+                <li><a href="#science_quiz_category">Science</a></li>
+                <li><a href="#english_quiz_category">English</a></li>
+                <li><a href="#">Geography</a></li>
+                <li><a href="#">History</a></li>
+                <li><a href="#">Chinese</a></li>
+                <li><a href="#">Malay</a></li>
+                <li><a href="#">Tamil</a></li>
+            </ul>
+        </div>
+    </header>
+    <nav class="header-main-menu">
+        <ul>
+            <li>
+                <a href="redeem_page.html">Redeemption (<label class="header-main-vbucks"></label> Vbucks)</a>
+            </li>
+            <li>
+                <a href="login_page.html">Log Out</a>
+            </li>
+        </ul>
+    </nav>
     
         <!-- Redemption -->
     <section class="Redemption-page-section" id = "redemption-section">
@@ -207,86 +240,142 @@
     </footer>
      
     <script>
-      // Get elements
-const redemptionPopUp = document.getElementById('redemption-pop-up');
-const closeButton = document.getElementById('close-redemption-pop-up');
-const overlay = document.getElementById('redemption-overlay');
 
-// Function to open the pop-up
-function openRedemptionPopUp(requiredVbucks) {
-    // Call fetchData() and await its result to get the current vbucks
-    fetchData().then(currentVbucks => {
-        redemptionPopUp.classList.add('active');
-        overlay.classList.add('active');
+        const url2 = "https://fedassignment-85eb.restdb.io/rest/account";
+        const url3 = "https://fedassignment-2f26.restdb.io/rest/account";
+        const APIKEY2 = "65bdfc153339b13e2a73c82b";
+        const APIKEY3 = "65c3bf2570dd296a0c2630f3";
+
+        const username = sessionStorage.getItem('username');
+        const password = sessionStorage.getItem('password');
+        var userID = null;
+
+        // Get elements
+        const redemptionPopUp = document.getElementById('redemption-pop-up');
+        const closeButton = document.getElementById('close-redemption-pop-up');
+        const overlay = document.getElementById('redemption-overlay');
 
         const redemptionStatusImg = document.getElementById('redemption-status-img');
         const redemptionStatusMessage = document.getElementById('redemption-status-message');
         const successful_animation=  '<dotlottie-player src="https://lottie.host/cecc38c1-fa56-4f0c-927c-20e73c9a53a1/iFFBJkBl4V.json" background="transparent" speed="1" style="width: 300px; height: 300px;" loop = "5" autoplay></dotlottie-player>'
         const unsuccessful_animation = ' <dotlottie-player src="https://lottie.host/b243beda-f13b-485b-9dff-6eec81b021e1/5nooAZyoNF.json" background="transparent" speed="1" style="width: 300px; height: 300px;" loop autoplay></dotlottie-player>'
-        if (currentVbucks >= requiredVbucks) {
-            // Display success image and message
-            redemptionStatusImg.innerHTML = successful_animation;
-            redemptionStatusMessage.textContent = 'Redeemed successfully!';
-        } else {
-            // Display error image and message
-            redemptionStatusImg.innerHTML = unsuccessful_animation;
-            redemptionStatusMessage.textContent = 'Insufficient vbucks!';
+
+        // Function to open the pop-up
+        function openRedemptionPopUp(requiredVbucks) {
+            // Call fetchData() and await its result to get the current vbucks
+            optainVbucks().then(currentVbucks => {
+                redemptionPopUp.classList.add('active');
+                overlay.classList.add('active');
+        
+                if (currentVbucks >= requiredVbucks) {
+                    // Display success image and message
+                    redemptionStatusImg.innerHTML = successful_animation;
+                    redemptionStatusMessage.textContent = 'Redeemed successfully!';
+                    deductVbucks(userID, currentVbucks, requiredVbucks);
+                } else {
+                    // Display error image and message
+                    redemptionStatusImg.innerHTML = unsuccessful_animation;
+                    redemptionStatusMessage.textContent = 'Insufficient vbucks!';
+                }
+            }).catch(error => {
+                console.error('Error fetching vbucks:', error);
+            });
         }
-    }).catch(error => {
-        console.error('Error fetching vbucks:', error);
-    });
-}
 
-// Event listener for opening the pop-up
-document.querySelectorAll('.open-redemption-pop-up').forEach(button => {
-    button.addEventListener('click', function() {
-        const requiredVbucks = parseInt(button.dataset.requiredVbucks); // Get the required vbucks from the data attribute
-        openRedemptionPopUp(requiredVbucks);
-    });
-});
+        async function deductVbucks(userID, currentVbucks, requiredVbucks) {
+            var newVbucks = currentVbucks - requiredVbucks;
+            const json = {
+                "username": username,
+                "password": password,
+                "vbucks": newVbucks
+            };
+            try{
+                settings = {
+                    "method": "PUT",
+                    "headers": {
+                    "content-type": "application/json",
+                    "x-apikey": APIKEY3
+                    },
+                    body: JSON.stringify(json)
+                }
+                fetch(`${url3}/${userID}`, settings)
+                .then(res => res.json())
+                .then(data => console.log(data))
 
-// Event listener for closing the pop-up when clicking on the close button
-closeButton.addEventListener('click', function() {
-    redemptionPopUp.classList.remove('active');
-    overlay.classList.remove('active');
-});
+                var result = await response.json();
+                console.log("Deducted Successfull: ",result);
 
-// Event listener for closing the pop-up when clicking on the overlay
-overlay.addEventListener('click', function() {
-    redemptionPopUp.classList.remove('active');
-    overlay.classList.remove('active');
-});
-
-async function optainVbucks() {
-    const url2 = "https://fedassignment-85eb.restdb.io/rest/account";
-    const url3 = "https://fedassignment-2f26.restdb.io/rest/account";
-    const APIKEY2 = "65bdfc153339b13e2a73c82b";
-    const APIKEY3 = "65c3bf2570dd296a0c2630f3";
-
-    try {
-        const response = await fetch(url2, {
-            method: "GET",
-            headers: {
-                "Content-Type": "application/json",
-                "x-apikey": APIKEY3,
-                "Cache-Control": "no-cache"
+            }catch(error){
+                console.log(error);
+                return -1; // Return a default value in case of an error
             }
+        }
+
+        async function optainVbucks() {
+            try {
+
+                settings = {
+                    "method": "GET",
+                    "headers": {
+                    "content-type": "application/json",
+                    "x-apikey": APIKEY3
+                    }
+                }
+
+                return fetch(url3, settings)
+                .then(res => res.json())
+                .then(data => {
+                    for (var i = 0; i < data.length; i++) {
+                        if (data[i].username === username) {
+                            userID = data[i]._id;
+                            return data[i].vbucks;
+                        }
+                    }
+                    if (userID === null) {
+                        console.log("User not found");
+                        return -1; // Return a default value in case of an error
+                    }
+                })
+                .catch(error => {
+                    console.log(error);
+                    return -1; // Return a default value in case of an error
+                })
+            } catch (error) {
+                console.log(error);
+                return -1; // Return a default value in case of an error
+            }
+        }
+
+        async function fetchData() {
+            try {
+                const currentVbucks = await optainVbucks();
+                return currentVbucks;
+            } catch (error) {
+                console.error('Error fetching vbucks:', error);
+                return -1; // Return a default value in case of an error
+            }
+        }
+
+
+        // Event listener for opening the pop-up
+        document.querySelectorAll('.open-redemption-pop-up').forEach(button => {
+            button.addEventListener('click', function() {
+                const requiredVbucks = parseInt(button.dataset.requiredVbucks); // Get the required vbucks from the data attribute
+                openRedemptionPopUp(requiredVbucks);
+            });
         });
 
-        const data = await response.json();
-        console.log(data);
-        
-        return data[0].vbucks;
-    } catch (error) {
-        console.log(error);
-        return 0; // Return a default value in case of an error
-    }
-}
+        // Event listener for closing the pop-up when clicking on the close button
+        closeButton.addEventListener('click', function() {
+            redemptionPopUp.classList.remove('active');
+            overlay.classList.remove('active');
+        });
 
-async function fetchData() {
-    const y = await optainVbucks();
-    return y;
-}
+        // Event listener for closing the pop-up when clicking on the overlay
+        overlay.addEventListener('click', function() {
+            redemptionPopUp.classList.remove('active');
+            overlay.classList.remove('active');
+        });
 
 
 

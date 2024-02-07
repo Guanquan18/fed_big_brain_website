@@ -17,17 +17,26 @@
 <body>
     <section class="index-page-loading-lottie-player">
 
-        <dotlottie-player src="https://lottie.host/aba5424f-5126-49bb-9be1-fe26b01cb866/PxOu1nGRPe.json" background="transparent" speed="1.25" style="width: 300px; height: 300px;" loop="1" autoplay></dotlottie-player>
-        <!-- <dotlottie-player src="https://lottie.host/72f4aadc-c523-4806-af77-0f599f7f2bdd/QJwgaQPyeb.json" background="transparent" speed="1" style="width: 300px; height: 300px;" loop="1" autoplay></dotlottie-player> -->
+        <dotlottie-player src="https://lottie.host/aba5424f-5126-49bb-9be1-fe26b01cb866/PxOu1nGRPe.json" background="transparent" speed="2.5" style="width: 300px; height: 300px;" loop="1" autoplay></dotlottie-player>
     </section>
-      <!-- Header section with logo, title, and search bar -->
-      <header class="header-main">
-        <div class="header-main-logo">
+
+    <!-- Header section with logo, title, and search bar -->
+    
+    <header class="header-main">
+        
+        <nav class="header-main-navigation-container">
+            <div class="header-main-menu-button">
+            </div>
             <dotlottie-player src="https://lottie.host/c8de3e83-6ad0-4247-93a0-cbdcd42610b1/IeCb6wJM4Z.json" background="transparent" speed="1" style="width: 150px; height: 150px;" loop autoplay></dotlottie-player>
-            <nav class="header-main-nav">
-                <h1 class="header-main-title">Big Brain</h1>
-            </nav>
-        </div>
+            <div class="header-main-nav">
+                <a href="index.html"><h1 class="header-main-title">Big Brain</h1></a>
+                <ul>
+                    <li>
+                        <a href="redeem_page.html">Redeemption (<label class="header-main-vbucks"></label> Vbucks)</a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
         <div class="search_icon" onclick="toggleMobileSearch()">
         </div>
         <div class="main-header-search">
@@ -44,6 +53,17 @@
             </ul>
         </div>
     </header>
+    <nav class="header-main-menu">
+        <ul>
+            <li>
+                <a href="redeem_page.html">Redeemption (<label class="header-main-vbucks"></label> Vbucks)</a>
+            </li>
+            <li>
+                <a href="login_page.html">Log Out</a>
+            </li>
+        </ul>
+    </nav>
+
      <!-- Background section with a title and description -->
      <section class = "Page_01_background">
         <div class = "Page_01_Title">
@@ -268,23 +288,110 @@
         </div>
     </div>
     <div id = "overlay"></div>
-     
-     
-     
-     
-     
-     
-     
-     
-     
-     
-     
-     
-     
-     
-     
+
+    <footer class="main-footer-container">
+
+
+        <!--Site Map-->
+        <ul class="ul-nostyle" id="main-footer-sitemap">
+            <li>Category</li>
+            <li><a href="index.html">English</a></li>
+            <li><a href="index.html">Mathematics</a></li>
+            <li><a href="index.html">Science</a></li>
+        </ul>
+        <!-- Site Map Ends Here -->
+
+        <!--Social Media-->
+        <ul class="ul-nostyle" id="main-footer-sm">
+            <li>Follow Us</li>
+            <li>
+                <a href="https://www.facebook.com/">
+                    <i class="fa-brands fa-facebook-f" style="color: white;">
+                    </i>
+                </a>
+                <a href="https://www.instagram.com/">
+                    <i class="fa-brands fa-instagram" style="color: white;"></i>
+                </a>
+                <a href="https://twitter.com/">
+                    <i class="fa-brands fa-twitter" style="color: white;"></i>
+                </a>
+            </li>
+        </ul>
+        <!-- Social Media Ends Here -->
+
+        <!-- Download App -->
+        <div>
+            <p class="main-footer-app">Download App</p>
+            <i class="fa-solid fa-qrcode"></i>
+        </div>
+        <!-- Download App Ends Here -->
+
+    </footer>
+
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
      <script>
+
+        toggleMobileMenu();
+        function toggleMobileMenu(){
+            /* Navation menu when device is switched to mobile or tablet */
+            var menuButton = document.querySelector('.header-main-menu-button');
+            var menu = document.querySelector('.header-main-menu');
+    
+            var ismenuOpen = false;
+    
+            menuButton.addEventListener("click", function() {
+                if (!ismenuOpen) {
+                    menu.style.display = "block";
+                    ismenuOpen = true;
+                } else {
+                    menu.style.display="none";
+                    ismenuOpen = false;
+                }
+            },false);
+            /* End of navation */
+        }
+        
+        optainVbucks();
+        function optainVbucks() {
+            //var url= "https://fedassignment-5bdb.restdb.io/rest/account"
+            var url2 = "https://fedassignment-85eb.restdb.io/rest/account"
+            var url3 = "https://fedassignment-2f26.restdb.io/rest/account"
+
+            //const APIKEY = "65bde101c029b87c5966cdc6";
+            const APIKEY2 = "65bdfc153339b13e2a73c82b";
+            const APIKEY3 = "65c3bf2570dd296a0c2630f3";
+
+            let vbucksPlaceHolder = document.querySelectorAll(".header-main-vbucks")
+            var username = sessionStorage.getItem("username");
+            var userId = null
+
+            let settings = {
+                method: "GET",
+                headers: {
+                    "Content-Type": "application/json",
+                    "x-apikey": APIKEY3,
+                    "Cache-Control": "no-cache"
+                },
+            }
+
+            fetch(url3, settings)
+                .then(response => response.json())
+                .then(response => {
+                    console.log(response);
+                    response.forEach(res => {
+                        if (res.username === username){
+                            userId = res._id
+                            vbucksPlaceHolder.forEach(vb => {
+                                vb.textContent = res.vbucks
+                            })
+                        }
+                    });
+                })
+                .catch(error => {
+                    console.log(error);
+                });
+        }
+
         const swiper = new Swiper('.swiper', {
     // Optional parameters
     autoplay: {
@@ -306,28 +413,23 @@
     },
 });
 
-
-    // Add event listener to each image
-    const swiperImages = document.querySelectorAll('.swiper-slide img');
-    swiperImages.forEach(img => {
-        img.addEventListener('click', () => {
-            if (swiper.autoplay.running) {
-                swiper.autoplay.stop();
-            } else {
-                swiper.autoplay.start();
-            }
-        });
-    });
-    const swiperContainer = document.querySelector('.swiper');
-    swiperContainer.addEventListener('click', (event) => {
-        if (!event.target.closest('.swiper-slide')) {
+// Add event listener to each image
+const swiperImages = document.querySelectorAll('.swiper-slide img');
+swiperImages.forEach(img => {
+    img.addEventListener('click', () => {
+        if (swiper.autoplay.running) {
+            swiper.autoplay.stop();
+        } else {
             swiper.autoplay.start();
         }
     });
-    // Lottie Loading Animation
-    document.querySelector('.index-page-loading-lottie-player dotlottie-player').addEventListener('complete', function () {
-                document.querySelector('.index-page-loading-lottie-player').style.display = 'none';
-            });
+});
+const swiperContainer = document.querySelector('.swiper');
+swiperContainer.addEventListener('click', (event) => {
+    if (!event.target.closest('.swiper-slide')) {
+        swiper.autoplay.start();
+    }
+});
 
         document.addEventListener('click', function (event) {
     // Close the list if clicking outside the input, the list itself, or the search icon
@@ -342,7 +444,6 @@
     document.querySelector('.index-page-loading-lottie-player dotlottie-player').addEventListener('complete', function () {
         document.querySelector('.index-page-loading-lottie-player').style.display = 'none';
     });
-    
         document.addEventListener('click', function (event) {
     // Close the list if clicking outside the input or the list itself
     if (!event.target.closest('.main-header-search') && !event.target.closest('#myMenu')) {
@@ -406,6 +507,12 @@
     
 }
 
+
+
+
+
+
+    
     </script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
     <script src = "javascript.js"></script>

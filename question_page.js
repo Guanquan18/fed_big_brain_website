@@ -91,9 +91,9 @@ leaderboard_button.onclick = () => {
 }
 
 function showLoadingLottie() {
-    let lottiePlayerContainer = document.getElementById("login-lottie-player");
-    lottiePlayerContainer.innerHTML = `<dotlottie-player src="https://lottie.host/5fb4ee71-0ba7-40c0-8bfc-9572526bfa50/eNR1nTg3yr.json" background="transparent" speed="1" style="width: 300px; height: 300px;" loop="1" autoplay></dotlottie-player>`;
-    lottiePlayerContainer.style.zIndex = "2"; 
+    let lottiePlayerContainer = document.getElementById("question-page-loading-lottie-player");
+    lottiePlayerContainer.innerHTML = `<dotlottie-player src="https://lottie.host/c8de3e83-6ad0-4247-93a0-cbdcd42610b1/IeCb6wJM4Z.json" background="transparent" speed="1" style="width: 150px; height: 150px;" loop autoplay></dotlottie-player>`;
+    lottiePlayerContainer.style.zIndex = "3"; 
 }
 
 async function updateDataBase(anotherPage = null){
@@ -116,26 +116,24 @@ async function updateDataBase(anotherPage = null){
                 "\nScore:", score,
                 "\nQuiz:", quiz);
 
-    let settings = {
-        method: "GET",
-        headers: {
-            "Content-Type": "application/json",
-            "x-apikey": APIKEY3,
-            "Cache-Control": "no-cache"
-        }
-    };
 
-    updateAccount();
-
-    setTimeout(() => {
-        updateLeaderboard();;
-      }, 5000);
+    updateAccount().then(response => {
+        updateLeaderboard();
+    });
     
 
     
     
     function updateAccount() {
-        fetch(urlAccount2, settings)
+        let settings = {
+            method: "GET",
+            headers: {
+                "Content-Type": "application/json",
+                "x-apikey": APIKEY3,
+                "Cache-Control": "no-cache"
+            }
+        };
+        return fetch(urlAccount3, settings)
         .then(response => response.json())
         .then(response => {
             
@@ -184,30 +182,35 @@ async function updateDataBase(anotherPage = null){
                             },
                             body: JSON.stringify(jsonData)
                         };
-                        fetch(urlAccount2 + "/" + userId, Settings)
-                            .then(response => response.json())
-                            .then(response => {
-                                console.log("Updated account data:", response);
-                                
+                        return fetch(urlAccount3 + "/" + userId, Settings)
+                            .then(res => res.json())
+                            .then(res => {
+                                console.log("Updated account data:", res);
+                                return res;
                             })
                             .catch(error => {
                                 console.error("Error updating data:", error);
                             });
-                            
                     }
-                    
                 }
             }
-            
+            return 0;
         })
         .catch(error => {
             console.error("Error fetching data:", error);
         });
-        
     }
 
     function updateLeaderboard() {
-        fetch(urlLeaderboard2,settings)
+        let settings = {
+            method: "GET",
+            headers: {
+                "Content-Type": "application/json",
+                "x-apikey": APIKEY3,
+                "Cache-Control": "no-cache"
+            }
+        }
+        fetch(urlLeaderboard3,settings)
         .then(response => response.json())
         .then(response => {
             // Check if the username and quiz already exists in the database
@@ -240,7 +243,7 @@ async function updateDataBase(anotherPage = null){
                     },
                     body: JSON.stringify(jsonData)
                 };
-                fetch(urlLeaderboard2 + "/" + userId, Settings)
+                fetch(urlLeaderboard3 + "/" + userId, Settings)
                     .then(response => response.json())
                     .then(response => {
                         console.log("Updated data:", response);
@@ -281,7 +284,7 @@ async function updateDataBase(anotherPage = null){
                     },
                     body: JSON.stringify(jsonData)
                 };
-                fetch(urlLeaderboard2, settings)
+                fetch(urlLeaderboard3, settings)
                     .then(response => response.json())
                     .then(response => {
                         console.log("Added leaderboard data:", response);

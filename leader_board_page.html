@@ -149,18 +149,19 @@
             transition: 0.2s ease-in-out;
         }
 
-        .exit-buttons{
+        .leaderboard-exit-buttons{
             display: flex;
             justify-content: space-around;
             margin-top: 20px;
         }
-        .exit-buttons a{
+        .leaderboard-exit-buttons a{
+            width: max-content;
             color: white;
             font-size: 20px;
             background-color: #C21292;
             transition: all 0.3s ease;
         }
-        .exit-buttons a:hover{
+        .leaderboard-exit-buttons a:hover{
             color: white;
             background-color: #FFA732;
             box-shadow: 0 5px 7px 0 rgba(0, 0, 0, 0.5);
@@ -186,13 +187,21 @@
 </head>
 
 <body>
-    <header class="header-main" id = "header-main-leader">
-        <div class="header-main-logo">
+    <header class="header-main">
+        
+        <nav class="header-main-navigation-container">
+            <div class="header-main-menu-button">
+            </div>
             <dotlottie-player src="https://lottie.host/c8de3e83-6ad0-4247-93a0-cbdcd42610b1/IeCb6wJM4Z.json" background="transparent" speed="1" style="width: 150px; height: 150px;" loop autoplay></dotlottie-player>
-            <nav class="header-main-nav">
-                <h1 class="header-main-title">Big Brain</h1>
-            </nav>
-        </div>
+            <div class="header-main-nav">
+                <a href="index.html"><h1 class="header-main-title">Big Brain</h1></a>
+                <ul>
+                    <li>
+                        <a href="redeem_page.html">Redeemption (<label class="header-main-vbucks"></label> Vbucks)</a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
         <div class="search_icon" onclick="toggleMobileSearch()">
         </div>
         <div class="main-header-search">
@@ -209,6 +218,16 @@
             </ul>
         </div>
     </header>
+    <nav class="header-main-menu">
+        <ul>
+            <li>
+                <a href="redeem_page.html">Redeemption (<label class="header-main-vbucks"></label> Vbucks)</a>
+            </li>
+            <li>
+                <a href="login_page.html">Log Out</a>
+            </li>
+        </ul>
+    </nav>
 
     <section class="leaderboard-header">
         <h1>LeaderBoard</h1>
@@ -240,9 +259,9 @@
             <dotlottie-player src="https://lottie.host/407d3e0c-0d46-422c-a563-db006edae977/fx0bGkmlJO.json" background="transparent" speed="1" style="width: 300px; height: 300px;" loop autoplay></dotlottie-player>
         </div>
 
-        <section class="exit-buttons">
+        <section class="leaderboard-exit-buttons">
             <a href="quiz_page.html" class="btn col-3">Play Again</a>
-            <a href="index.html" class="btn col-3">Exit</a>
+            <a href="index.html" class="btn col-3">Back to Home Page</a>
         </section>
     </article>
 
@@ -288,117 +307,48 @@
     <script>
         console.log('Stored Quiz Result:', sessionStorage.getItem('quizResult'));
         document.addEventListener("DOMContentLoaded", function () {
+            toggleMobileMenu();
+            function toggleMobileMenu(){
+                /* Navation menu when device is switched to mobile or tablet */
+                var menuButton = document.querySelector('.header-main-menu-button');
+                var menu = document.querySelector('.header-main-menu');
+        
+                var ismenuOpen = false;
+        
+                menuButton.addEventListener("click", function() {
+                    if (!ismenuOpen) {
+                        menu.style.display = "block";
+                        ismenuOpen = true;
+                    } else {
+                        menu.style.display="none";
+                        ismenuOpen = false;
+                    }
+                },false);
+                /* End of navation */
+            }
+            
             //const url = "https://fedassignment-5bdb.restdb.io/rest/leaderboard";
             const url2 = "https://fedassignment-85eb.restdb.io/rest/leaderboard";
+            const url3 = "https://fedassignment-2f26.restdb.io/rest/leaderboard";
             const APIKEY = "65bde101c029b87c5966cdc6";
             const APIKEY2 = "65bdfc153339b13e2a73c82b";
             const APIKEY3 = "65c3bf2570dd296a0c2630f3"
 
             const results = sessionStorage.getItem('quizResult');
             const resultsArray = JSON.parse(results);
-            const username = "GuanQuan";//resultsArray.username; 
-            const score = 2;//resultsArray.score;  
-            const quiz = "Grammar";//resultsArray.quizTitle;  
+            const username = resultsArray.username; 
+            const score = resultsArray.score;  
+            const quiz = resultsArray.quizTitle;  
             console.log("Username:", username, 
             "\nScore:", score, 
             "\nQuiz:", quiz);
 
-
-            updateTable();
-            async function updateTable(){
-                let settings = {
-                    method: "GET",
-                    headers: {
-                        "Content-Type": "application/json",
-                        "x-apikey": APIKEY3,
-                        "Cache-Control": "no-cache"
-                    }
-                };
-
-                await fetch(url2,settings)
-                .then(response => response.json())
-                .then(response => {
-                    // Check if the username and quiz already exists in the database
-                    existingScore = false;
-                    requireUpdate = false;
-                    for (var i = 0; i < response.length; i++) {
-                        if (response[i].username === username && response[i].quiz === quiz) {
-                            console.log("Existing score:", response[i].score);
-                            existingScore = true;
-                            if (response[i].score < score) {
-                                response[i].score = score;
-                                userId = response[i]._id;
-                                requireUpdate = true;
-                            }
-                        }
-                    }
-                    if (existingScore && requireUpdate){
-                        var jsonData= {
-                            "username": username,
-                            "score": score,
-                            "quiz": quiz,
-                        };
-                        let Settings = {
-                            method: "PUT",
-                            headers: {
-                                "Content-Type": "application/json",
-                                "x-apikey": APIKEY3,
-                                "Cache-Control": "no-cache"
-                            },
-                            body: JSON.stringify(jsonData)
-                        };
-                        fetch(url2 + "/" + userId, Settings)
-                            .then(response => response.json())
-                            .then(response => {
-                                console.log("Updated data:", response);
-                            })
-                            .catch(error => {
-                                console.error("Error updating data:", error);
-                            });
-                    }
-                    else if (!existingScore){
-                        var jsonData = {
-                            "username": username,
-                            "score": score,
-                            "quiz": quiz,
-                        };
-                        let settings = {
-                            method: "POST",
-                            headers: {
-                                "Content-Type": "application/json",
-                                "x-apikey": APIKEY3,
-                                "Cache-Control": "no-cache"
-                            },
-                            body: JSON.stringify(jsonData)
-                        };
-                        fetch(url2, settings)
-                            .then(response => response.json())
-                            .then(response => {
-                                console.log("Added data:", response);
-                            })
-                            .catch(error => {
-                                console.error("Error adding data:", error);
-                            });
-                    }
-                })
-            }
-
-            loadTable().then(() => {
-                console.log("Table loaded");
-                const lottiePlayerContainer = document.getElementsByClassName("lottie-player")[0];
-                const child = lottiePlayerContainer.querySelector('dotlottie-player');
-                lottiePlayerContainer.removeChild(child);
-            });
-
-            // let lottiePlayer = lottiePlayerContainer.getElementsByTagName("dotlottie-player")[0];
-            
-            // lottiePlayer.addEventListener("complete", () => {
-            //     sessionStorage.setItem("username", loginFormUsername.value);
-            //     sessionStorage.setItem("password", loginFormPassword.value);
-            //     window.location.href = "index.html";
+            // loadTable().then(() => {
+            //     console.log("Table loaded");
+            //     const lottiePlayerContainer = document.getElementsByClassName("lottie-player")[0];
+            //     const child = lottiePlayerContainer.querySelector('dotlottie-player');
+            //     lottiePlayerContainer.removeChild(child);
             // });
-            // filter();
-            // search();
 
             async function loadTable(){
                 let settings = {
@@ -411,25 +361,26 @@
                 };
     
                 // Fetch data for the table
-                await fetch(url2, settings)
+                await fetch(url3, settings)
                 .then(response => response.json())
                 .then(response => {
     
     
                     // Rank Table based on score
-                    var rankedData = rankTable(response);  
-                    
+                    var rankedData = rankTable(response); 
+
+                    const searchBar = document.getElementById("search-input");
                     // Filter the table based on search input
-                    // searchBar.addEventListener("keyup", function (event) {
-                    //     searchValue = searchBar.value.toLowerCase();
-                    //     var filteredResponse = searchTable(searchValue, rankedData);
-                    //     buildTable(filteredResponse);
-                    // });
+                    searchBar.addEventListener("input", function (event) {
+                        searchValue = searchBar.value.toLowerCase();
+                        var filteredResponse = searchTable(searchValue,rankedData);
+                        buildTable(filteredResponse);
+                    });
     
                     // Build the table and display it on the page
                     buildTable(rankedData);
                     filter();
-                    search();
+                    //search();
                     
                 })
                 .catch(error => {
@@ -553,13 +504,15 @@
             }
             
             // Search the table
-            function searchTable(searchValue, response) {
+            function searchTable(searchValue,rankedData) {
+
                 let filteredResponse = [];
-                for (var i = 0; i < response.length; i++) {
-                    if (response[i].username.toLowerCase().includes(searchValue)) {
-                        filteredResponse.push(response[i]);
+                console.log("RankedData:", rankedData);
+                rankedData.forEach((row, i) => {
+                    if (row.rank.includes(searchValue) || row.username.includes(searchValue) || row.quiz.includes(searchValue) || row.score.includes(searchValue)) {
+                        filteredResponse.push(row);
                     }
-                }
+                });
                 return filteredResponse;
             }
 
