@@ -11,7 +11,7 @@ body {
 }
 
 /* Navigation Styling Starts Here */
-.header-main {
+.header-main{
     width: 100%;
     max-height: 90px;
     background-color: #33186B;
@@ -20,6 +20,10 @@ body {
     align-items: center;
     position: fixed;
     z-index: 2;
+  }
+  /* Leader Board nav */
+  #header-main-leader{
+    position: relative;
   }
   
   .header-main-logo {
@@ -777,12 +781,12 @@ body {
     height: 100px;
 }
 
-.Page_01_Main_Content_Quiz_Categories .card-footer {
+.Page_01_Main_Content_Quiz_Categories .card-footer, .Redemption-page-section .card-footer{
     background-color: #f3e9fc; 
     padding: 15px; 
 }
 
-.Page_01_Main_Content_Quiz_Categories .btn-hover {
+.Page_01_Main_Content_Quiz_Categories .btn-hover, .Redemption-page-section .btn-hover {
     font-size: 15px;
     font-weight: 500;
     background-color: #ff9600; 
@@ -794,28 +798,54 @@ body {
     transition: background-color 0.3s;
 }
 
-.Page_01_Main_Content_Quiz_Categories .btn-hover:hover {
+.Page_01_Main_Content_Quiz_Categories .btn-hover:hover, .Redemption-page-section .btn-hover:hover {
     background-color: #ff7b00; /* Darker shade on hover */
 }
 
-.Page_01_Main_Content_Quiz_Categories .card {
+.Page_01_Main_Content_Quiz_Categories .card, .Redemption-page-section .card{
     border: 1px solid black;
     margin-bottom: 30px;
     border-radius: 20px; 
     overflow: hidden; 
 }
-.Page_01_Main_Content_Quiz_Categories .card:hover {
+.Page_01_Main_Content_Quiz_Categories .card:hover,
+.Redemption-page-section .card:hover {
     box-shadow: 0 4px 8px rgba(97, 93, 93, 0.5); 
     transform: scale(1.05); 
     transition: box-shadow 0.3s ease, transform 0.3s ease; 
     border-bottom: 4px solid #2e93f2;
 }
 
-.Page_01_Main_Content_Quiz_Categories .card img {
+.Page_01_Main_Content_Quiz_Categories .card img, .Redemption-page-section .card-img-top{
     width:auto;
     height:320px;
     object-fit: cover;
 }
+.Redemption-page-section .card-footer {
+    background-color: #f3e9fc;
+    padding: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.vbucks-info {
+    display: flex;
+    align-items: center;
+}
+
+.vbucks-info img {
+    width: 50px; /* Adjust image size as needed */
+    height: auto;
+    margin-right: 10px; /* Add space between image and text */
+}
+
+.vbucks-number {
+    font-weight: bold;
+    font-size: 16px;
+}
+
+
 /* Main_Content_Different Categories ends here */
 @media only screen and (max-width: 768px) {
     .header_quiz_category {
@@ -845,7 +875,20 @@ body {
         max-width: 33.33%;
     }
 }
+.Redemption-page-section {
+    position: relative;
+    padding-top: 100px;
+}
 
+
+.Redemption-page-section #quiz_title{
+    font-size: 50px;
+    font-weight: 600;
+    border-bottom: 5px solid #ff9600;
+    display: inline-block; 
+    margin-right: 10px;
+    text-align: center;
+}
 /* Pop up start here */
 .pop-up{
     position: fixed;
@@ -861,7 +904,7 @@ body {
     max-width: 80%;
     height: auto;
 }
-.pop-up.active{
+.pop-up.active,#redemption-pop-up.active{
     transform: translate(-50%,-50%) scale(1);
 }
 .pop_up_flex_box {
@@ -870,7 +913,7 @@ body {
     }
 .pop_up_left_img_container {
     padding: 20px; 
-    width: calc(80% - 40px); /* Calculate the width with 40px (20px padding on both sides) subtracted */
+    width: calc(80% - 40px); 
 }
 #pop_up_image{
     height: auto;
@@ -878,8 +921,8 @@ body {
     border-radius: 5px;
 }
  .pop_up_right_container {
-    padding: 20px; /* Optional: Add padding to the right container */
-    width: calc(80% - 40px); /* Calculate the width with 40px (20px padding on both sides) subtracted */
+    padding: 20px; 
+    width: calc(80% - 40px); 
 }
 .pop_up_header{
     display: flex;
@@ -904,14 +947,14 @@ body {
     font-size: 20px;
     font-weight: 400;
 }
-.pop_up_header .close-button{
+.pop_up_header .close-button,#close-redemption-pop-up{
     cursor: pointer;
     border: none;
     background: none;
     font-size: 35px;
     font-weight: bold;
 }
-#overlay{
+#overlay, #redemption-overlay {
     position: fixed;
     opacity: 0;
     transition: 200ms ease-in-out;
@@ -923,7 +966,7 @@ body {
     pointer-events: none;
     
 }
-#overlay.active{
+#overlay.active,#redemption-overlay.active{
     opacity: 1;
     pointer-events: all;
 }
@@ -991,7 +1034,57 @@ body {
         font-size: 15px;
     }
 }
+/* Pop-up styles */
+#redemption-pop-up {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(0);
+    transition: 200ms ease-in-out;
+    border: 1px solid black;
+    border-radius: 20px;
+    z-index: 3;
+    background-color: white;
+    width: 80%; /* Adjust width as needed */
+    max-width: 500px; /* Adjust max-width as needed */
+    padding: 20px; /* Adjust padding as needed */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3); /* Optional: Add shadow */
+}
+#redemption-status-message{
+    font-size: 30px;
+    font-weight: 600;
+}
+.pop-up-content {
+    position: relative;
+    width: 100%; 
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
 
+.close-button {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    cursor: pointer;
+}
+
+#redemption-status-img {
+    margin-bottom: 20px; 
+}
+
+#redemption-status-img img {
+    max-width: 100px; 
+}
+
+#redemption-status-message {
+    margin-top: 20px;
+}
 
 
 
