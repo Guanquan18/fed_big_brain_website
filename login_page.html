@@ -150,9 +150,11 @@
 
             //var url= "https://fedassignment-5bdb.restdb.io/rest/account"
             var url2 = "https://fedassignment-85eb.restdb.io/rest/account"
+            var url3 = "https://fedassignment-2f26.restdb.io/rest/account"
 
             //const APIKEY = "65bde101c029b87c5966cdc6";
             const APIKEY2 = "65bdfc153339b13e2a73c82b";
+            const APIKEY3 = "65c3bf2570dd296a0c2630f3";
 
             // Store sign up values in json format
             var loginFormName = document.getElementById('login-form');
@@ -209,14 +211,14 @@
                 method: "GET", //[cher] we will use GET to retrieve info
                 headers: {
                     "Content-Type": "application/json",
-                    "x-apikey": APIKEY2,
+                    "x-apikey": APIKEY3,
                     "Cache-Control": "no-cache"
                 },
                 }
 
                 var existingUser = false;
                 var correctPassword = false;
-                fetch(url2, settings)
+                fetch(url3, settings)
                     .then(response => response.json())
                     .then(response => {
                         if (newUser){
@@ -286,13 +288,13 @@
                 method: "POST", //[cher] we will use GET to retrieve info
                 headers: {
                     "Content-Type": "application/json",
-                    "x-apikey": APIKEY2,
+                    "x-apikey": APIKEY3,
                     "Cache-Control": "no-cache"
                 },
                 body: JSON.stringify(jsondata),
                 }
 
-                fetch(url2, settings)
+                fetch(url3, settings)
                     .then(response => response.json())
                     .then(data => {
                         console.log(data);

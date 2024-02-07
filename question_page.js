@@ -99,11 +99,13 @@ function showLoadingLottie() {
 async function updateDataBase(anotherPage = null){
     //const urlLeaderboard = "https://fedassignment-85eb.restdb.io/rest/leaderboard";
     const urlLeaderboard2 = "https://fedassignment-85eb.restdb.io/rest/leaderboard";
+    const urlLeaderboard3 = "https://fedassignment-2f26.restdb.io/rest/leaderboard"
     //const urlAccount = "https://fedassignment-5bdb.restdb.io/rest/account";
     const urlAccount2 = "https://fedassignment-85eb.restdb.io/rest/account";
-
+    const urlAccount3 = "https://fedassignment-2f26.restdb.io/rest/account";
     //const APIKEY = "65bde101c029b87c5966cdc6";
     const APIKEY2 = "65bdfc153339b13e2a73c82b";
+    const APIKEY3 = "65c3bf2570dd296a0c2630f3";
     
     var results = sessionStorage.getItem('quizResult');
     var resultsArray = JSON.parse(results);
@@ -118,7 +120,7 @@ async function updateDataBase(anotherPage = null){
         method: "GET",
         headers: {
             "Content-Type": "application/json",
-            "x-apikey": APIKEY2,
+            "x-apikey": APIKEY3,
             "Cache-Control": "no-cache"
         }
     };
@@ -177,7 +179,7 @@ async function updateDataBase(anotherPage = null){
                             method: "PUT",
                             headers: {
                                 "Content-Type": "application/json",
-                                "x-apikey": APIKEY2,
+                                "x-apikey": APIKEY3,
                                 "Cache-Control": "no-cache"
                             },
                             body: JSON.stringify(jsonData)
@@ -233,7 +235,7 @@ async function updateDataBase(anotherPage = null){
                     method: "PUT",
                     headers: {
                         "Content-Type": "application/json",
-                        "x-apikey": APIKEY2,
+                        "x-apikey": APIKEY3,
                         "Cache-Control": "no-cache"
                     },
                     body: JSON.stringify(jsonData)
@@ -274,7 +276,7 @@ async function updateDataBase(anotherPage = null){
                     method: "POST",
                     headers: {
                         "Content-Type": "application/json",
-                        "x-apikey": APIKEY2,
+                        "x-apikey": APIKEY3,
                         "Cache-Control": "no-cache"
                     },
                     body: JSON.stringify(jsonData)

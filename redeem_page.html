@@ -259,14 +259,16 @@ overlay.addEventListener('click', function() {
 
 async function optainVbucks() {
     const url2 = "https://fedassignment-85eb.restdb.io/rest/account";
+    const url3 = "https://fedassignment-2f26.restdb.io/rest/account";
     const APIKEY2 = "65bdfc153339b13e2a73c82b";
+    const APIKEY3 = "65c3bf2570dd296a0c2630f3";
 
     try {
         const response = await fetch(url2, {
             method: "GET",
             headers: {
                 "Content-Type": "application/json",
-                "x-apikey": APIKEY2,
+                "x-apikey": APIKEY3,
                 "Cache-Control": "no-cache"
             }
         });

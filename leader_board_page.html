@@ -292,6 +292,7 @@
             const url2 = "https://fedassignment-85eb.restdb.io/rest/leaderboard";
             const APIKEY = "65bde101c029b87c5966cdc6";
             const APIKEY2 = "65bdfc153339b13e2a73c82b";
+            const APIKEY3 = "65c3bf2570dd296a0c2630f3"
 
             const results = sessionStorage.getItem('quizResult');
             const resultsArray = JSON.parse(results);
@@ -309,7 +310,7 @@
                     method: "GET",
                     headers: {
                         "Content-Type": "application/json",
-                        "x-apikey": APIKEY2,
+                        "x-apikey": APIKEY3,
                         "Cache-Control": "no-cache"
                     }
                 };
@@ -341,7 +342,7 @@
                             method: "PUT",
                             headers: {
                                 "Content-Type": "application/json",
-                                "x-apikey": APIKEY2,
+                                "x-apikey": APIKEY3,
                                 "Cache-Control": "no-cache"
                             },
                             body: JSON.stringify(jsonData)
@@ -365,7 +366,7 @@
                             method: "POST",
                             headers: {
                                 "Content-Type": "application/json",
-                                "x-apikey": APIKEY2,
+                                "x-apikey": APIKEY3,
                                 "Cache-Control": "no-cache"
                             },
                             body: JSON.stringify(jsonData)
@@ -404,7 +405,7 @@
                     method: "GET",
                     headers: {
                         "Content-Type": "application/json",
-                        "x-apikey": APIKEY2,
+                        "x-apikey": APIKEY3,
                         "Cache-Control": "no-cache"
                     }
                 };
