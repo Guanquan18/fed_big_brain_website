@@ -12,10 +12,31 @@
     <script src="https://unpkg.com/@dotlottie/player-component@latest/dist/dotlottie-player.mjs" type="module"></script> 
     <!-- Link to Font Awesome for icons -->
     <script src="https://kit.fontawesome.com/543bcc20b3.js" crossorigin="anonymous"></script>
+
+    <style>
+        .index-page-loading-lottie-player{
+            width: 100%;
+            height: 100%;
+
+            position: fixed;
+            z-index: 3;
+            background-color: #33186B;
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+    </style>
 </head>
 <body>
-      <!-- Header section with logo, title, and search bar -->
-      <header class="header-main">
+    <!-- Header section with logo, title, and search bar -->
+    <section class="index-page-loading-lottie-player">
+        
+        <dotlottie-player src="https://lottie.host/aba5424f-5126-49bb-9be1-fe26b01cb866/PxOu1nGRPe.json" background="transparent" speed="1.25" style="width: 300px; height: 300px;" loop="1" autoplay></dotlottie-player>
+        <!-- <dotlottie-player src="https://lottie.host/72f4aadc-c523-4806-af77-0f599f7f2bdd/QJwgaQPyeb.json" background="transparent" speed="1" style="width: 300px; height: 300px;" loop="1" autoplay></dotlottie-player> -->
+    </section>
+      
+    <header class="header-main">
         <div class="header-main-logo">
             <dotlottie-player src="https://lottie.host/c8de3e83-6ad0-4247-93a0-cbdcd42610b1/IeCb6wJM4Z.json" background="transparent" speed="1" style="width: 200px; height: 200px;" loop autoplay></dotlottie-player>
             <nav class="header-main-nav">
@@ -231,40 +252,45 @@
     <div id = "overlay"></div>
 
      <script>
+
+        document.querySelector('.index-page-loading-lottie-player dotlottie-player').addEventListener('complete', function () {
+            document.querySelector('.index-page-loading-lottie-player').style.display = 'none';
+        });
+
         document.addEventListener('click', function (event) {
-    // Close the list if clicking outside the input or the list itself
-    if (!event.target.closest('.main-header-search') && !event.target.closest('#myMenu')) {
-        document.getElementById('myMenu').style.display = 'none';
-    }
-    });
-
-    function myFunction() {
-        var input, filter, ul, li, a, i;
-        input = document.getElementById("mySearch");
-        filter = input.value.toUpperCase();
-        ul = document.getElementById("myMenu");
-        li = ul.getElementsByTagName("li");
-
-    // Display the list
-     ul.style.display = "Block";
-
-    // Loop through all list items, and hide/show those who don't match the search query
-    for (i = 0; i < li.length; i++) {
-        a = li[i].getElementsByTagName("a")[0];
-        if (a.innerHTML.toUpperCase().indexOf(filter) > -1) {
-            li[i].style.display = "block";
-        } else {
-            li[i].style.display = "none";
-        }
-    }
-    }
-    var listItems = document.querySelectorAll('#myMenu li');
-        listItems.forEach(function (item) {
-        item.addEventListener('click', function () {
-            document.getElementById('mySearch').value = '';
+        // Close the list if clicking outside the input or the list itself
+        if (!event.target.closest('.main-header-search') && !event.target.closest('#myMenu')) {
             document.getElementById('myMenu').style.display = 'none';
+        }
         });
-        });
+
+        function myFunction() {
+            var input, filter, ul, li, a, i;
+            input = document.getElementById("mySearch");
+            filter = input.value.toUpperCase();
+            ul = document.getElementById("myMenu");
+            li = ul.getElementsByTagName("li");
+
+        // Display the list
+        ul.style.display = "Block";
+
+        // Loop through all list items, and hide/show those who don't match the search query
+        for (i = 0; i < li.length; i++) {
+            a = li[i].getElementsByTagName("a")[0];
+            if (a.innerHTML.toUpperCase().indexOf(filter) > -1) {
+                li[i].style.display = "block";
+            } else {
+                li[i].style.display = "none";
+            }
+        }
+        }
+        var listItems = document.querySelectorAll('#myMenu li');
+            listItems.forEach(function (item) {
+            item.addEventListener('click', function () {
+                document.getElementById('mySearch').value = '';
+                document.getElementById('myMenu').style.display = 'none';
+            });
+            });
 
         
     </script>

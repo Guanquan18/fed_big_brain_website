@@ -98,39 +98,46 @@ body {
 
 /* Login Page styling Starts Here */
 
-.login-page-image{
+.login-page-logo-content{
     width: 600px;
     height: auto;
     position: relative;
-}
-
-.login-page-image img{
-    width: 100%;
-    height: 100%;
 }
 
 .login-page-content1{
     width: 100%;
     height: 100vh;
     padding: 50px;
-    background-color: rgb(110, 39, 224);
-    background-color: #791ebf;
-
+    /* background-color: rgb(110, 39, 224); */
+    
+    background: linear-gradient(to bottom, rgb(114, 47, 221),rgb(53, 0, 138));
+    background:linear-gradient(to bottom, rgba(114, 47, 221),#33186B);
+      
+    /* background-color: rgb(105, 22, 214); */
+    
     display: flex;
     justify-content: center;
     align-items: center;
+    gap: 40px;
+}
+.login-page-logo-content h1{
+    font-size: 60px;
+    font-weight: 600;
+    color: #FFA732;
+    text-align: center; 
+
+    text-shadow: 0 1px 10px rgba(0, 0, 0, 0.2);
 }
 
 .form-container{
-
     width: 550px;
-
     height: fit-content;
-    padding: 20px 40px;
-    background-color: rgb(255, 255, 255,0.97);
+    padding: 10px 40px;
+
+    background-color: rgb(255, 249, 239);
     border: 1px solid rgb(182, 182, 182);
     border-radius: 20px;
-    box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 0 30px rgba(0, 0, 0, 0.7);
 
     position: relative;
     display: flex;
@@ -140,25 +147,26 @@ body {
     overflow: hidden;
 }
 
+
 .form-container #form-container-login{
-    transition: all 0.6s ease;
+    transition: all 1s ease;
     transform: translateX(0);
 }
 
 .form-container.active #form-container-login{
     position: absolute;
-    transition: all 0.6s ease;
+    transition: all 1s ease;
     transform: translateX(-600px);
 }
 
 .form-container #form-container-signup{
-    transition: all 0.6s ease;
+    transition: all 1s ease;
     transform: translateX(600px);
 }
 
 .form-container.active #form-container-signup{
     position: relative;
-    transition: all 0.6s ease;
+    transition: all 1s ease;
     transform: translateX(0);
 }
 
@@ -167,12 +175,12 @@ body {
 }
 
 .form-container h1{
-    margin: 20px;
-    text-align: center;
+    width: 100%;
+    height: 100%;
     
+    text-align: center;
+    color: #C21292;
     font-weight:600;
-    color: black;
-
 }
 
 .form-floating{
@@ -186,6 +194,8 @@ body {
 .form-floating input, .form-floating input:focus{
     color: #C21292;
     font-weight: 600;
+    border: 1.5px solid #C21292;
+
 }
 .form-floating i{
     font-size: 17px;
@@ -221,20 +231,19 @@ body {
     transition: all 0.2s ease;
 }
 #login-submit, #signup-submit{
-    font-size: 17px;
+    font-size: 23px;
     font-weight: 600;
     color: white;
-    padding: 5px 0;
+    padding: 2px 0;
     margin-bottom: 5px;
-    background-color:#8447ff ;
+    background-color: #C21292;
 
     transition: all 0.3s ease;
 }
 #login-submit:hover, #signup-submit:hover{
     transform: translateY(-5px);
-    background-color: #C21292;
-    box-shadow: 0 2px 7px 0 rgba(0, 0, 0, 0.2);
-
+    background-color: #FFA732;
+    box-shadow: 0 5px 7px 0 rgba(0, 0, 0, 0.5);
     transition: all 0.3s ease;
 }
 
@@ -243,6 +252,11 @@ body {
     font-size: 15px;
     text-align: center;
 }
+
+#login-signup p{
+    margin: 0;
+}
+
 #login-signup p a{
     color:#8447ff;
     font-weight: 650;
@@ -265,6 +279,7 @@ body {
     visibility: hidden;
     /* Hide error message */
 }
+
 /* Validate form with styling */
 .form-control.error{
     border:2px solid rgb(255, 0, 0);
@@ -281,9 +296,21 @@ body {
     border:2px solid rgb(0, 190, 25);
 }
 
+.form-container .lottie-player{
+    width: 100%;
+    height: 100%;
 
+    position: absolute;
+    z-index: -1;
+    background-color:transparent;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
 
 /* Login Page styling Ends Here */
+
 
 /* Background  Styling Starts here Here */
 .Page_01_background{

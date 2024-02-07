@@ -6,21 +6,34 @@
     <link rel="stylesheet" href="styling.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
     <script src="https://kit.fontawesome.com/cc3cb1dbea.js" crossorigin="anonymous"></script>
-    <style>
+    <script src="https://unpkg.com/@dotlottie/player-component@latest/dist/dotlottie-player.mjs" type="module"></script> 
+
+<style>
 
         @media screen and (max-width: 768px) {
-            .login-page-image {
-                width: auto;
-                height: auto;
-                position: absolute;
+            .login-page-logo-content {
+                width: fit-content;
+                height: fit-content;
+            }
+            .login-page-content1 {
+                padding: 15%;
+                height: fit-content;
+                flex-direction: column;
+            }
+            .form-container {
+                width: 100%;
+                height: fit-content;
+                padding: 20px;
             }
         }
         @media screen and (max-width: 576px) {
-
-            
-            .form-container {
-                width: 80%;
+            .login-page-content1 {
+                padding: 10%;
+                height: fit-content;
+                flex-direction: column;
             }
+            
+            
             .form-remember-forget{
                 display: flex;
                 flex-direction: column;
@@ -34,12 +47,18 @@
     
 
     <article class="login-page-content1">
-        <section class="login-page-image">
-            <img src="Photos/Learning-bro.png">
+        <section class="login-page-logo-content">
+            <h1>Big Brian</h1>
+            <dotlottie-player src="https://lottie.host/c8de3e83-6ad0-4247-93a0-cbdcd42610b1/IeCb6wJM4Z.json" background="transparent" speed="1" loop autoplay></dotlottie-player>
+            <h3 style="color: #FFA732; text-align: center;">Start your day by learning something new with us!!!</h3>
         </section>
-
+        
+        
         <section class="form-container">
             <div id="form-container-login">
+               
+                <div class="lottie-player" id="login-lottie-player"></div>
+
                 <h1>Login</h1>
                 <form id="login-form">
                     
@@ -77,6 +96,9 @@
             </div>
 
             <div id="form-container-signup">
+
+                <div class="lottie-player" id="signup-lottie-player"></div>
+
                 <h1>Sign Up</h1>
                 <form id="signup-form">
                     
@@ -114,6 +136,9 @@
         </section>
 
     </article>
+    <footer>
+        
+    </footer>
    
     <script>
 
@@ -208,7 +233,6 @@
 
                                     if (loginFormPassword.value == response[i].password){
                                         correctPassword = true;
-                                        window.location.href = "index.html";
                                     }
                                     break;
                                 }
@@ -218,9 +242,19 @@
                                 setEror(loginFormUsernameError, 'Username does not exist');
                             }
                             else if (correctPassword){
-                                sessionStorage.setItem("username", loginFormUsername.value);
-                                sessionStorage.setItem("password", loginFormPassword.value);
-                                window.location.href = "index.html";
+
+                                let lottiePlayerContainer = document.getElementById("login-lottie-player");
+                                lottiePlayerContainer.innerHTML = `<dotlottie-player src="https://lottie.host/5fb4ee71-0ba7-40c0-8bfc-9572526bfa50/eNR1nTg3yr.json" background="transparent" speed="1" style="width: 300px; height: 300px;" loop="1" autoplay></dotlottie-player>`;
+                                lottiePlayerContainer.style.zIndex = "2"; 
+
+                                let lottiePlayer = lottiePlayerContainer.getElementsByTagName("dotlottie-player")[0];
+                                
+                                lottiePlayer.addEventListener("complete", () => {
+                                    sessionStorage.setItem("username", loginFormUsername.value);
+                                    sessionStorage.setItem("password", loginFormPassword.value);
+                                    window.location.href = "index.html";
+                                });
+
                             }
                             else {
                                 setEror(loginFormPasswordError, 'Incorrect password');
@@ -256,9 +290,19 @@
                     .then(response => response.json())
                     .then(data => {
                         console.log(data);
-                        sessionStorage.setItem("username", signUpFormUsername.value);
-                        sessionStorage.setItem("password", signUpFormPassword.value);
-                        window.location.href = "index.html";
+
+                        let lottiePlayerContainer = document.getElementById("signup-lottie-player");
+                        lottiePlayerContainer.innerHTML = `<dotlottie-player src="https://lottie.host/5fb4ee71-0ba7-40c0-8bfc-9572526bfa50/eNR1nTg3yr.json" background="transparent" speed="1" style="width: 300px; height: 300px;" loop="1" autoplay></dotlottie-player>`;
+                        lottiePlayerContainer.style.zIndex = "2";
+
+                        let lottiePlayer = lottiePlayerContainer.getElementsByTagName("dotlottie-player")[0];
+
+                        lottiePlayer.addEventListener("complete", () => {
+                            sessionStorage.setItem("username", signUpFormUsername.value);
+                            sessionStorage.setItem("password", signUpFormPassword.value);
+                            window.location.href = "index.html";
+                        })
+
                     });
             }
 

@@ -7,12 +7,21 @@
     <link rel="stylesheet" href = "styling.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
     <script src="https://kit.fontawesome.com/543bcc20b3.js" crossorigin="anonymous"></script>
+    <script src="https://unpkg.com/@dotlottie/player-component@latest/dist/dotlottie-player.mjs" type="module"></script> 
     <style>
 
         .leaderboard-header h1{
             text-align: center;
             margin-top: 20px;
             margin-bottom: 20px;
+            color: #711DB0;
+            font-weight: 600;
+        }
+
+        #leaderboard-container{
+            width: 100%;
+            height: 100%;
+            position: relative;
         }
 
         #search-input-group{
@@ -34,8 +43,9 @@
         }
         #leaderboard{
             width: 100%;
-            max-height: 550px;
+            max-height: 275px;
             margin: 20px 0;
+            position: relative;
 
             background-color: rgb(252, 252, 252);
             border-radius: 12px;
@@ -45,13 +55,16 @@
         }
         
         #leaderboard::-webkit-scrollbar{
-            width: 0.5rem;
-            height: 0.5rem;
+            width: 8px;
+            height: 8px;
+        }
+        #leaderboard::-webkit-scrollbar-track{
+            background-color: #d1e5ff;
         }
         #leaderboard::-webkit-scrollbar-thumb{
-            background-color: #cdcdcd;
+            background:linear-gradient(#C21292,#FFA732);
             border-radius: 10px;
-            visibility: hidden;
+            /* visibility: hidden; */
         }
         #leaderboard:hover::-webkit-scrollbar-thumb{
             visibility: visible ;
@@ -94,11 +107,6 @@
             background-color: rgb(110, 39, 224,0.03);
         }
 
-        #leaderboard tbody tr:hover{
-            background-color: #c212935b;
-            transition: 0 ;
-        }
-
         #leaderboard tbody tr{
             transition: 0.5s var(--delay) ease-in-out;
             --delay: 0.1s; 
@@ -107,8 +115,9 @@
         #leaderboard tbody tr.hide{
             opacity: 0;
             transition: 0.5s var(--delay) ease-in-out;
-            width: 0;
-            height: 0;
+            transform: translateY(100%);
+            width: 0.1px;
+            height: 0.1px;
         }
         #leaderboard tbody tr.hide td{
             
@@ -133,6 +142,38 @@
         #leaderboard tbody td.active{
             color: #EF4040;
             transition: 0.2s ease-in-out;
+        }
+
+        .exit-buttons{
+            display: flex;
+            justify-content: space-around;
+            margin-top: 20px;
+        }
+        .exit-buttons a{
+            color: white;
+            font-size: 20px;
+            background-color: #C21292;
+            transition: all 0.3s ease;
+        }
+        .exit-buttons a:hover{
+            color: white;
+            background-color: #FFA732;
+            box-shadow: 0 5px 7px 0 rgba(0, 0, 0, 0.5);
+            transform: translateY(-5px);
+            transition: all 0.3s ease;
+        }
+
+        #leaderboard-container .lottie-player{
+            width: 100%;
+            height: 100%;
+
+            position: relative;
+            z-index: 1;
+            background-color:transparent;
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
         }
 
 
@@ -166,8 +207,8 @@
 
     <article class="container" id="leaderboard-container">
         <div class="col" id="search-input-group">
-            <input type="text" class="form-control" id="search-input" 
-            placeholder="Seach for username....">
+            <input type="text" class="form-control rounded-4" id="search-input" 
+            placeholder="Seach for data....">
             <i class="fa-solid fa-search"></i>
         </div>
         
@@ -186,6 +227,14 @@
                 </tbody>
             </table>
         </section>
+        <div class="lottie-player">
+            <dotlottie-player src="https://lottie.host/407d3e0c-0d46-422c-a563-db006edae977/fx0bGkmlJO.json" background="transparent" speed="1" style="width: 300px; height: 300px;" loop autoplay></dotlottie-player>
+        </div>
+
+        <section class="exit-buttons">
+            <a href="quiz_page.html" class="btn col-3">Play Again</a>
+            <a href="index.html" class="btn col-3">Exit</a>
+        </section>
     </article>
     
     <script>
@@ -196,17 +245,15 @@
 
             const results = sessionStorage.getItem('quizResult');
             const resultsArray = JSON.parse(results);
-
             const username = resultsArray.username; 
             const score = resultsArray.score;  
             const quiz = resultsArray.quizTitle;  
-            console.log("Username:", username);
-            console.log("score:",score);
-            console.log("quiz:",quiz);
+            console.log("Username:", username, 
+            "\nScore:", score, 
+            "\nQuiz:", quiz);
 
-            //const array = JSON.parse(sessionStorage.getItem('quizResult'));
-            
-            updateTable();
+
+            //updateTable();
             async function updateTable(){
                 let settings = {
                     method: "GET",
@@ -285,7 +332,23 @@
                 })
             }
 
-            loadTable();
+            loadTable().then(() => {
+                console.log("Table loaded");
+                const lottiePlayerContainer = document.getElementsByClassName("lottie-player")[0];
+                const child = lottiePlayerContainer.querySelector('dotlottie-player');
+                lottiePlayerContainer.removeChild(child);
+            });
+
+            // let lottiePlayer = lottiePlayerContainer.getElementsByTagName("dotlottie-player")[0];
+            
+            // lottiePlayer.addEventListener("complete", () => {
+            //     sessionStorage.setItem("username", loginFormUsername.value);
+            //     sessionStorage.setItem("password", loginFormPassword.value);
+            //     window.location.href = "index.html";
+            // });
+            filter();
+            search();
+
             async function loadTable(){
                 let settings = {
                     method: "GET",
@@ -314,8 +377,8 @@
     
                     // Build the table and display it on the page
                     buildTable(rankedData);
-                    filter();
-                    search();
+                    // filter();
+                    // search();
                     
                 })
                 .catch(error => {
@@ -407,7 +470,7 @@
             function rankTable(response){
                 var finalJasonData = [];
                 var quizes=["Grammar","Vocabulary","1","2"]
-                console.log(response);
+                console.log("Before Ranking: ",response);
 
                 // Rank the table based on quiz and score
                 for (var i = 0; i <quizes.length; i++){
@@ -434,7 +497,7 @@
                         }
                     }
                 }
-                console.log(finalJasonData);
+                console.log("After ranking: ",finalJasonData);
                 return finalJasonData;
             }
             
@@ -453,11 +516,13 @@
             function buildTable(response) {
                 let content = "";
                 for (var i = 0; i < response.length; i++) {
-                    content = `${content}<tr id='${response[i]._id}'>
-                        <td scope="row">${response[i].rank}</td>
-                        <td>${response[i].username}</td>
-                        <td>${response[i].quiz}</td>
-                        <td>${response[i].score}</td></tr>`;
+                    if (response[i].quiz === quiz) {
+                        content = `${content}<tr id='${response[i]._id}'>
+                            <td scope="row">${response[i].rank}</td>
+                            <td>${response[i].username}</td>
+                            <td>${response[i].quiz}</td>
+                            <td>${response[i].score}</td></tr>`;
+                    }
                 }
 
                 // Display the table on the page
