@@ -12,36 +12,18 @@
     <script src="https://unpkg.com/@dotlottie/player-component@latest/dist/dotlottie-player.mjs" type="module"></script> 
     <!-- Link to Font Awesome for icons -->
     <script src="https://kit.fontawesome.com/543bcc20b3.js" crossorigin="anonymous"></script>
-
-    <style>
-        .index-page-loading-lottie-player{
-            width: 100%;
-            height: 100%;
-
-            position: fixed;
-            z-index: 3;
-            background-color: #33186B;
-
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
-    </style>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"/>
 </head>
 <body>
-    <!-- Header section with logo, title, and search bar -->
-    <section class="index-page-loading-lottie-player">
-        
-        <dotlottie-player src="https://lottie.host/aba5424f-5126-49bb-9be1-fe26b01cb866/PxOu1nGRPe.json" background="transparent" speed="1.25" style="width: 300px; height: 300px;" loop="1" autoplay></dotlottie-player>
-        <!-- <dotlottie-player src="https://lottie.host/72f4aadc-c523-4806-af77-0f599f7f2bdd/QJwgaQPyeb.json" background="transparent" speed="1" style="width: 300px; height: 300px;" loop="1" autoplay></dotlottie-player> -->
-    </section>
-      
-    <header class="header-main">
+      <!-- Header section with logo, title, and search bar -->
+      <header class="header-main">
         <div class="header-main-logo">
-            <dotlottie-player src="https://lottie.host/c8de3e83-6ad0-4247-93a0-cbdcd42610b1/IeCb6wJM4Z.json" background="transparent" speed="1" style="width: 200px; height: 200px;" loop autoplay></dotlottie-player>
+            <dotlottie-player src="https://lottie.host/c8de3e83-6ad0-4247-93a0-cbdcd42610b1/IeCb6wJM4Z.json" background="transparent" speed="1" style="width: 150px; height: 150px;" loop autoplay></dotlottie-player>
             <nav class="header-main-nav">
                 <h1 class="header-main-title">Big Brain</h1>
             </nav>
+        </div>
+        <div class="search_icon" onclick="toggleMobileSearch()"">
         </div>
         <div class="main-header-search">
             <input type="text" id="mySearch" oninput="myFunction()" placeholder="Search">
@@ -71,8 +53,39 @@
                 
         </div>
     </section>
-     <!-- Different quiz categories section -->
-     
+     <!-- About us  -->
+     <section class = "Page_01_about_us">
+        <div class = "about_us">
+            <div class="swiper">
+                <!-- Additional required wrapper -->
+                <div class="swiper-wrapper">
+                    <!-- Slides -->
+                    <div class="swiper-slide"><img src = "Photos/Profile_01.png"></div>
+                    <div class="swiper-slide"><img src = "Photos/Profile_02.png"></div>
+                    <div class="swiper-slide"><img src = "Photos/Profile_03.jpg"></div>
+                    <div class="swiper-slide"><img src = "Photos/Profile_04.jpg"></div>
+                </div>
+                <!-- If we need pagination -->
+                <div class="swiper-pagination"></div>
+                
+                <!-- If we need navigation buttons -->
+                <div class="swiper-button-prev"></div>
+                <div class="swiper-button-next"></div>
+                <!-- If we need scrollbar -->
+                <div class="swiper-scrollbar"></div>
+            </div>
+            <div class = "about_us_text">
+                <h1> About Us</h1>
+                <p>
+                Sairam and Chang Guan Quan, a dynamic duo of developers, joined forces in 2017, leveraging their solid foundation in CSS, HTML, and JS to create impactful projects. Their collaboration has yielded recognition for their innovative work, with several projects reaching remarkable heights. This quiz page stands as a testament to their dedication and expertise, offering an enjoyable and enriching learning experience.
+                As creators of this page, we are committed to providing a conducive environment for learning, where education is not just informative but also fun and enjoyable. Our mission goes beyond mere development; it's about giving back to society and nurturing the next generation of learners. Explore the fruits of our labor and embark on a journey of discovery with us.
+                </p>
+            </div>
+        <div>
+     </section> 
+    
+    
+        <!-- Different quiz categories section -->
     <section class="Page_01_Main_Content_Quiz_Categories" id = "quiz_Section">
         <div class="container">
                <!-- 01 English -->
@@ -129,7 +142,7 @@
             <div class="quiz_category" id="math_quiz_category">
                 <div class= "header_quiz_category">
                     <h1 class="text-left mb-4 category_title" id = "math_quiz_title">Mathematics</h1>
-                    <dotlottie-player src="https://lottie.host/6c49eb17-d19a-487c-8dca-2d68d6aef99d/op1MMeloeA.json" background="transparent" speed="1" style="width: 200px; height: 200px;" loop autoplay></dotlottie-player>
+                    <dotlottie-player class = "header_animation" src="https://lottie.host/6c49eb17-d19a-487c-8dca-2d68d6aef99d/op1MMeloeA.json" background="transparent" speed="1" style="width: 200px; height: 200px;" loop autoplay></dotlottie-player>
                 </div>         
                 <!-- 02-01 Addition -->
                 <div class="row">
@@ -167,7 +180,7 @@
                             </div>
                             <div class="card-footer">
                                 <p class="card-text">Solve exciting problems, multiply with joy, and discover the magic of numbers. Ready for a fun-filled journey into the world of multiplication?</p>
-                                <button class="btn btn-hover view_quiz" <button class="btn btn-hover view_quiz"  data-popup-target="#pop_up" data-quiz-title="Divisiom" data-quiz-image="Photos/pop_up_math_quiz_background.png" id = "start_multiplication_quiz">View Quiz</button>
+                                <button class="btn btn-hover view_quiz" <button class="btn btn-hover view_quiz"  data-popup-target="#pop_up" data-quiz-title="Division" data-quiz-image="Photos/pop_up_math_quiz_background.png" id = "start_multiplication_quiz">View Quiz</button>
                             </div>
                         </div>
                     </div>
@@ -250,49 +263,140 @@
         </div>
     </div>
     <div id = "overlay"></div>
-
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
      <script>
+        const swiper = new Swiper('.swiper', {
+    // Optional parameters
+    autoplay: {
+        delay: 5000,
+        disableOnInteraction: false,
+    },
+    loop: true,
 
-        document.querySelector('.index-page-loading-lottie-player dotlottie-player').addEventListener('complete', function () {
-            document.querySelector('.index-page-loading-lottie-player').style.display = 'none';
-        });
+    // If we need pagination
+    pagination: {
+        el: '.swiper-pagination',
+        clickable: true,
+    },
+
+    // Navigation arrows
+    navigation: {
+        nextEl: '.swiper-button-next',
+        prevEl: '.swiper-button-prev',
+    },
+});
+
+// Add event listener to each image
+const swiperImages = document.querySelectorAll('.swiper-slide img');
+swiperImages.forEach(img => {
+    img.addEventListener('click', () => {
+        if (swiper.autoplay.running) {
+            swiper.autoplay.stop();
+        } else {
+            swiper.autoplay.start();
+        }
+    });
+});
+const swiperContainer = document.querySelector('.swiper');
+swiperContainer.addEventListener('click', (event) => {
+    if (!event.target.closest('.swiper-slide')) {
+        swiper.autoplay.start();
+    }
+});
 
         document.addEventListener('click', function (event) {
-        // Close the list if clicking outside the input or the list itself
-        if (!event.target.closest('.main-header-search') && !event.target.closest('#myMenu')) {
-            document.getElementById('myMenu').style.display = 'none';
+    // Close the list if clicking outside the input, the list itself, or the search icon
+    if (!event.target.closest('.main-header-search') && !event.target.closest('#myMenu') && !event.target.closest('.search_icon')) {
+        document.getElementById('myMenu').style.display = 'none';
+        document.getElementById('mySearch').style.display = 'none';
+        document.querySelector(".main-header-search").style.display = 'none';
+        document.querySelector(".search_icon").style.display = 'block';
+    }
+});
+        document.addEventListener('click', function (event) {
+    // Close the list if clicking outside the input or the list itself
+    if (!event.target.closest('.main-header-search') && !event.target.closest('#myMenu')) {
+        document.getElementById('myMenu').style.display = 'none';
+    }
+    });
+
+    function myFunction() {
+        var input, filter, ul, li, a, i;
+        input = document.getElementById("mySearch");
+        filter = input.value.toUpperCase();
+        ul = document.getElementById("myMenu");
+        li = ul.getElementsByTagName("li");
+
+    // Display the list
+     ul.style.display = "Block";
+
+    // Loop through all list items, and hide/show those who don't match the search query
+    for (i = 0; i < li.length; i++) {
+        a = li[i].getElementsByTagName("a")[0];
+        if (a.innerHTML.toUpperCase().indexOf(filter) > -1) {
+            li[i].style.display = "block";
+        } else {
+            li[i].style.display = "none";
         }
+    }
+    }
+    var listItems = document.querySelectorAll('#myMenu li');
+        listItems.forEach(function (item) {
+        item.addEventListener('click', function () {
+            document.getElementById('mySearch').value = '';
+            document.getElementById('myMenu').style.display = 'none';
+            var listItems = document.querySelectorAll('#myMenu li');
+    listItems.forEach(function(item, index) {
+   if (index === listItems.length - 1) {
+            item.style.borderBottomLeftRadius = "10px";
+            item.style.borderBottomRightRadius = "10px";
+        }
+    });
+        });
         });
 
-        function myFunction() {
-            var input, filter, ul, li, a, i;
-            input = document.getElementById("mySearch");
-            filter = input.value.toUpperCase();
-            ul = document.getElementById("myMenu");
-            li = ul.getElementsByTagName("li");
+    function toggleMobileSearch() {
+    var searchInput = document.getElementById("mySearch");
+    var myMenu = document.getElementById("myMenu");
+    var searchbar = document.querySelector(".main-header-search")
+    var icon = document.querySelector(".search_icon")
+    if (searchInput.style.display === "none" || searchInput.style.display === "") {
+        searchInput.style.display = "block";
+        myMenu.style.display = "block";
+        searchbar.style.display = "block";
+        icon.style.display = "none";
+        searchInput.style.transform = "scale(1)";
+        myMenu.style.opacity = "1";
+        myMenu.style.transform = "translateY(0)";
+    } else {
+        searchInput.style.display = "none";
+        myMenu.style.display = "none";
+    }
+    console.log("Toggling mobile search...");
+    
+}
 
-        // Display the list
-        ul.style.display = "Block";
 
-        // Loop through all list items, and hide/show those who don't match the search query
-        for (i = 0; i < li.length; i++) {
-            a = li[i].getElementsByTagName("a")[0];
-            if (a.innerHTML.toUpperCase().indexOf(filter) > -1) {
-                li[i].style.display = "block";
-            } else {
-                li[i].style.display = "none";
-            }
-        }
-        }
-        var listItems = document.querySelectorAll('#myMenu li');
-            listItems.forEach(function (item) {
-            item.addEventListener('click', function () {
-                document.getElementById('mySearch').value = '';
-                document.getElementById('myMenu').style.display = 'none';
-            });
-            });
 
-        
+
+
+
+    
     </script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
     <script src = "javascript.js"></script>
