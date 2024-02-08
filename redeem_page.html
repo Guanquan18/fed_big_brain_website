@@ -264,9 +264,11 @@
     </footer>
     <script>
 
-        const url2 = "https://fedassignment-85eb.restdb.io/rest/account";
+        //const url2 = "https://fedassignment-85eb.restdb.io/rest/account";
+        const url3 = "https://fedassignment-5bdb.restdb.io/rest/account";
         
-        const APIKEY2 = "65bdfc153339b13e2a73c82b";
+        //const APIKEY2 = "65bdfc153339b13e2a73c82b";
+        const APIKEY3 = "65bde101c029b87c5966cdc6";
        
 
         const username = sessionStorage.getItem('username');
@@ -339,12 +341,12 @@
                 method: "GET",
                 headers: {
                     "Content-Type": "application/json",
-                    "x-apikey": APIKEY2,
+                    "x-apikey": APIKEY3,
                     "Cache-Control": "no-cache"
                 },
             }
 
-            fetch(url2, settings)
+            fetch(url3, settings)
                 .then(response => response.json())
                 .then(response => {
                     console.log(response);
@@ -375,11 +377,11 @@
                     "method": "PUT",
                     "headers": {
                     "content-type": "application/json",
-                    "x-apikey": APIKEY2
+                    "x-apikey": APIKEY3
                     },
                     body: JSON.stringify(json)
                 }
-                fetch(`${url2}/${userID}`, settings)
+                fetch(`${url3}/${userID}`, settings)
                 .then(res => res.json())
                 .then(data => console.log(data))
 
@@ -399,11 +401,11 @@
                     "method": "GET",
                     "headers": {
                     "content-type": "application/json",
-                    "x-apikey": APIKEY2
+                    "x-apikey": APIKEY3
                     }
                 }
 
-                return fetch(url2, settings)
+                return fetch(url3, settings)
                 .then(res => res.json())
                 .then(data => {
                     for (var i = 0; i < data.length; i++) {

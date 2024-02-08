@@ -85,13 +85,16 @@ leaderboard_button.onclick = () => {
 
 async function updateDataBase(anotherPage = null){
     //const urlLeaderboard = "https://fedassignment-85eb.restdb.io/rest/leaderboard";
-    const urlLeaderboard2 = "https://fedassignment-85eb.restdb.io/rest/leaderboard";
+    //const urlLeaderboard2 = "https://fedassignment-85eb.restdb.io/rest/leaderboard";
+    const urlLeaderboard3 = "https://fedassignment-5bdb.restdb.io/rest/leaderboard";
     
     //const urlAccount = "https://fedassignment-5bdb.restdb.io/rest/account";
-    const urlAccount2 = "https://fedassignment-85eb.restdb.io/rest/account";
+    //const urlAccount2 = "https://fedassignment-85eb.restdb.io/rest/account";
+    const urlAccount3 = "https://fedassignment-5bdb.restdb.io/rest/account";
     
     //const APIKEY = "65bde101c029b87c5966cdc6";
-    const APIKEY2 = "65bdfc153339b13e2a73c82b";
+    //const APIKEY2 = "65bdfc153339b13e2a73c82b";
+    const APIKEY3 = "65bde101c029b87c5966cdc6";
     
     var results = sessionStorage.getItem('quizResult');
     var resultsArray = JSON.parse(results);
@@ -112,11 +115,11 @@ async function updateDataBase(anotherPage = null){
             method: "GET",
             headers: {
                 "Content-Type": "application/json",
-                "x-apikey": APIKEY2,
+                "x-apikey": APIKEY3,
                 "Cache-Control": "no-cache"
             }
         };
-        return fetch(urlAccount2, settings)
+        return fetch(urlAccount3, settings)
         .then(response => response.json())
         .then(response => {
             
@@ -162,12 +165,12 @@ async function updateDataBase(anotherPage = null){
                             method: "PUT",
                             headers: {
                                 "Content-Type": "application/json",
-                                "x-apikey": APIKEY2,
+                                "x-apikey": APIKEY3,
                                 "Cache-Control": "no-cache"
                             },
                             body: JSON.stringify(jsonData)
                         };
-                        return fetch(urlAccount2 + "/" + userId, Settings)
+                        return fetch(urlAccount3 + "/" + userId, Settings)
                             .then(res => res.json())
                             .then(res => {
                                 console.log("Updated account data:", res);
@@ -191,11 +194,11 @@ async function updateDataBase(anotherPage = null){
             method: "GET",
             headers: {
                 "Content-Type": "application/json",
-                "x-apikey": APIKEY2,
+                "x-apikey": APIKEY3,
                 "Cache-Control": "no-cache"
             }
         }
-        fetch(urlLeaderboard2,settings)
+        fetch(urlLeaderboard3,settings)
         .then(response => response.json())
         .then(response => {
             // Check if the username and quiz already exists in the database
@@ -224,12 +227,12 @@ async function updateDataBase(anotherPage = null){
                     method: "PUT",
                     headers: {
                         "Content-Type": "application/json",
-                        "x-apikey": APIKEY2,
+                        "x-apikey": APIKEY3,
                         "Cache-Control": "no-cache"
                     },
                     body: JSON.stringify(jsonData)
                 };
-                fetch(urlLeaderboard2 + "/" + userId, Settings)
+                fetch(urlLeaderboard3 + "/" + userId, Settings)
                     .then(response => response.json())
                     .then(response => {
                         console.log("Updated data:", response);
@@ -269,12 +272,12 @@ async function updateDataBase(anotherPage = null){
                     method: "POST",
                     headers: {
                         "Content-Type": "application/json",
-                        "x-apikey": APIKEY2,
+                        "x-apikey": APIKEY3,
                         "Cache-Control": "no-cache"
                     },
                     body: JSON.stringify(jsonData)
                 };
-                fetch(urlLeaderboard2, settings)
+                fetch(urlLeaderboard3, settings)
                     .then(response => response.json())
                     .then(response => {
                         console.log("Added leaderboard data:", response);

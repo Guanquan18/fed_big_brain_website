@@ -137,10 +137,12 @@
         document.addEventListener("DOMContentLoaded", function () {
             
             //const url = "https://fedassignment-5bdb.restdb.io/rest/leaderboard";
-            const url2 = "https://fedassignment-85eb.restdb.io/rest/leaderboard";
+            //const url2 = "https://fedassignment-85eb.restdb.io/rest/leaderboard";
+            const url3 = "https://fedassignment-5bdb.restdb.io/rest/leaderboard";
             
             //const APIKEY = "65bde101c029b87c5966cdc6";
-            const APIKEY2 = "65bdfc153339b13e2a73c82b";
+            //const APIKEY2 = "65bdfc153339b13e2a73c82b";
+            const APIKEY3 = "65bde101c029b87c5966cdc6";
             
             // Get sessionstorage data
             const results = sessionStorage.getItem('quizResult');
@@ -170,13 +172,13 @@
                     method: "GET",
                     headers: {
                         "Content-Type": "application/json",
-                        "x-apikey": APIKEY2,
+                        "x-apikey": APIKEY3,
                         "Cache-Control": "no-cache"
                     }
                 };
     
                 // Fetch data for the table
-                await fetch(url2, settings)
+                await fetch(url3, settings)
                 .then(response => response.json())
                 .then(response => {
     
@@ -334,12 +336,12 @@
                     method: "GET",
                     headers: {
                         "Content-Type": "application/json",
-                        "x-apikey": APIKEY2,
+                        "x-apikey": APIKEY3,
                         "Cache-Control": "no-cache"
                     },
                 }
 
-                fetch(url2, settings)
+                fetch(url3, settings)
                     .then(response => response.json())
                     .then(response => {
                         console.log(response);

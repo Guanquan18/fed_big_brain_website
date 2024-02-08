@@ -377,11 +377,13 @@
         
         optainVbucks();
         function optainVbucks() {
-            //var url= "https://fedassignment-5bdb.restdb.io/rest/account"
-            var url2 = "https://fedassignment-85eb.restdb.io/rest/account"
+            //const url= "https://fedassignment-5bdb.restdb.io/rest/account";
+            //const url2 = "https://fedassignment-85eb.restdb.io/rest/account";
+            const url3 = "https://fedassignment-5bdb.restdb.io/rest/account";
 
             //const APIKEY = "65bde101c029b87c5966cdc6";
-            const APIKEY2 = "65bdfc153339b13e2a73c82b";
+            //const APIKEY2 = "65bdfc153339b13e2a73c82b";
+            const APIKEY3 = "65bde101c029b87c5966cdc6";
 
             let vbucksPlaceHolder = document.querySelectorAll(".header-main-vbucks")
             var username = sessionStorage.getItem("username");
@@ -391,12 +393,12 @@
                 method: "GET",
                 headers: {
                     "Content-Type": "application/json",
-                    "x-apikey": APIKEY2,
+                    "x-apikey": APIKEY3,
                     "Cache-Control": "no-cache"
                 },
             }
 
-            fetch(url2, settings)
+            fetch(url3, settings)
                 .then(response => response.json())
                 .then(response => {
                     console.log(response);

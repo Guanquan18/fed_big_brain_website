@@ -117,17 +117,16 @@
         sessionStorage.clear();
         
         document.addEventListener("DOMContentLoaded", function () {
-            // What kind of interface we want at the start 
 
             //var url= "https://fedassignment-5bdb.restdb.io/rest/account"
-            var url2 = "https://fedassignment-85eb.restdb.io/rest/account"
-            var url3 = "https://fedassignment-2f26.restdb.io/rest/account"
+            //var url2 = "https://fedassignment-85eb.restdb.io/rest/account";
+            var url3 = "https://fedassignment-5bdb.restdb.io/rest/account";
 
-            //const APIKEY = "65bde101c029b87c5966cdc6";
-            const APIKEY2 = "65bdfc153339b13e2a73c82b";
-            const APIKEY3 = "65c3bf2570dd296a0c2630f3";
+            // const APIKEY = "65bde101c029b87c5966cdc6";
+            //const APIKEY2 = "65bdfc153339b13e2a73c82b";
+            const APIKEY3 = "65bde101c029b87c5966cdc6";
 
-            // Store sign up values in json format
+            // Get values for login form
             var loginFormName = document.getElementById('login-form');
             var loginFormUsername = document.getElementById('login-username');
             var loginFormPassword = document.getElementById('login-password');
@@ -140,12 +139,9 @@
             var signUpFormUsernameError = document.getElementById('signup-username-error');
             var signUpFormPasswordError = document.getElementById('signup-password-error');
             
-
-            //[STEP 1]: Create our submit form listener
-            
-
+            // Event listener for login form
             loginFormName.addEventListener("submit", function(event) {
-                //Get values for login form
+                // Prevent default action of the button 
                 event.preventDefault();
 
                 // Check if user input is valid
@@ -158,42 +154,44 @@
                 
             },false)
 
-
+            // Event listener for signup form
             signUpFormName.addEventListener("submit", function(event) {
-                //[STEP 2]: Let's retrieve form data
-                // For now, we assume all information is valid
-                // You are to do your own data validation
-                
                 // Prevent default action of the button 
                 event.preventDefault();
                 
+                // Check if user input is valid
                 if (validateInput(signUpFormName)) {
                     return;
                 }
                 else{
-                    checkUser(true)
+                    checkUser(true);    // Check for existing user or duplicate username 
                 }
 
-            },false);//end click 
+            },false);
 
             function checkUser(newUser) {
-                //[STEP 7]: Create our AJAX settings
+
                 let settings = {
-                method: "GET", //[cher] we will use GET to retrieve info
-                headers: {
-                    "Content-Type": "application/json",
-                    "x-apikey": APIKEY3,
-                    "Cache-Control": "no-cache"
-                },
+                    method: "GET",
+                    headers: {
+                        "Content-Type": "application/json",
+                        "x-apikey": APIKEY3,
+                        "Cache-Control": "no-cache"
+                    },
                 }
 
+                // Declare variables
                 var existingUser = false;
                 var correctPassword = false;
+
                 fetch(url3, settings)
                     .then(response => response.json())
                     .then(response => {
+                        // For sigup form
                         if (newUser){
                             for (var i = 0; i < response.length; i++) {
+
+                                // Check if username already exists
                                 if (signUpFormUsername.value == response[i].username){
                                     setEror(signUpFormUsernameError, 'Username already exists');
                                     existingUser = true;
@@ -201,14 +199,17 @@
                                 }
                             }
                             if (!existingUser){
-                                createUser()
+                                createUser()    // Create new user
                             }
                         }
+                        // For login form
                         else{
                             for (var i = 0; i < response.length; i++) {
+                                // Check if username exists
                                 if (loginFormUsername.value == response[i].username){
                                     existingUser = true;
 
+                                    // Check if password is correct
                                     if (loginFormPassword.value == response[i].password){
                                         correctPassword = true;
                                     }
@@ -221,6 +222,7 @@
                             }
                             else if (correctPassword){
 
+                                // Play sucessful lottie animation
                                 let lottiePlayerContainer = document.getElementById("login-lottie-player");
                                 lottiePlayerContainer.innerHTML = `<dotlottie-player src="https://lottie.host/5fb4ee71-0ba7-40c0-8bfc-9572526bfa50/eNR1nTg3yr.json" background="transparent" speed="1" style="width: 300px; height: 300px;" loop="1" autoplay></dotlottie-player>`;
                                 lottiePlayerContainer.style.zIndex = "2"; 
@@ -228,9 +230,10 @@
                                 let lottiePlayer = lottiePlayerContainer.getElementsByTagName("dotlottie-player")[0];
                                 
                                 lottiePlayer.addEventListener("complete", () => {
+                                    // Store username and password in session storage
                                     sessionStorage.setItem("username", loginFormUsername.value);
                                     sessionStorage.setItem("password", loginFormPassword.value);
-                                    window.location.href = "index.html";
+                                    window.location.href = "index.html";    // Redirect to index page
                                 });
 
                             }
@@ -238,11 +241,6 @@
                                 setEror(loginFormPasswordError, 'Incorrect password');
                             }
                         }
-                        //[STEP 9]: Update our HTML content
-                        // Let's dump the content into our table body
-                        //document.getElementById("contact-list").getElementsByTagName("tbody")[0].innerHTML = content;
-
-                        //document.getElementById("total-contacts").innerHTML = response.length;
                 });
                 
             }
@@ -270,6 +268,7 @@
                     .then(data => {
                         console.log(data);
 
+                        // Play sucessful lottie animation
                         let lottiePlayerContainer = document.getElementById("signup-lottie-player");
                         lottiePlayerContainer.innerHTML = `<dotlottie-player src="https://lottie.host/5fb4ee71-0ba7-40c0-8bfc-9572526bfa50/eNR1nTg3yr.json" background="transparent" speed="1" style="width: 300px; height: 300px;" loop="1" autoplay></dotlottie-player>`;
                         lottiePlayerContainer.style.zIndex = "2";
@@ -277,9 +276,10 @@
                         let lottiePlayer = lottiePlayerContainer.getElementsByTagName("dotlottie-player")[0];
 
                         lottiePlayer.addEventListener("complete", () => {
+                            // Store username and password in session storage
                             sessionStorage.setItem("username", signUpFormUsername.value);
                             sessionStorage.setItem("password", signUpFormPassword.value);
-                            window.location.href = "index.html";
+                            window.location.href = "index.html";    // Redirect to index page
                         })
 
                     });
@@ -356,7 +356,7 @@
                 }
 
                 child.classList.add("error");
-                element.innerHTML = errorMessage;
+                element.innerHTML = errorMessage;   // Set error message
                 element.style.visibility = "visible";
             }
 
@@ -375,20 +375,20 @@
             }
         
             
-        });//end DOMContentLoaded
+        });
 
-        
-        
-
+        // Get the login and signup form containers
         const formContainer = document.querySelector(".form-container");
         let loginLink = document.querySelector("#login-link");
         let signupLink = document.querySelector("#signup-link");
 
+        // Switch to signup form
         signupLink.addEventListener("click", () => {
             event.preventDefault();
             formContainer.classList.add("active");
         });
 
+        // Switch to login form
         loginLink.addEventListener("click", () => {
             event.preventDefault();
             formContainer.classList.remove("active");

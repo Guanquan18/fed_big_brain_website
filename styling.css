@@ -69,7 +69,7 @@ body {
     position: relative;
 }
 /* Styling for navigation links on hover */
-  .header-main-nav a:hover{
+  .header-main-nav a:hover, .header-main-vbucks:hover{ 
     color: #ff9600;
     transition: all 0.1s ease;
   }
