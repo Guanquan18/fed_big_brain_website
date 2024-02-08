@@ -177,25 +177,40 @@ Our quizzes have a redemption system which awards students a variety of gifts fo
 - Photos taken from [Pintrest](https://www.pinterest.com/).
 - Fonts taken from [Font-Awesome](https://fontawesome.com/).
 
-### Reference for Images:
+## Illustration References
 
-1. Group of fans watching a soccer moment - [Rismedia](https://www.rismedia.com/wp-content/uploads/2020/08/group-of-fans-are-watching-a-soccer-moment-on-the-tv-and-celebrating-picture-id1059076422.jpg)
-2. People watching football - [Ontaponline](https://ontaponline.com/wp-content/uploads/2017/08/football-watching.jpg)
-3. Friends having fun - [Media.Istockphoto](https://media.istockphoto.com/id/940969252/photo/friends-having-fun-at-home.jpg?s=612x612&w=0&k=20&c=xHDVxr1_4O9VlUGJev3IWzpE7ek4V17knTyn3_TUkZU=)
-4. People enjoying a match in a crowded bar - [Tastingtable](https://www.tastingtable.com/img/gallery/washington-dc-bars-to-stay-open-24-hours-for-womans-world-cup/overcoming-a-big-time-difference-for-the-womens-world-cup-1687458917.jpg)
-5. Manchester United vs Manchester City match - [Bing](https://th.bing.com/th/id/OIP.5AtYDi5jYpgjCQVizx6uoAAAAA?rs=1&pid=ImgDetMain)
-6. World Cup Trophy - [Bing](https://th.bing.com/th/id/OIP.EqqaZwI0prfHgyI-F7U97QHaEK?rs=1&pid=ImgDetMain)
-7. Manchester Derby - [Media.Insider](https://media.insider.in/image/upload/c_crop,g_custom/v1673244803/kh6olrfdpw20givwdc8h.jpg)
-8. Restaurant Interior - [Resources Stuff Co.](https://resources.stuff.co.nz/content/dam/images/1/m/y/i/o/r/image.related.StuffLandscapeSixteenByNine.710x400.1mf9h8.png/1511050339582.jpg)
-9. Best Restaurant Awards - [Foodiesfavorites](https://foodiesfavorites.com/spots-events/thuisbezorgd-beste-restaurants-awards-2017/)
-10. Co-Founder - [Master of Finance](https://www.master-of-finance.org/job-profiles/marketing-manager/)
-11. Restaurant Manager - [Careers Lidl](https://careers.lidl.co.uk/stores/meet-the-store-team/meet-maria-store-manager)
-12. Chef Profile - [Yorkshirepost](https://www.yorkshirepost.co.uk/lifestyle/food-and-drink/chef-profile-mark-york-from-true-north-in-halifax-3022199)
-13. We Put 12 Cameras in A Tiny Restaurant Kitchen on Friday Night - [Youtube Video](https://www.youtube.com/watch?v=j5pcpuTWP6U)
-14. Becoming a Chef | Full Service Restaurant Kitchen Behind The Scenes - [Youtube Video](https://www.youtube.com/watch?v=9DqwJL8rN14)
-15. Food Snapshots - [Pngtree](https://pngtree.com/free-backgrounds-photos/italian-american-cuisine)
-16. Pizza Background - [Thcshoanghoatham](https://thcshoanghoatham-badinh.edu.vn/top-75-imagem-pizza-background-images/)
+1. **Student playing education quiz**
+   - Source: [www.cambridge.org](https://www.cambridge.org/elt/blog/wp-content/uploads/2021/03/GettyImages-1216824030.jpg)
 
+2. **Spelling Bee Illustration**
+   - Source: [bing.com](https://th.bing.com/th/id/R.77a73a6cdd91cbfa855afef3ecbee9ba?rik=%2fujQw1K4Ah9Q%2fA&riu=http%3a%2f%2fwww.illustrationsof.com%2froyalty-free-rf-bee-clipart-illustration-by-graphics-rf-stock-sample-1714762.jpg&ehk=aQnlOkYNMV5aPzn2hJ0dQRfPwfliKKYqSE%2bAlZ8IwHo%3d&risl=&pid=ImgRaw&r=0)
+
+3. **Grammar Quiz Illustration**
+   - Source: [www.fluentu.com](https://www.fluentu.com/blog/english/wp-content/uploads/sites/4/2023/09/Grammar_-Letter-Tiles-e1695129128342.jpg)
+
+4. **Vocabulary Illustration**
+   - Source: [bing.com](https://th.bing.com/th/id/OIP.gxz9jaKL9icrFFd3d3xtpQHaE7?rs=1&pid=ImgDetMain)
+
+5. **Addition Illustration**
+   - Source: [quizizz.com](https://quizizz.com/_media/quizzes/2d9ddec9-f3fc-4d8f-919a-cb7d839ce65c_900_900)
+
+6. **Subtraction of Integers Illustration**
+   - Source: [www.wikihow.com](https://www.wikihow.com/images/thumb/d/db/Add-and-Subtract-Integers-Step-32-Version-2.jpg/aid278360-v4-728px-Add-and-Subtract-Integers-Step-32-Version-2.jpg)
+
+7. **Multiplication Illustration**
+   - Source: [selfsufficientkids.com](https://selfsufficientkids.com/wp-content/uploads/2017/07/multiplication-math-facts-190x190.jpg)
+
+8. **Living Things Illustration**
+   - Source: [i.pinimg.com](https://i.pinimg.com/736x/df/92/1a/df921a19447e15fc0922beed234b832f.jpg)
+
+9. **Plants Illustration**
+   - Source: [static.vecteezy.com](https://static.vecteezy.com/system/resources/previews/000/225/312/original/potted-plant-vector-illustration.jpg)
+
+10. **English Quiz Illustration**
+    - Source: [leverageedu.com](https://leverageedu.com/blog/wp-content/uploads/2020/05/English-Quiz-800x500.png)
+
+11. **Math Illustration**
+    - Source: [image.freepik.com](https://image.freepik.com/free-vector/math-background_23-2148146269.jpg)
 
 
 
