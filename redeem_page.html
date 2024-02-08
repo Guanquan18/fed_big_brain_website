@@ -265,9 +265,9 @@
     <script>
 
         const url2 = "https://fedassignment-85eb.restdb.io/rest/account";
-        const url3 = "https://fedassignment-2f26.restdb.io/rest/account";
+        
         const APIKEY2 = "65bdfc153339b13e2a73c82b";
-        const APIKEY3 = "65c3bf2570dd296a0c2630f3";
+       
 
         const username = sessionStorage.getItem('username');
         const password = sessionStorage.getItem('password');
@@ -294,6 +294,8 @@
                     // Display success image and message
                     redemptionStatusImg.innerHTML = successful_animation;
                     redemptionStatusMessage.textContent = 'Redeemed successfully!';
+
+                    // Deduct the vbucks amount accordingly
                     deductVbucks(userID, currentVbucks, requiredVbucks);
                 } else {
                     // Display error image and message
@@ -328,7 +330,7 @@
 
         getVbucks();
         function getVbucks() {
-
+            // Get the vbucks from the database and display it in the header
             let vbucksPlaceHolder = document.querySelectorAll(".header-main-vbucks")
             var username = sessionStorage.getItem("username");
             var userId = null
@@ -337,12 +339,12 @@
                 method: "GET",
                 headers: {
                     "Content-Type": "application/json",
-                    "x-apikey": APIKEY3,
+                    "x-apikey": APIKEY2,
                     "Cache-Control": "no-cache"
                 },
             }
 
-            fetch(url3, settings)
+            fetch(url2, settings)
                 .then(response => response.json())
                 .then(response => {
                     console.log(response);
@@ -360,6 +362,7 @@
                 });
         }
 
+        // Deduct vbucks accordingly for the user
         async function deductVbucks(userID, currentVbucks, requiredVbucks) {
             var newVbucks = currentVbucks - requiredVbucks;
             const json = {
@@ -372,11 +375,11 @@
                     "method": "PUT",
                     "headers": {
                     "content-type": "application/json",
-                    "x-apikey": APIKEY3
+                    "x-apikey": APIKEY2
                     },
                     body: JSON.stringify(json)
                 }
-                fetch(`${url3}/${userID}`, settings)
+                fetch(`${url2}/${userID}`, settings)
                 .then(res => res.json())
                 .then(data => console.log(data))
 
@@ -396,11 +399,11 @@
                     "method": "GET",
                     "headers": {
                     "content-type": "application/json",
-                    "x-apikey": APIKEY3
+                    "x-apikey": APIKEY2
                     }
                 }
 
-                return fetch(url3, settings)
+                return fetch(url2, settings)
                 .then(res => res.json())
                 .then(data => {
                     for (var i = 0; i < data.length; i++) {

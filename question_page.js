@@ -72,40 +72,26 @@ restart_quiz.onclick = () =>{
     resetQuestionCircles();
     next_btn.classList.remove("show"); // hide the next button
 
-    //showLoadingLottie();
     updateDataBase();
-    //sessionStorage.removeItem('quizResult');
-
 }
+
 quit_quiz.onclick = ()=>{
-    //showLoadingLottie();
     updateDataBase("index.html");
-    //window.location.href = 'index.html';
-    //sessionStorage.removeItem('quizResult');
-
 }
+
 leaderboard_button.onclick = () => {
-    //showLoadingLottie();
     updateDataBase("leader_board_page.html");
-    //window.location.href = 'leader_board_page.html';
-}
-
-function showLoadingLottie() {
-    let lottiePlayerContainer = document.getElementById("question-page-loading-lottie-player");
-    lottiePlayerContainer.innerHTML = `<dotlottie-player src="https://lottie.host/c8de3e83-6ad0-4247-93a0-cbdcd42610b1/IeCb6wJM4Z.json" background="transparent" speed="1" style="width: 150px; height: 150px;" loop autoplay></dotlottie-player>`;
-    lottiePlayerContainer.style.zIndex = "3"; 
 }
 
 async function updateDataBase(anotherPage = null){
     //const urlLeaderboard = "https://fedassignment-85eb.restdb.io/rest/leaderboard";
     const urlLeaderboard2 = "https://fedassignment-85eb.restdb.io/rest/leaderboard";
-    const urlLeaderboard3 = "https://fedassignment-2f26.restdb.io/rest/leaderboard"
+    
     //const urlAccount = "https://fedassignment-5bdb.restdb.io/rest/account";
     const urlAccount2 = "https://fedassignment-85eb.restdb.io/rest/account";
-    const urlAccount3 = "https://fedassignment-2f26.restdb.io/rest/account";
+    
     //const APIKEY = "65bde101c029b87c5966cdc6";
     const APIKEY2 = "65bdfc153339b13e2a73c82b";
-    const APIKEY3 = "65c3bf2570dd296a0c2630f3";
     
     var results = sessionStorage.getItem('quizResult');
     var resultsArray = JSON.parse(results);
@@ -116,29 +102,27 @@ async function updateDataBase(anotherPage = null){
                 "\nScore:", score,
                 "\nQuiz:", quiz);
 
-
+    // Update the vbucks in account before updating score in leaderboard
     updateAccount().then(response => {
         updateLeaderboard();
     });
-    
 
-    
-    
     function updateAccount() {
         let settings = {
             method: "GET",
             headers: {
                 "Content-Type": "application/json",
-                "x-apikey": APIKEY3,
+                "x-apikey": APIKEY2,
                 "Cache-Control": "no-cache"
             }
         };
-        return fetch(urlAccount3, settings)
+        return fetch(urlAccount2, settings)
         .then(response => response.json())
         .then(response => {
             
             var requireAccountUpdate = false;
             for (var i = 0; i < response.length; i++) {
+                // Check if username is the same
                 if (response[i].username === username) {
                     console.log("Existing user:", response[i].username);
                     userId = response[i]._id;
@@ -167,6 +151,7 @@ async function updateDataBase(anotherPage = null){
                         requireAccountUpdate = true;
                     }
 
+                    // Update the vbucks in the account
                     if (requireAccountUpdate){
                         var jsonData= {
                             "username": username,
@@ -177,12 +162,12 @@ async function updateDataBase(anotherPage = null){
                             method: "PUT",
                             headers: {
                                 "Content-Type": "application/json",
-                                "x-apikey": APIKEY3,
+                                "x-apikey": APIKEY2,
                                 "Cache-Control": "no-cache"
                             },
                             body: JSON.stringify(jsonData)
                         };
-                        return fetch(urlAccount3 + "/" + userId, Settings)
+                        return fetch(urlAccount2 + "/" + userId, Settings)
                             .then(res => res.json())
                             .then(res => {
                                 console.log("Updated account data:", res);
@@ -206,11 +191,11 @@ async function updateDataBase(anotherPage = null){
             method: "GET",
             headers: {
                 "Content-Type": "application/json",
-                "x-apikey": APIKEY3,
+                "x-apikey": APIKEY2,
                 "Cache-Control": "no-cache"
             }
         }
-        fetch(urlLeaderboard3,settings)
+        fetch(urlLeaderboard2,settings)
         .then(response => response.json())
         .then(response => {
             // Check if the username and quiz already exists in the database
@@ -227,7 +212,8 @@ async function updateDataBase(anotherPage = null){
                     }
                 }
             }
-    
+            
+            // Update only if the score is higher than the existing score
             if (existingScore && requireScoreUpdate){
                 var jsonData= {
                     "username": username,
@@ -238,12 +224,12 @@ async function updateDataBase(anotherPage = null){
                     method: "PUT",
                     headers: {
                         "Content-Type": "application/json",
-                        "x-apikey": APIKEY3,
+                        "x-apikey": APIKEY2,
                         "Cache-Control": "no-cache"
                     },
                     body: JSON.stringify(jsonData)
                 };
-                fetch(urlLeaderboard3 + "/" + userId, Settings)
+                fetch(urlLeaderboard2 + "/" + userId, Settings)
                     .then(response => response.json())
                     .then(response => {
                         console.log("Updated data:", response);
@@ -260,6 +246,8 @@ async function updateDataBase(anotherPage = null){
                         console.error("Error updating data:", error);
                     });
             }
+
+            // Direct to another page if not update of score is required
             else if (existingScore && !requireScoreUpdate){
                 if (anotherPage == "index.html" || anotherPage == null){
                     sessionStorage.removeItem('quizResult');
@@ -269,6 +257,8 @@ async function updateDataBase(anotherPage = null){
                     window.location.href = anotherPage;
                 }
             }
+
+            // Add new score if it does not exist
             else if (!existingScore){
                 var jsonData = {
                     "username": username,
@@ -279,12 +269,12 @@ async function updateDataBase(anotherPage = null){
                     method: "POST",
                     headers: {
                         "Content-Type": "application/json",
-                        "x-apikey": APIKEY3,
+                        "x-apikey": APIKEY2,
                         "Cache-Control": "no-cache"
                     },
                     body: JSON.stringify(jsonData)
                 };
-                fetch(urlLeaderboard3, settings)
+                fetch(urlLeaderboard2, settings)
                     .then(response => response.json())
                     .then(response => {
                         console.log("Added leaderboard data:", response);
@@ -304,8 +294,6 @@ async function updateDataBase(anotherPage = null){
         })
     }
 }
-
-
 
     next_btn.onclick = () =>{
         if(que_count < questionsArray.length - 1){

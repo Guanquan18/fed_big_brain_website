@@ -1650,6 +1650,18 @@ cursor: pointer;
     border: 2px solid black;
     background-color: darkorange;
 }
+
+#question-page-loading-lottie-player{
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    z-index: -2;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
 /* Media query for smaller screens */
 @media screen and (max-width: 768px) {
 
