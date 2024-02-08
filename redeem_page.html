@@ -34,7 +34,7 @@
                 <ul>
                     <!-- Redemption link with dynamic Vbucks count -->
                     <li>
-                        <a href="redeem_page.html">Redeemption (<label class="header-main-vbucks"></label> Vbucks)</a>
+                        <a href="redeem_page.html">Redeemption <img src="Photos/vbucks.png" alt="vbucks icon"><label class="header-main-vbucks"></label></a>
                     </li>
                 </ul>
             </div>
@@ -65,11 +65,7 @@
         <ul>
             <li>
                  <!-- Redemption link with dynamic Vbucks count -->
-                <a href="redeem_page.html">Redeemption (<label class="header-main-vbucks"></label> Vbucks)</a>
-            </li>
-            <li>
-                   <!-- Log out link -->
-                <a href="login_page.html">Log Out</a>
+                 <a href="redeem_page.html">Redeemption <img src="Photos/vbucks.png" alt="vbucks icon"><label class="header-main-vbucks"></label></a>
             </li>
         </ul>
     </nav>
@@ -322,6 +318,61 @@
             }).catch(error => {
                 console.error('Error fetching vbucks:', error);
             });
+        }
+
+        toggleMobileMenu();
+        function toggleMobileMenu(){
+            /* Navation menu when device is switched to mobile or tablet */
+            var menuButton = document.querySelector('.header-main-menu-button');
+            var menu = document.querySelector('.header-main-menu');
+    
+            var ismenuOpen = false;
+    
+            menuButton.addEventListener("click", function() {
+                if (!ismenuOpen) {
+                    menu.style.display = "block";
+                    ismenuOpen = true;
+                } else {
+                    menu.style.display="none";
+                    ismenuOpen = false;
+                }
+            },false);
+            /* End of navation */
+        }
+        
+
+        getVbucks();
+        function getVbucks() {
+
+            let vbucksPlaceHolder = document.querySelectorAll(".header-main-vbucks")
+            var username = sessionStorage.getItem("username");
+            var userId = null
+
+            let settings = {
+                method: "GET",
+                headers: {
+                    "Content-Type": "application/json",
+                    "x-apikey": APIKEY3,
+                    "Cache-Control": "no-cache"
+                },
+            }
+
+            fetch(url3, settings)
+                .then(response => response.json())
+                .then(response => {
+                    console.log(response);
+                    response.forEach(res => {
+                        if (res.username === username){
+                            userId = res._id
+                            vbucksPlaceHolder.forEach(vb => {
+                                vb.textContent = res.vbucks
+                            })
+                        }
+                    });
+                })
+                .catch(error => {
+                    console.log(error);
+                });
         }
 
         async function deductVbucks(userID, currentVbucks, requiredVbucks) {

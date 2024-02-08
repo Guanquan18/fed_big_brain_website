@@ -36,7 +36,7 @@
                 <ul>
                     <!-- Redemption link with dynamic Vbucks count -->
                     <li>
-                        <a href="redeem_page.html">Redeemption (<label class="header-main-vbucks"></label> Vbucks)</a>
+                        <a href="redeem_page.html">Redeemption <img src="Photos/vbucks.png" alt="vbucks icon"><label class="header-main-vbucks"></label></a>
                     </li>
                 </ul>
             </div>
@@ -69,11 +69,7 @@
         <ul>
             <li>
                 <!-- Redemption link with dynamic Vbucks count -->
-                <a href="redeem_page.html">Redeemption (<label class="header-main-vbucks"></label> Vbucks)</a>
-            </li>
-            <li>
-                 <!-- Log out link -->
-                <a href="login_page.html">Log Out</a>
+                <a href="redeem_page.html">Redeemption <img src="Photos/vbucks.png" alt="vbucks icon"><label class="header-main-vbucks"></label></a>
             </li>
         </ul>
     </nav>
@@ -157,25 +153,6 @@
     <script>
         console.log('Stored Quiz Result:', sessionStorage.getItem('quizResult'));
         document.addEventListener("DOMContentLoaded", function () {
-            toggleMobileMenu();
-            function toggleMobileMenu(){
-                /* Navation menu when device is switched to mobile or tablet */
-                var menuButton = document.querySelector('.header-main-menu-button');
-                var menu = document.querySelector('.header-main-menu');
-        
-                var ismenuOpen = false;
-        
-                menuButton.addEventListener("click", function() {
-                    if (!ismenuOpen) {
-                        menu.style.display = "block";
-                        ismenuOpen = true;
-                    } else {
-                        menu.style.display="none";
-                        ismenuOpen = false;
-                    }
-                },false);
-                /* End of navation */
-            }
             
             //const url = "https://fedassignment-5bdb.restdb.io/rest/leaderboard";
             const url2 = "https://fedassignment-85eb.restdb.io/rest/leaderboard";
@@ -193,12 +170,15 @@
             "\nScore:", score, 
             "\nQuiz:", quiz);
 
-            // loadTable().then(() => {
-            //     console.log("Table loaded");
-            //     const lottiePlayerContainer = document.getElementsByClassName("lottie-player")[0];
-            //     const child = lottiePlayerContainer.querySelector('dotlottie-player');
-            //     lottiePlayerContainer.removeChild(child);
-            // });
+            toggleMobileMenu(); //Mobile View
+            optainVbucks(); // Retrieve Vbucks
+
+            loadTable().then(() => {
+                console.log("Table loaded");
+                const lottiePlayerContainer = document.getElementsByClassName("lottie-player")[0];
+                const child = lottiePlayerContainer.querySelector('dotlottie-player');
+                lottiePlayerContainer.removeChild(child);
+            });
 
             async function loadTable(){
                 let settings = {
@@ -219,23 +199,97 @@
                     // Rank Table based on score
                     var rankedData = rankTable(response); 
 
-                    const searchBar = document.getElementById("search-input");
+                    var searchBar = document.getElementById("search-input");
                     // Filter the table based on search input
-                    searchBar.addEventListener("input", function (event) {
-                        searchValue = searchBar.value.toLowerCase();
-                        var filteredResponse = searchTable(searchValue,rankedData);
-                        buildTable(filteredResponse);
-                    });
+                    
+                        searchBar.addEventListener("keyup", function (event) {
+                            searchValue = searchBar.value.toLowerCase();
+                            var filteredResponse = searchTable(searchValue,rankedData);
+                            buildTable(filteredResponse);
+                        });
+                   
+                        // Build the table and display it on the page
+                        buildTable(rankedData);
+                    
     
-                    // Build the table and display it on the page
-                    buildTable(rankedData);
                     filter();
-                    //search();
                     
                 })
                 .catch(error => {
                     console.error("Error fetching data:", error);
                 });
+            }
+     
+            //Rank Table
+            function rankTable(response){
+                var finalJasonData = [];
+                var quizes=["Grammar","Vocabulary","Spelling Bee","Addition","Subtraction","Multiplication","Living Things","Plants","Magnets"]
+                console.log("Before Ranking: ",response);
+
+                // Rank the table based on quiz and score
+                for (var i = 0; i <quizes.length; i++){
+                    var rank = 1;
+                    var quiz = quizes[i];
+                    for (var score = 100; score >= 0; score--) {
+                        
+                        gotUser = false;
+                        for (var j = 0; j < response.length; j++) {
+                            if (response[j].score === score && response[j].quiz === quiz) {
+    
+                                jasonData = {
+                                    "username": response[j].username,
+                                    "score": response[j].score,
+                                    "quiz": quiz,
+                                    "rank": rank,   // Add rank to the data
+                                };
+                                finalJasonData.push(jasonData);
+                                gotUser = true;
+                            }
+                        }
+                        if (gotUser){
+                            rank++;
+                        }
+                    }
+                }
+                console.log("After ranking: ",finalJasonData);
+                return finalJasonData;
+            }
+            
+            // Build the table and display it on the page
+            function buildTable(response) {
+                let content = "";
+                for (var i = 0; i < response.length; i++) {
+                    if (response[i].quiz === quiz) {
+                        row = `<tr id='${response[i]._id}'>
+                            <td scope="row">${response[i].rank}</td>
+                            <td>${response[i].username}</td>
+                            <td>${response[i].quiz}</td>
+                            <td>${response[i].score}</td></tr>`;
+                        content += row;
+                    }
+                }
+
+                // Display the table on the page
+                document.getElementById("leaderboard").getElementsByTagName("tbody")[0].innerHTML = content;
+            }
+
+            // Search the table
+            function searchTable(searchValue,rankedData) {
+
+                let filteredResponse = [];
+                console.log("RankedData:", rankedData);
+                rankedData.forEach((row, i) => {
+
+                    let username = row.username.toLowerCase();
+                    let rank = row.rank.toString();
+                    let quiz = row.quiz.toLowerCase();
+                    let score = row.score.toString();
+                    
+                    if (username.includes(searchValue) || rank.includes(searchValue) || quiz.includes(searchValue) || score.includes(searchValue)) {
+                        filteredResponse.push(row);
+                    }
+                });
+                return filteredResponse;
             }
 
             // Testing for searching table
@@ -283,106 +337,59 @@
 
             };
 
-            function search(){
-                const searchBar = document.getElementById("search-input");
-                var tableRows = document.querySelectorAll("#leaderboard tbody tr");
+            // Retrieve Vbucks
+            function optainVbucks() {
 
-                // Search for data in the table
-                searchBar.addEventListener("input", function (event) {
-                    searchValue = searchBar.value.toLowerCase();
-                    valuesFound = false;
-                    tableRows.forEach((row, i) => {
-                        let rowData = row.textContent.toLowerCase();
-                        searchValue = searchBar.value.toLowerCase();
+                let vbucksPlaceHolder = document.querySelectorAll(".header-main-vbucks")
+                var username = sessionStorage.getItem("username");
+                var userId = null
 
-                        row.classList.toggle("hide",rowData.includes(searchValue) === false);
-                        row.style.setProperty("--delay", i/25 + "s");
+                let settings = {
+                    method: "GET",
+                    headers: {
+                        "Content-Type": "application/json",
+                        "x-apikey": APIKEY3,
+                        "Cache-Control": "no-cache"
+                    },
+                }
 
-                    });
-                });
-
-                // Search for username in table
-                // searchBar.addEventListener("keyup", function (event) {
-                //     searchValue = searchBar.value.toLowerCase();
-                //     for (var i = 0; i < tableRows.length; i++) {
-                //         var username = tableRows[i].getElementsByTagName("td")[0].innerText.toLowerCase();
-                //         if (username.includes(searchValue)) {
-                //             tableRows[i].style.display = "";
-                //         } else {
-                //             tableRows[i].style.display = "none";
-                //         }
-                //     }
-                // });
-            }
-
-            // Tesing for searching table ends Here
-
-                        
-            
-            function rankTable(response){
-                var finalJasonData = [];
-                var quizes=["Grammar","Vocabulary","1","2"]
-                console.log("Before Ranking: ",response);
-
-                // Rank the table based on quiz and score
-                for (var i = 0; i <quizes.length; i++){
-                    var rank = 1;
-                    var quiz = quizes[i];
-                    for (var score = 100; score >= 0; score--) {
-                        
-                        gotUser = false;
-                        for (var j = 0; j < response.length; j++) {
-                            if (response[j].score === score && response[j].quiz === quiz) {
-    
-                                jasonData = {
-                                    "username": response[j].username,
-                                    "score": response[j].score,
-                                    "quiz": quiz,
-                                    "rank": rank,   // Add rank to the data
-                                };
-                                finalJasonData.push(jasonData);
-                                gotUser = true;
+                fetch(url3, settings)
+                    .then(response => response.json())
+                    .then(response => {
+                        console.log(response);
+                        response.forEach(res => {
+                            if (res.username === username){
+                                userId = res._id
+                                vbucksPlaceHolder.forEach(vb => {
+                                    vb.textContent = res.vbucks
+                                })
                             }
-                        }
-                        if (gotUser){
-                            rank++;
-                        }
-                    }
-                }
-                console.log("After ranking: ",finalJasonData);
-                return finalJasonData;
+                        });
+                    })
+                    .catch(error => {
+                        console.log(error);
+                    });
             }
-            
-            // Search the table
-            function searchTable(searchValue,rankedData) {
+            });
 
-                let filteredResponse = [];
-                console.log("RankedData:", rankedData);
-                rankedData.forEach((row, i) => {
-                    if (row.rank.includes(searchValue) || row.username.includes(searchValue) || row.quiz.includes(searchValue) || row.score.includes(searchValue)) {
-                        filteredResponse.push(row);
+            function toggleMobileMenu(){
+                /* Navation menu when device is switched to mobile or tablet */
+                var menuButton = document.querySelector('.header-main-menu-button');
+                var menu = document.querySelector('.header-main-menu');
+        
+                var ismenuOpen = false;
+        
+                menuButton.addEventListener("click", function() {
+                    if (!ismenuOpen) {
+                        menu.style.display = "block";
+                        ismenuOpen = true;
+                    } else {
+                        menu.style.display="none";
+                        ismenuOpen = false;
                     }
-                });
-                return filteredResponse;
+                },false);
+                /* End of navation */
             }
-
-            // Build the table and display it on the page
-            function buildTable(response) {
-                let content = "";
-                for (var i = 0; i < response.length; i++) {
-                    if (response[i].quiz === quiz) {
-                        content = `${content}<tr id='${response[i]._id}'>
-                            <td scope="row">${response[i].rank}</td>
-                            <td>${response[i].username}</td>
-                            <td>${response[i].quiz}</td>
-                            <td>${response[i].score}</td></tr>`;
-                    }
-                }
-
-                // Display the table on the page
-                document.getElementById("leaderboard").getElementsByTagName("tbody")[0].innerHTML = content;
-            }
-        });
 
 
     //[STEP 8]: Make our AJAX calls

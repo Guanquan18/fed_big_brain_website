@@ -54,7 +54,7 @@ body {
   }
 /* Styling for navigation links */
   .header-main-nav a{
-    width: 100%;
+    width: max-content;
     height: 100%;
     color: white;
     text-align: center;
@@ -63,6 +63,11 @@ body {
     font-weight: 600;
     transition: all 0.1s ease;
   }
+  .header-main-nav a img{
+    width: 20px ;
+    height: 20px;
+    position: relative;
+}
 /* Styling for navigation links on hover */
   .header-main-nav a:hover{
     color: #ff9600;
@@ -97,11 +102,16 @@ body {
     border-radius: 10px;
     background-color: #ffffff;
 }
+/* Styling for the mobile menu button */
 .header-main-menu{
     display: none;
     z-index: 2;
 }
-/* Styling for the mobile menu button */
+.header-main-menu ul a img{
+    width: 20px;
+    height: 20px;
+    position: relative;
+}
 .header-main-menu-button{
     width: 0;
     height: 0;
@@ -252,7 +262,7 @@ body {
         top: 90px;
         background-color: #ffffff;
         z-index: 2;
-        display: block;
+        display: none;
     }
     .header-main-menu ul{
         width: 100%;
@@ -276,10 +286,10 @@ body {
     .header-main-menu ul li a{
         width: 100%;
         height: 100%;
-        padding: 10px 0;
+        padding: 15px 0;
         padding-left: 20px ;
         color: rgb(53,53,53);
-        font-size: 20px;
+        font-size: 25px;
         text-align: left;
         text-decoration: none;
 
