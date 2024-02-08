@@ -376,7 +376,7 @@ const quizData = [
       "clarity"
     ]
   },
-  c
+  /* Addition Questions */
   {
     "Quiz": "Addition",
     "number": 1,

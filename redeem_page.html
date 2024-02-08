@@ -4,38 +4,51 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Big Brain</title>
+    <!-- External CSS -->
     <link rel="stylesheet" href = "styling.css">
+      <!--BookStrap Link-->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat&family=Oswald:wght@200;300&family=Playpen+Sans:wght@500&family=Poppins&family=Ubuntu:wght@500&display=swap" rel="stylesheet">
+      <!-- Lottie Link-->
     <script src="https://unpkg.com/@dotlottie/player-component@latest/dist/dotlottie-player.mjs" type="module"></script> 
     <!-- Link to Font Awesome for icons -->
     <script src="https://kit.fontawesome.com/543bcc20b3.js" crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"/>
 </head>
 <body>
       <!-- Header section with logo, title, and search bar -->
       <header class="header-main">
-        
+          <!-- Navigation container -->
         <nav class="header-main-navigation-container">
+             <!-- Menu button -->
             <div class="header-main-menu-button">
             </div>
+            <!-- Logo animation -->
             <dotlottie-player src="https://lottie.host/c8de3e83-6ad0-4247-93a0-cbdcd42610b1/IeCb6wJM4Z.json" background="transparent" speed="1" style="width: 150px; height: 150px;" loop autoplay></dotlottie-player>
+             <!-- Main navigation links -->
             <div class="header-main-nav">
+                 <!-- Title/logo -->
                 <a href="index.html"><h1 class="header-main-title">Big Brain</h1></a>
+                   <!-- Navigation menu -->
                 <ul>
+                    <!-- Redemption link with dynamic Vbucks count -->
                     <li>
                         <a href="redeem_page.html">Redeemption (<label class="header-main-vbucks"></label> Vbucks)</a>
                     </li>
                 </ul>
             </div>
         </nav>
+          <!-- Icon to toggle mobile search -->
         <div class="search_icon" onclick="toggleMobileSearch()">
         </div>
+         <!-- Main header search bar -->
         <div class="main-header-search">
+              <!-- Search input field -->
             <input type="text" id="mySearch" oninput="myFunction()" placeholder="Search">
+             <!-- Search result menu -->
             <ul id="myMenu">
+                 <!-- Various quiz categories -->
                 <li><a href="#math_quiz_category">Math</a></li>
                 <li><a href="#science_quiz_category">Science</a></li>
                 <li><a href="#english_quiz_category">English</a></li>
@@ -47,162 +60,192 @@
             </ul>
         </div>
     </header>
+     <!-- Main menu navigation -->
     <nav class="header-main-menu">
         <ul>
             <li>
+                 <!-- Redemption link with dynamic Vbucks count -->
                 <a href="redeem_page.html">Redeemption (<label class="header-main-vbucks"></label> Vbucks)</a>
             </li>
             <li>
+                   <!-- Log out link -->
                 <a href="login_page.html">Log Out</a>
             </li>
         </ul>
     </nav>
     
-        <!-- Redemption -->
+    <!-- Redemption -->
     <section class="Redemption-page-section" id = "redemption-section">
         <div class="container">
-               <!-- 01 English -->
-                <div class= "header_quiz_category">
-                    <h1 class="text-centre mb-4 category_title" id = "quiz_title">Redemption</h1>
-                </div>         
-                <div class="row">
-                    <div class="col-md-3">
-                        <div class="card" id="phone-case-card">
-                            <img src="Photos/phone_case.jpg" class="card-img-top" alt="Phone Case">
-                            <div class="card-body">
-                                <h5 class="card-text">Big Brain Phone Case</h5>
-                            </div>
-                            <div class="card-footer">
-                                <div class="vbucks-info">
-                                    <img src="Photos/vbucks.png" alt="VBucks Image">
-                                    <span class="vbucks-number">1000 vbucks</span>
-                                </div>
-                                <button class="btn btn-hover open-redemption-pop-up " data-popup-target="#pop_up"  data-required-vbucks ="1000">Redeem</button>
-                            </div>
+            <!-- Header for redemption category -->
+            <div class= "header_quiz_category">
+                <h1 class="text-centre mb-4 category_title">Redemption</h1>
+            </div>     
+            <!-- Redemption items -->    
+            <div class="row">
+                <!-- Each card represents a redemption item -->
+                <div class="col-md-3">
+                    <div class="card" id="phone-case-card">
+                        <img src="Photos/phone_case.jpg" class="card-img-top" alt="Phone Case">
+                        <div class="card-body">
+                            <h5 class="card-text">Big Brain Phone Case</h5>
                         </div>
-                    </div>
-                    <div class="col-md-3">
-                        <div class="card" id="laptop-sleeve-card">
-                            <img src="Photos/laptop_sleeve.jpg" class="card-img-top" alt="Lapptop sleeve Image">
-                            <div class="card-body">
-                                <h5 class="card-text">Smarty Laptop sleeve </h5>
+                        <div class="card-footer">
+                             <!-- VBucks info -->
+                            <div class="vbucks-info">
+                                <img src="Photos/vbucks.png" alt="VBucks Image">
+                                <span class="vbucks-number">1000 vbucks</span>
                             </div>
-                            <div class="card-footer">
-                                <div class="vbucks-info">
-                                    <img src="Photos/vbucks.png" alt="VBucks Image">
-                                    <span class="vbucks-number">500 vbucks</span>
-                                </div>
-                                <button class="btn btn-hover open-redemption-pop-up" data-popup-target="#pop_up"  data-required-vbucks="500">Redeem</button>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-3">
-                        <div class="card" id="keychain-card">
-                            <img src="Photos/keychain.jpg" class="card-img-top" alt="Keychain Image">
-                            <div class="card-body">
-                                <h5 class="card-text">Brainy Keychain</h5>
-                            </div>
-                            <div class="card-footer">
-                                <div class="vbucks-info">
-                                    <img src="Photos/vbucks.png" alt="VBucks Image">
-                                    <span class="vbucks-number">300 vbucks</span>
-                                </div>
-                                <button class="btn btn-hover open-redemption-pop-up" data-popup-target="#pop_up"  data-required-vbucks="300">Redeem</button>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-3">
-                        <div class="card" id="mug-card">
-                            <img src="Photos/mug.jpg" class="card-img-top" alt="Mug Image">
-                            <div class="card-body">
-                                <h5 class="card-text">Big Mug</h5>
-                            </div>
-                            <div class="card-footer">
-                                <div class="vbucks-info">
-                                    <img src="Photos/vbucks.png" alt="VBucks Image">
-                                    <span class="vbucks-number">600 vbucks</span>
-                                </div>
-                                <button class="btn btn-hover open-redemption-pop-up" data-popup-target="#pop_up"  data-required-vbucks="600">Redeem</button>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-3">
-                        <div class="card" id="pencilcase-card">
-                            <img src="Photos/pencilcase.jpg" class="card-img-top" alt="pencilcase Image">
-                            <div class="card-body">
-                                <h5 class="card-text">Brainy Pencil</h5>
-                            </div>
-                            <div class="card-footer">
-                                <div class="vbucks-info">
-                                    <img src="Photos/vbucks.png" alt="VBucks Image">
-                                    <span class="vbucks-number">200 vbucks</span>
-                                </div>
-                                <button class="btn btn-hover open-redemption-pop-up" data-popup-target="#pop_up"  data-required-vbucks="200">Redeem</button>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-3">
-                        <div class="card" id="notebook-card">
-                            <img src="Photos/notebook.jpg" class="card-img-top" alt="notebook Image">
-                            <div class="card-body">
-                                <h5 class="card-text"> Exclusive Big Brain notebook</h5>
-                            </div>
-                            <div class="card-footer">
-                                <div class="vbucks-info">
-                                    <img src="Photos/vbucks.png" alt="VBucks Image">
-                                    <span class="vbucks-number">300 vbucks</span>
-                                </div>
-                                <button class="btn btn-hover open-redemption-pop-up" data-popup-target="#pop_up"  data-required-vbucks="300">Redeem</button>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-3">
-                        <div class="card" id="waterbottle-card">
-                            <img src="Photos/waterbottle.jpg" class="card-img-top" alt="Waterbottle Image">
-                            <div class="card-body">
-                                <h5 class="card-text"> Water Bottle </h5>
-                            </div>
-                            <div class="card-footer">
-                                <div class="vbucks-info">
-                                    <img src="Photos/vbucks.png" alt="VBucks Image">
-                                    <span class="vbucks-number">600 vbucks</span>
-                                </div>
-                                <button class="btn btn-hover open-redemption-pop-up" data-popup-target="#pop_up"  data-required-vbucks="600">Redeem</button>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-3">
-                        <div class="card" id="bag-card">
-                            <img src="Photos/bag.jpg" class="card-img-top" alt="Bag Image">
-                            <div class="card-body">
-                                <h5 class="card-text">Big Brain Bag</h5>
-                            </div>
-                            <div class="card-footer">
-                                <div class="vbucks-info">
-                                    <img src="Photos/vbucks.png" alt="VBucks Image">
-                                    <span class="vbucks-number">400 vbucks</span>
-                                </div>
-                                <button class="btn btn-hover open-redemption-pop-up" data-popup-target="#pop_up"  data-required-vbucks="400">Redeem</button>
-                            </div>
+                            <!-- Redeem button -->
+                            <button class="btn btn-hover open-redemption-pop-up " data-popup-target="#pop_up"  data-required-vbucks ="1000">Redeem</button>
                         </div>
                     </div>
                 </div>
+                <!-- Each card represents a redemption item -->
+                <div class="col-md-3">
+                    <div class="card" id="laptop-sleeve-card">
+                        <img src="Photos/laptop_sleeve.jpg" class="card-img-top" alt="Lapptop sleeve Image">
+                        <div class="card-body">
+                            <h5 class="card-text">Smarty Laptop sleeve </h5>
+                        </div>
+                        <div class="card-footer">
+                             <!-- VBucks info -->
+                            <div class="vbucks-info">
+                                <img src="Photos/vbucks.png" alt="VBucks Image">
+                                <span class="vbucks-number">500 vbucks</span>
+                            </div>
+                            <!-- Redeem button -->
+                            <button class="btn btn-hover open-redemption-pop-up" data-popup-target="#pop_up"  data-required-vbucks="500">Redeem</button>
+                        </div>
+                    </div>
+                </div>
+                <!-- Each card represents a redemption item -->
+                <div class="col-md-3">
+                    <div class="card" id="keychain-card">
+                        <img src="Photos/keychain.jpg" class="card-img-top" alt="Keychain Image">
+                        <div class="card-body">
+                            <h5 class="card-text">Brainy Keychain</h5>
+                        </div>
+                        <div class="card-footer">
+                             <!-- VBucks info -->
+                            <div class="vbucks-info">
+                                <img src="Photos/vbucks.png" alt="VBucks Image">
+                                <span class="vbucks-number">300 vbucks</span>
+                            </div>
+                            <!-- Redeem button -->
+                            <button class="btn btn-hover open-redemption-pop-up" data-popup-target="#pop_up"  data-required-vbucks="300">Redeem</button>
+                        </div>
+                    </div>
+                </div>
+                <!-- Each card represents a redemption item -->
+                <div class="col-md-3">
+                    <div class="card" id="mug-card">
+                        <img src="Photos/mug.jpg" class="card-img-top" alt="Mug Image">
+                        <div class="card-body">
+                            <h5 class="card-text">Big Mug</h5>
+                        </div>
+                        <div class="card-footer">
+                             <!-- VBucks info -->
+                            <div class="vbucks-info">
+                                <img src="Photos/vbucks.png" alt="VBucks Image">
+                                <span class="vbucks-number">600 vbucks</span>
+                            </div>
+                            <!-- Redeem button -->
+                            <button class="btn btn-hover open-redemption-pop-up" data-popup-target="#pop_up"  data-required-vbucks="600">Redeem</button>
+                        </div>
+                    </div>
+                </div>
+                <!-- Each card represents a redemption item -->
+                <div class="col-md-3">
+                    <div class="card" id="pencilcase-card">
+                        <img src="Photos/pencilcase.jpg" class="card-img-top" alt="pencilcase Image">
+                        <div class="card-body">
+                            <h5 class="card-text">Brainy Pencil</h5>
+                        </div>
+                        <div class="card-footer">
+                             <!-- VBucks info -->
+                            <div class="vbucks-info">
+                                <img src="Photos/vbucks.png" alt="VBucks Image">
+                                <span class="vbucks-number">200 vbucks</span>
+                            </div>
+                            <!-- Redeem button -->
+                            <button class="btn btn-hover open-redemption-pop-up" data-popup-target="#pop_up"  data-required-vbucks="200">Redeem</button>
+                        </div>
+                    </div>
+                </div>
+                <!-- Each card represents a redemption item -->
+                <div class="col-md-3">
+                    <div class="card" id="notebook-card">
+                        <img src="Photos/notebook.jpg" class="card-img-top" alt="notebook Image">
+                        <div class="card-body">
+                            <h5 class="card-text"> Exclusive Big Brain notebook</h5>
+                        </div>
+                        <div class="card-footer">
+                             <!-- VBucks info -->
+                            <div class="vbucks-info">
+                                <img src="Photos/vbucks.png" alt="VBucks Image">
+                                <span class="vbucks-number">300 vbucks</span>
+                            </div>
+                            <!-- Redeem button -->
+                            <button class="btn btn-hover open-redemption-pop-up" data-popup-target="#pop_up"  data-required-vbucks="300">Redeem</button>
+                        </div>
+                    </div>
+                </div>
+                <!-- Each card represents a redemption item -->
+                <div class="col-md-3">
+                    <div class="card" id="waterbottle-card">
+                        <img src="Photos/waterbottle.jpg" class="card-img-top" alt="Waterbottle Image">
+                        <div class="card-body">
+                            <h5 class="card-text"> Water Bottle </h5>
+                        </div>
+                        <div class="card-footer">
+                             <!-- VBucks info -->
+                            <div class="vbucks-info">
+                                <img src="Photos/vbucks.png" alt="VBucks Image">
+                                <span class="vbucks-number">600 vbucks</span>
+                            </div>
+                            <!-- Redeem button -->
+                            <button class="btn btn-hover open-redemption-pop-up" data-popup-target="#pop_up"  data-required-vbucks="600">Redeem</button>
+                        </div>
+                    </div>
+                </div>
+                <!-- Each card represents a redemption item -->
+                <div class="col-md-3">
+                    <div class="card" id="bag-card">
+                        <img src="Photos/bag.jpg" class="card-img-top" alt="Bag Image">
+                        <div class="card-body">
+                            <h5 class="card-text">Big Brain Bag</h5>
+                        </div>
+                        <div class="card-footer">
+                             <!-- VBucks info -->
+                            <div class="vbucks-info">
+                                <img src="Photos/vbucks.png" alt="VBucks Image">
+                                <span class="vbucks-number">400 vbucks</span>
+                            </div>
+                            <!-- Redeem button -->
+                            <button class="btn btn-hover open-redemption-pop-up" data-popup-target="#pop_up"  data-required-vbucks="400">Redeem</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </section>
-     
+     <!-- Redemption pop-up -->
     <div class="pop-up" id="redemption-pop-up">
         <div class="pop-up-content">
+            <!-- Close button for the pop-up -->
             <span class="close-button" id="close-redemption-pop-up">&times;</span>
+             <!-- Redemption status image -->
             <div id = "redemption-status-img"></div>
+            <!-- Redemption status message -->
             <div id="redemption-status-message">
             </div>
         </div>
     </div>
+    <!-- Redemption overlay -->
     <div id = "redemption-overlay"></div>
      
     <footer class="main-footer-container">
-
-
         <!--Site Map-->
         <ul class="ul-nostyle" id="main-footer-sitemap">
             <li>Category</li>
@@ -238,7 +281,6 @@
         <!-- Download App Ends Here -->
 
     </footer>
-     
     <script>
 
         const url2 = "https://fedassignment-85eb.restdb.io/rest/account";
@@ -376,9 +418,6 @@
             redemptionPopUp.classList.remove('active');
             overlay.classList.remove('active');
         });
-
-
-
     </script>
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>

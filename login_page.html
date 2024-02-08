@@ -3,65 +3,36 @@
 <head>
     <meta charset="UTF-8">
     <title>Login Page</title>
+     <!--Styling Link-->
     <link rel="stylesheet" href="styling.css">
+    <!--BookStrap Link-->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+     <!--Font Awesome Link-->
     <script src="https://kit.fontawesome.com/cc3cb1dbea.js" crossorigin="anonymous"></script>
+      <!-- Lottie Link-->
     <script src="https://unpkg.com/@dotlottie/player-component@latest/dist/dotlottie-player.mjs" type="module"></script> 
-
-<style>
-
-        @media screen and (max-width: 768px) {
-            .login-page-logo-content {
-                width: fit-content;
-                height: fit-content;
-            }
-            .login-page-content1 {
-                padding: 15%;
-                height: fit-content;
-                flex-direction: column;
-            }
-            .form-container {
-                width: 100%;
-                height: fit-content;
-                padding: 20px;
-            }
-        }
-        @media screen and (max-width: 576px) {
-            .login-page-content1 {
-                padding: 10%;
-                height: fit-content;
-                flex-direction: column;
-            }
-            
-            
-            .form-remember-forget{
-                display: flex;
-                flex-direction: column;
-            }
-            
-        }
-        
-    </style>
-</head>
 <body>
-    
-
-    <article class="login-page-content1">
+    <!-- This article contains the login page content -->
+    <article class="login-page-content1">   
+        <!-- Section for the logo and welcome message -->
         <section class="login-page-logo-content">
+             <!-- Big Brian logo with animation -->
             <h1>Big Brian</h1>
+              <!-- Welcome message -->
             <dotlottie-player src="https://lottie.host/c8de3e83-6ad0-4247-93a0-cbdcd42610b1/IeCb6wJM4Z.json" background="transparent" speed="1" loop autoplay></dotlottie-player>
             <h3 style="color: #FFA732; text-align: center;">Start your day by learning something new with us!!!</h3>
         </section>
-        
-        
+          <!-- Section for the login and sign up forms -->
         <section class="form-container">
+             <!-- Login Form Container -->
             <div id="form-container-login">
-               
+                 <!-- Placeholder for the login animation -->
                 <div class="lottie-player" id="login-lottie-player"></div>
-
+                 <!-- Login form title -->
                 <h1>Login</h1>
+                  <!-- Username input field -->
                 <form id="login-form">
-                    
+
                     <div>
                         <div class="form-floating col-12 ">
                             <input type="text" id="login-username" name="login-username" class="form-control" 
@@ -69,9 +40,10 @@
                             <label for="login-username">Username</label>
                             <i class="fa-solid fa-user"></i>
                         </div>
+                         <!-- Error message for username -->
                         <p id="login-username-error">Error Message</p>
                     </div>
-                    
+                     <!-- Password input field -->
                     <div>
                         <div class="form-floating col-12">
                             <input type="password" id="login-password" name="login-password" class="form-control"
@@ -79,29 +51,31 @@
                             <label for="login-password">Password</label>
                             <i class="fa-solid fa-lock"></i>
                         </div>
+                         <!-- Error message for password -->
                         <p id="login-password-error">Error Message</p>
                     </div>
-        
+                    <!-- Remember me and Forget password links -->
                     <div class="form-remember-forget">
                         <label><input type="checkbox">Remember me</label>
                         <a href="#">Forget Password?</a>
                     </div>
-                    
+                     <!-- Login button -->
                     <button type="submit" id="login-submit" class="btn col-12">Login</button>
-    
+                    <!-- Signup link -->
                     <div id="login-signup">
                         <p>Don't have an account? <a href="" id="signup-link">Sign up</a></p>
                     </div>
                 </form>
             </div>
-
+            <!-- Signup Form Container -->
             <div id="form-container-signup">
-
+                 <!-- Placeholder for the signup animation -->
                 <div class="lottie-player" id="signup-lottie-player"></div>
-
+                 <!-- Signup form title -->
                 <h1>Sign Up</h1>
+                  <!-- Signup form -->
                 <form id="signup-form">
-                    
+                      <!-- Username input field -->
                     <div>
                         <div class="form-floating col-12">
                             <input type="text" id="signup-username" name="signup-username" class="form-control" 
@@ -109,9 +83,10 @@
                             <label for="signup-username">Username</label>
                             <i class="fa-solid fa-user"></i>
                         </div>
+                            <!-- Error message for username -->
                         <p id="signup-username-error">Error Message</p>
                     </div>
-                    
+                     <!-- Password input field -->
                     <div>
                         <div class="form-floating col-12">
                             <input type="password" id="signup-password" name="signup-password"  class="form-control"
@@ -119,26 +94,23 @@
                             <label for="signup-password">Password</label>
                             <i class="fa-solid fa-lock"></i>
                         </div>
+                         <!-- Error message for password -->
                         <p id="signup-password-error">Error Message</p>
                     </div>
-
+                    <!-- Agree to terms and conditions checkbox -->
                     <div class="form-remember-forget">
                         <label><input type="checkbox">Agree to terms and conditions</label>
                     </div>
-                    
+                    <!-- Signup button -->
                     <button type="submit" id="signup-submit" class="btn col-12">Sign Up</button>
-    
+                    <!-- Login link -->
                     <div id="login-signup">
                         <p>Already have an account? <a id="login-link">Login</a></p>
                     </div>
                 </form>
             </div>
         </section>
-
     </article>
-    <footer>
-        
-    </footer>
    
     <script>
 

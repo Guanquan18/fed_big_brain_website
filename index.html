@@ -4,14 +4,18 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Big Brain</title>
+      <!--Stylinf Link-->
     <link rel="stylesheet" href = "styling.css">
+     <!--BookStrap Link-->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat&family=Oswald:wght@200;300&family=Playpen+Sans:wght@500&family=Poppins&family=Ubuntu:wght@500&display=swap" rel="stylesheet">
+     <!-- Lottie Link-->
     <script src="https://unpkg.com/@dotlottie/player-component@latest/dist/dotlottie-player.mjs" type="module"></script> 
-    <!-- Link to Font Awesome for icons -->
+    <!--Font Awesome Link-->
     <script src="https://kit.fontawesome.com/543bcc20b3.js" crossorigin="anonymous"></script>
+      <!--BookStrap swipper js Link-->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"/>
 </head>
 <body>
@@ -21,27 +25,37 @@
     </section>
 
     <!-- Header section with logo, title, and search bar -->
-    
     <header class="header-main">
-        
+            <!-- Navigation container -->
         <nav class="header-main-navigation-container">
+             <!-- Menu button -->
             <div class="header-main-menu-button">
             </div>
+             <!-- Logo animation -->
             <dotlottie-player src="https://lottie.host/c8de3e83-6ad0-4247-93a0-cbdcd42610b1/IeCb6wJM4Z.json" background="transparent" speed="1" style="width: 150px; height: 150px;" loop autoplay></dotlottie-player>
+            <!-- Main navigation links -->
             <div class="header-main-nav">
+                 <!-- Title/logo -->
                 <a href="index.html"><h1 class="header-main-title">Big Brain</h1></a>
+                  <!-- Navigation menu -->
                 <ul>
+                     <!-- Redemption link with dynamic Vbucks count -->
                     <li>
                         <a href="redeem_page.html">Redeemption (<label class="header-main-vbucks"></label> Vbucks)</a>
                     </li>
                 </ul>
             </div>
         </nav>
+        <!-- Icon to toggle mobile search -->
         <div class="search_icon" onclick="toggleMobileSearch()">
         </div>
+        <!-- Main header search bar -->
         <div class="main-header-search">
+             <!-- Search input field -->
             <input type="text" id="mySearch" oninput="myFunction()" placeholder="Search">
+            <!-- Search result menu -->
             <ul id="myMenu">
+                 <!-- Various quiz categories -->
                 <li><a href="#math_quiz_category">Math</a></li>
                 <li><a href="#science_quiz_category">Science</a></li>
                 <li><a href="#english_quiz_category">English</a></li>
@@ -53,12 +67,16 @@
             </ul>
         </div>
     </header>
+    <!-- Main menu navigation -->
     <nav class="header-main-menu">
+        <!-- Menu items -->
         <ul>
+             <!-- Redemption link with dynamic Vbucks count -->
             <li>
                 <a href="redeem_page.html">Redeemption (<label class="header-main-vbucks"></label> Vbucks)</a>
             </li>
             <li>
+                  <!-- Log out link -->
                 <a href="login_page.html">Log Out</a>
             </li>
         </ul>
@@ -75,9 +93,9 @@
             <div class="header-main-button">
                 <a href="#quiz_Section">Choose a question <i class="fa-solid fa-chevron-down"></i></a>
             </div>
-                
         </div>
     </section>
+
      <!-- About us  -->
      <section class = "Page_01_about_us">
         <div class = "about_us">
@@ -99,6 +117,7 @@
                 <!-- If we need scrollbar -->
                 <div class="swiper-scrollbar"></div>
             </div>
+              <!--About us text -->
             <div class = "about_us_text">
                 <h1> About Us</h1>
                 <p>
@@ -211,6 +230,7 @@
                     </div>
 
                 </div>
+            </div>
 
                  <!-- 03 Science -->
             <div class="quiz_category" id="science_quiz_category">
@@ -262,20 +282,30 @@
             </div>        
         </div>
     </section>
-     
+     <!-- Pop-up container -->
     <div class = "pop-up" id = "pop_up">
+        <!-- Flex box for pop-up content -->
         <div class = 'pop_up_flex_box'>
+             <!-- Left container for pop-up image -->
             <div class = 'pop_up_left_img_container'>
+                 <!-- Image placeholder for pop-up -->
                 <img id = "pop_up_image" src="" alt = "pop image">
             </div>
+             <!-- Right container for pop-up content -->
             <div class = "pop_up_right_container">
+                  <!-- Pop-up header section -->
                 <div class = "pop_up_header">
+                       <!-- Quiz name/header -->
                     <h1 class = "quiz_name">Header</h1>
+                     <!-- Close button for pop-up -->
                     <button class = "close-button" data-close-button >&times;</button>
                 </div>
+                  <!-- Pop-up body section -->
                <div class = "pop-up-body">
+                  <!-- Pop-up body section -->
                 <h3>Game Rules</h3>
                 <ol>
+                     <!-- List of game rules -->
                     <li>Answer as much questions within 30 seconds.</li>
                     <li>20 points awarded for each correct answer.</li>
                     <li>5 points deducted for wrong answers.</li>
@@ -283,15 +313,15 @@
                     <li>Cannot return to previous questions.</li>
                 </ol>
                </div>
+                <!-- Button to start the quiz -->
                <button class="start-quiz">Start Quiz</button>
             </div>
         </div>
     </div>
+    <!-- Overlay for pop-up -->
     <div id = "overlay"></div>
-
+    
     <footer class="main-footer-container">
-
-
         <!--Site Map-->
         <ul class="ul-nostyle" id="main-footer-sitemap">
             <li>Category</li>
@@ -325,12 +355,10 @@
             <i class="fa-solid fa-qrcode"></i>
         </div>
         <!-- Download App Ends Here -->
-
     </footer>
 
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
      <script>
-
         toggleMobileMenu();
         function toggleMobileMenu(){
             /* Navation menu when device is switched to mobile or tablet */
@@ -351,171 +379,229 @@
             /* End of navation */
         }
         
-        optainVbucks();
-        function optainVbucks() {
-            //var url= "https://fedassignment-5bdb.restdb.io/rest/account"
-            var url2 = "https://fedassignment-85eb.restdb.io/rest/account"
-            var url3 = "https://fedassignment-2f26.restdb.io/rest/account"
+        // optainVbucks();
+        // function optainVbucks() {
+        //     //var url= "https://fedassignment-5bdb.restdb.io/rest/account"
+        //     var url2 = "https://fedassignment-85eb.restdb.io/rest/account"
+        //     var url3 = "https://fedassignment-2f26.restdb.io/rest/account"
 
-            //const APIKEY = "65bde101c029b87c5966cdc6";
-            const APIKEY2 = "65bdfc153339b13e2a73c82b";
-            const APIKEY3 = "65c3bf2570dd296a0c2630f3";
+        //     //const APIKEY = "65bde101c029b87c5966cdc6";
+        //     const APIKEY2 = "65bdfc153339b13e2a73c82b";
+        //     const APIKEY3 = "65c3bf2570dd296a0c2630f3";
 
-            let vbucksPlaceHolder = document.querySelectorAll(".header-main-vbucks")
-            var username = sessionStorage.getItem("username");
-            var userId = null
+        //     let vbucksPlaceHolder = document.querySelectorAll(".header-main-vbucks")
+        //     var username = sessionStorage.getItem("username");
+        //     var userId = null
 
-            let settings = {
-                method: "GET",
-                headers: {
-                    "Content-Type": "application/json",
-                    "x-apikey": APIKEY3,
-                    "Cache-Control": "no-cache"
-                },
-            }
+        //     let settings = {
+        //         method: "GET",
+        //         headers: {
+        //             "Content-Type": "application/json",
+        //             "x-apikey": APIKEY3,
+        //             "Cache-Control": "no-cache"
+        //         },
+        //     }
 
-            fetch(url3, settings)
-                .then(response => response.json())
-                .then(response => {
-                    console.log(response);
-                    response.forEach(res => {
-                        if (res.username === username){
-                            userId = res._id
-                            vbucksPlaceHolder.forEach(vb => {
-                                vb.textContent = res.vbucks
-                            })
-                        }
-                    });
-                })
-                .catch(error => {
-                    console.log(error);
-                });
-        }
+        //     fetch(url3, settings)
+        //         .then(response => response.json())
+        //         .then(response => {
+        //             console.log(response);
+        //             response.forEach(res => {
+        //                 if (res.username === username){
+        //                     userId = res._id
+        //                     vbucksPlaceHolder.forEach(vb => {
+        //                         vb.textContent = res.vbucks
+        //                     })
+        //                 }
+        //             });
+        //         })
+        //         .catch(error => {
+        //             console.log(error);
+        //         });
+        // }
 
         const swiper = new Swiper('.swiper', {
-    // Optional parameters
-    autoplay: {
-        delay: 5000,
-        disableOnInteraction: false,
-    },
-    loop: true,
+        // Optional parameters
+        autoplay: {
+            delay: 5000,
+            disableOnInteraction: false,
+        },
+        loop: true,
 
-    // If we need pagination
-    pagination: {
-        el: '.swiper-pagination',
-        clickable: true,
-    },
+        // If we need pagination
+        pagination: {
+            el: '.swiper-pagination',
+            clickable: true,
+        },
 
-    // Navigation arrows
-    navigation: {
-        nextEl: '.swiper-button-next',
-        prevEl: '.swiper-button-prev',
-    },
-});
+        // Navigation arrows
+        navigation: {
+            nextEl: '.swiper-button-next',
+            prevEl: '.swiper-button-prev',
+        },
+        });
 
-// Add event listener to each image
-const swiperImages = document.querySelectorAll('.swiper-slide img');
-swiperImages.forEach(img => {
-    img.addEventListener('click', () => {
-        if (swiper.autoplay.running) {
-            swiper.autoplay.stop();
-        } else {
-            swiper.autoplay.start();
-        }
-    });
-});
-const swiperContainer = document.querySelector('.swiper');
-swiperContainer.addEventListener('click', (event) => {
-    if (!event.target.closest('.swiper-slide')) {
-        swiper.autoplay.start();
-    }
-});
+        // Add event listener to each image
+        const swiperImages = document.querySelectorAll('.swiper-slide img');
+        swiperImages.forEach(img => {
+            img.addEventListener('click', () => {
+                if (swiper.autoplay.running) {
+                    swiper.autoplay.stop();
+                } else {
+                    swiper.autoplay.start();
+                }
+            });
+        });
+        const swiperContainer = document.querySelector('.swiper');
+        swiperContainer.addEventListener('click', (event) => {
+            if (!event.target.closest('.swiper-slide')) {
+                swiper.autoplay.start();
+            }
+        });
 
         document.addEventListener('click', function (event) {
-    // Close the list if clicking outside the input, the list itself, or the search icon
-    if (!event.target.closest('.main-header-search') && !event.target.closest('#myMenu') && !event.target.closest('.search_icon')) {
-        document.getElementById('myMenu').style.display = 'none';
-        document.getElementById('mySearch').style.display = 'none';
-        document.querySelector(".main-header-search").style.display = 'none';
-        document.querySelector(".search_icon").style.display = 'block';
-    }
-});
-
-    document.querySelector('.index-page-loading-lottie-player dotlottie-player').addEventListener('complete', function () {
-        document.querySelector('.index-page-loading-lottie-player').style.display = 'none';
-    });
-        document.addEventListener('click', function (event) {
-    // Close the list if clicking outside the input or the list itself
-    if (!event.target.closest('.main-header-search') && !event.target.closest('#myMenu')) {
-        document.getElementById('myMenu').style.display = 'none';
-    }
-    });
-
-    function myFunction() {
-        var input, filter, ul, li, a, i;
-        input = document.getElementById("mySearch");
-        filter = input.value.toUpperCase();
-        ul = document.getElementById("myMenu");
-        li = ul.getElementsByTagName("li");
-
-    // Display the list
-     ul.style.display = "Block";
-
-    // Loop through all list items, and hide/show those who don't match the search query
-    for (i = 0; i < li.length; i++) {
-        a = li[i].getElementsByTagName("a")[0];
-        if (a.innerHTML.toUpperCase().indexOf(filter) > -1) {
-            li[i].style.display = "block";
-        } else {
-            li[i].style.display = "none";
-        }
-    }
-    }
-    var listItems = document.querySelectorAll('#myMenu li');
-        listItems.forEach(function (item) {
-        item.addEventListener('click', function () {
-            document.getElementById('mySearch').value = '';
+        // Close the list if clicking outside the input, the list itself, or the search icon
+        if (!event.target.closest('.main-header-search') && !event.target.closest('#myMenu') && !event.target.closest('.search_icon')) {
             document.getElementById('myMenu').style.display = 'none';
-            var listItems = document.querySelectorAll('#myMenu li');
-    listItems.forEach(function(item, index) {
-   if (index === listItems.length - 1) {
-            item.style.borderBottomLeftRadius = "10px";
-            item.style.borderBottomRightRadius = "10px";
+            document.getElementById('mySearch').style.display = 'none';
+            document.querySelector(".main-header-search").style.display = 'none';
+            document.querySelector(".search_icon").style.display = 'block';
         }
-    });
-        });
         });
 
-    function toggleMobileSearch() {
-    var searchInput = document.getElementById("mySearch");
-    var myMenu = document.getElementById("myMenu");
-    var searchbar = document.querySelector(".main-header-search")
-    var icon = document.querySelector(".search_icon")
-    if (searchInput.style.display === "none" || searchInput.style.display === "") {
-        searchInput.style.display = "block";
-        myMenu.style.display = "block";
-        searchbar.style.display = "block";
-        icon.style.display = "none";
-        searchInput.style.transform = "scale(1)";
-        myMenu.style.opacity = "1";
-        myMenu.style.transform = "translateY(0)";
-    } else {
-        searchInput.style.display = "none";
-        myMenu.style.display = "none";
+        document.querySelector('.index-page-loading-lottie-player dotlottie-player').addEventListener('complete', function () {
+            document.querySelector('.index-page-loading-lottie-player').style.display = 'none';
+        });
+            document.addEventListener('click', function (event) {
+        // Close the list if clicking outside the input or the list itself
+        if (!event.target.closest('.main-header-search') && !event.target.closest('#myMenu')) {
+            document.getElementById('myMenu').style.display = 'none';
+        }
+        });
+
+        function myFunction() {
+            var input, filter, ul, li, a, i;
+            input = document.getElementById("mySearch");
+            filter = input.value.toUpperCase();
+            ul = document.getElementById("myMenu");
+            li = ul.getElementsByTagName("li");
+
+        // Display the list
+        ul.style.display = "Block";
+
+        // Loop through all list items, and hide/show those who don't match the search query
+        for (i = 0; i < li.length; i++) {
+            a = li[i].getElementsByTagName("a")[0];
+            if (a.innerHTML.toUpperCase().indexOf(filter) > -1) {
+                li[i].style.display = "block";
+            } else {
+                li[i].style.display = "none";
+            }
+        }
+        }
+        // Function to handle click events on menu items
+        var listItems = document.querySelectorAll('#myMenu li');
+            listItems.forEach(function (item) {
+            item.addEventListener('click', function () {
+                document.getElementById('mySearch').value = '';
+                document.getElementById('myMenu').style.display = 'none';
+                var listItems = document.querySelectorAll('#myMenu li');
+        listItems.forEach(function(item, index) {
+        if (index === listItems.length - 1) {
+                    item.style.borderBottomLeftRadius = "10px";
+                    item.style.borderBottomRightRadius = "10px";
+                }
+            });
+            });
+            });
+        // Function to toggle mobile search bar visibility
+        function toggleMobileSearch() {
+        var searchInput = document.getElementById("mySearch");
+        var myMenu = document.getElementById("myMenu");
+        var searchbar = document.querySelector(".main-header-search")
+        var icon = document.querySelector(".search_icon")
+        if (searchInput.style.display === "none" || searchInput.style.display === "") {
+             // Display search bar and menu, hide icon
+            searchInput.style.display = "block";
+            myMenu.style.display = "block";
+            searchbar.style.display = "block";
+            icon.style.display = "none";
+            // Apply animations
+            searchInput.style.transform = "scale(1)";
+            myMenu.style.opacity = "1";
+            myMenu.style.transform = "translateY(0)";
+              // Hide search bar and menu
+        } else {
+            searchInput.style.display = "none";
+            myMenu.style.display = "none";
+        }
+        console.log("Toggling mobile search...");   
     }
-    console.log("Toggling mobile search...");
-    
-}
+    // Event listeners for pop-up opening and closing
+    const openPopButtons = document.querySelectorAll('[data-popup-target]');
+    const closePopButtons = document.querySelectorAll('[data-close-button]');
+    const overlay = document.getElementById('overlay');
+    const popupImage = document.querySelector('#pop_up_image');
+    const popupTitle = document.querySelector('.quiz_name');
+    const startQuizButton = document.querySelector('.start-quiz');
+    // Function to handle opening pop-up
+    openPopButtons.forEach(button=>{
+        button.addEventListener('click',() =>{
+            const popup = document.querySelector(button.dataset.popupTarget)
+            const quizTitle = button.dataset.quizTitle;
+            const quizImage = button.dataset.quizImage;
+        
+                // Set the content for the popup
+            popupTitle.textContent = quizTitle;
+            popupImage.src = quizImage;
+            openpopup(popup)
+        })
+    })
+    // Function to handle closing pop-up
+    closePopButtons.forEach(button=>{
+        button.addEventListener('click',() =>{
+            const popup = button.closest('.pop-up')
+            closepopup(popup)
+        })
+    })
+    // Function to open a pop-up
+    function openpopup(modal){
+        if (modal == null) return
+        modal.classList.add('active')
+        overlay.classList.add('active')
+    }
+    // Function to close a pop-up
+    function closepopup(modal){
+        if (modal == null) return
+        modal.classList.remove('active')
+        overlay.classList.remove('active')
+    }
+    // Event listener for overlay click to close pop-up
+    overlay.addEventListener('click',() =>{
+        const modals =document.querySelectorAll('.pop-up.active')
+        modals.forEach(modal => {
+            closepopup(modal)
+        })
+    })
+    // Event listener for starting quiz
+    startQuizButton.addEventListener('click', () => {
+        const quizCategory = popupTitle.textContent;
 
+        // Find the selected quiz questions based on the quiz category
+        const selectedQuizQuestions = quizData.filter(question => question.Quiz === quizCategory);
 
+        if (selectedQuizQuestions.length > 0) {
+            // Save the selected quiz questions to localStorage
+            localStorage.setItem('quizQuestions', JSON.stringify(selectedQuizQuestions));
+        } else {
+            console.error('Selected quiz questions not found.');
+        }
 
-
-
-
-    
+        // Redirect to the quiz page
+        window.location.href = 'loading_page.html';
+    });
     </script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
-    <script src = "javascript.js"></script>
     <script src = "questions.js"></script>
 </body>
 </html>

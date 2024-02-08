@@ -4,209 +4,53 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+      <!-- External CSS -->
     <link rel="stylesheet" href = "styling.css">
+      <!--BookStrap Link-->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat&family=Oswald:wght@200;300&family=Playpen+Sans:wght@500&family=Poppins&family=Ubuntu:wght@500&display=swap" rel="stylesheet">
-    <!-- Link to Font Awesome for icons -->
+      <!--BookStrap swipper js Link-->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"/>
+    <!--Font Awesome Link-->
     <script src="https://kit.fontawesome.com/543bcc20b3.js" crossorigin="anonymous"></script>
+      <!-- Lottie Link-->
     <script src="https://unpkg.com/@dotlottie/player-component@latest/dist/dotlottie-player.mjs" type="module"></script> 
-    <style>
-
-        .leaderboard-header h1{
-            text-align: center;
-            margin-top: 20px;
-            margin-bottom: 20px;
-            color: #711DB0;
-            font-weight: 600;
-        }
-
-        #leaderboard-container{
-            width: 100%;
-            height: 100%;
-            position: relative;
-        }
-
-        #search-input-group{
-            position: relative;
-        }
-
-        #search-input-group input, #search-input-group input:focus{
-            color: #C21292;
-            font-weight: 500;
-        }
-        #search-input-group i{
-            font-size: 17px;
-            color: #711DB0;
-
-            position: absolute;
-            top: 50%;
-            left: calc(100% - 30px);
-            transform: translateY(-50%);
-        }
-        #leaderboard{
-            width: 100%;
-            max-height: 275px;
-            margin: 20px 0;
-            position: relative;
-
-            background-color: rgb(252, 252, 252);
-            border-radius: 12px;
-            box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.1);
-            
-            overflow: auto;
-        }
-        
-        #leaderboard::-webkit-scrollbar{
-            width: 8px;
-            height: 8px;
-        }
-        #leaderboard::-webkit-scrollbar-track{
-            background-color: #d1e5ff;
-        }
-        #leaderboard::-webkit-scrollbar-thumb{
-            background:linear-gradient(#C21292,#FFA732);
-            border-radius: 10px;
-            /* visibility: hidden; */
-        }
-        #leaderboard:hover::-webkit-scrollbar-thumb{
-            visibility: visible ;
-        }
-
-        table{
-            width: 100%;
-            min-width: max-content;
-            max-height: 100px;
-            padding: 10px;
-        }
-        
-        #leaderboard table th, #leaderboard table td{
-            border-collapse: collapse;
-            text-align: left;
-            padding: 10px 20px;
-        }
-
-        #leaderboard thead th{
-            position: sticky;
-            background-color: rgb(110, 39, 224);
-            /* background-color: rgb(170, 117, 255); */
-            color: white;
-            font-size: large;
-        }
-
-        #leaderboard thead tr th i{
-            width:20px;
-            height:20px;
-            padding-top: 3px;
-            font-size: small;
-            text-align: center;
-
-            border-radius: 50%;
-            transition: 0.2s ease-in-out;
-            
-        }
-
-        #leaderboard tbody tr:nth-child(even){
-            background-color: rgb(110, 39, 224,0.03);
-        }
-
-        #leaderboard tbody tr{
-            transition: 0.5s var(--delay) ease-in-out;
-            --delay: 0.1s; 
-        }
-
-        #leaderboard tbody tr.hide{
-            opacity: 0;
-            transition: 0.5s var(--delay) ease-in-out;
-            transform: translateY(100%);
-            width: 0.1px;
-            height: 0.1px;
-        }
-        #leaderboard tbody tr.hide td{
-            
-            transition: all 0.5s ease-in-out 1s;
-        }
-        
-
-        #leaderboard thead th.active{
-            color: #C21292;
-            transition: 0.2s ease-in-out;
-        }
-        #leaderboard thead th.active i{
-            background-color: #b881ff;
-            transition: 0.2s ease-in-out;
-        }
-        #leaderboard thead th.active.asc i{
-            background-color: #b881ff;
-            transform: rotate(90deg);
-            transition: 0.2s ease-in-out;
-        }
-
-        #leaderboard tbody td.active{
-            color: #EF4040;
-            transition: 0.2s ease-in-out;
-        }
-
-        .leaderboard-exit-buttons{
-            display: flex;
-            justify-content: space-around;
-            margin-top: 20px;
-        }
-        .leaderboard-exit-buttons a{
-            width: max-content;
-            color: white;
-            font-size: 20px;
-            background-color: #C21292;
-            transition: all 0.3s ease;
-        }
-        .leaderboard-exit-buttons a:hover{
-            color: white;
-            background-color: #FFA732;
-            box-shadow: 0 5px 7px 0 rgba(0, 0, 0, 0.5);
-            transform: translateY(-5px);
-            transition: all 0.3s ease;
-        }
-
-        #leaderboard-container .lottie-player{
-            width: 100%;
-            height: 100%;
-
-            position: relative;
-            z-index: 1;
-            background-color:transparent;
-
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
-
-
-    </style>
 </head>
-
 <body>
-    <header class="header-main">
-        
+     <!-- Header section with logo, title, and search bar -->
+    <header class="header-main" id = "header-main-leader">
+          <!-- Navigation container -->
         <nav class="header-main-navigation-container">
+              <!-- Menu button -->
             <div class="header-main-menu-button">
             </div>
+             <!-- Logo animation -->
             <dotlottie-player src="https://lottie.host/c8de3e83-6ad0-4247-93a0-cbdcd42610b1/IeCb6wJM4Z.json" background="transparent" speed="1" style="width: 150px; height: 150px;" loop autoplay></dotlottie-player>
+             <!-- Main navigation links -->
             <div class="header-main-nav">
+                  <!-- Title/logo -->
                 <a href="index.html"><h1 class="header-main-title">Big Brain</h1></a>
+                 <!-- Navigation menu -->
                 <ul>
+                    <!-- Redemption link with dynamic Vbucks count -->
                     <li>
                         <a href="redeem_page.html">Redeemption (<label class="header-main-vbucks"></label> Vbucks)</a>
                     </li>
                 </ul>
             </div>
         </nav>
+         <!-- Icon to toggle mobile search -->
         <div class="search_icon" onclick="toggleMobileSearch()">
         </div>
+         <!-- Main header search bar -->
         <div class="main-header-search">
+               <!-- Search input field -->
             <input type="text" id="mySearch" oninput="myFunction()" placeholder="Search">
+            <!-- Search result menu -->
             <ul id="myMenu">
+                 <!-- Various quiz categories -->
                 <li><a href="#math_quiz_category">Math</a></li>
                 <li><a href="#science_quiz_category">Science</a></li>
                 <li><a href="#english_quiz_category">English</a></li>
@@ -218,32 +62,39 @@
             </ul>
         </div>
     </header>
+
+     <!-- Main menu navigation -->
     <nav class="header-main-menu">
+         <!-- Menu items -->
         <ul>
             <li>
+                <!-- Redemption link with dynamic Vbucks count -->
                 <a href="redeem_page.html">Redeemption (<label class="header-main-vbucks"></label> Vbucks)</a>
             </li>
             <li>
+                 <!-- Log out link -->
                 <a href="login_page.html">Log Out</a>
             </li>
         </ul>
     </nav>
-
+    <!-- Leaderboard header section -->
     <section class="leaderboard-header">
         <h1>LeaderBoard</h1>
     </section>
-
+    <!-- Leaderboard container -->
     <article class="container" id="leaderboard-container">
         <div class="col" id="search-input-group">
             <input type="text" class="form-control rounded-4" id="search-input" 
             placeholder="Seach for data....">
             <i class="fa-solid fa-search"></i>
         </div>
-        
+        <!-- Leaderboard section -->
         <section id="leaderboard">
+             <!-- Table for displaying leaderboard data -->
             <table>
                 <thead>
                     <tr>    
+                         <!-- Table headers with sorting icons -->
                         <th> Rank <i class="fa-solid fa-arrow-right fa-rotate-270"></i></th>
                         <th> Username <i class="fa-solid fa-arrow-right fa-rotate-270"></i></th>
                         <th> Quiz <i class="fa-solid fa-arrow-right fa-rotate-270"></i></th>
@@ -251,14 +102,15 @@
                     </tr>
                 </thead>
                 <tbody>
-                    
+                     <!-- Leaderboard data will be inserted dynamically here -->
                 </tbody>
             </table>
         </section>
+         <!-- Lottie animation player for visual appeal -->
         <div class="lottie-player">
             <dotlottie-player src="https://lottie.host/407d3e0c-0d46-422c-a563-db006edae977/fx0bGkmlJO.json" background="transparent" speed="1" style="width: 300px; height: 300px;" loop autoplay></dotlottie-player>
         </div>
-
+        <!-- Exit buttons for leaderboard section -->
         <section class="leaderboard-exit-buttons">
             <a href="quiz_page.html" class="btn col-3">Play Again</a>
             <a href="index.html" class="btn col-3">Back to Home Page</a>
@@ -266,8 +118,6 @@
     </article>
 
     <footer class="main-footer-container">
-
-
             <!--Site Map-->
             <ul class="ul-nostyle" id="main-footer-sitemap">
                 <li>Category</li>
@@ -538,8 +388,6 @@
     //[STEP 8]: Make our AJAX calls
     // Once we get the response, we modify our table content by creating the content internally. We run a loop to continuously add on data
     // RESTDb/NoSql always adds in a unique id for each data; we tap on it to have our data and place it into our links 
-
-
     </script>
 </body>
 </html>

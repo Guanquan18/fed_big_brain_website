@@ -1,9 +1,10 @@
+/* Resetting default margins, padding, and box-sizing */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
-
+/* Styling the body */
 body {
     font-family: Montserrat;
     background-color: white;
@@ -11,6 +12,7 @@ body {
 }
 
 /* Navigation Styling Starts Here */
+/* Main header container */
 .header-main{
     width: 100%;
     max-height: 90px;
@@ -25,7 +27,7 @@ body {
   #header-main-leader{
     position: relative;
   }
-  
+  /* Container for navigation items */
   .header-main-navigation-container {
     width: fit-content;
     height: fit-content;
@@ -33,18 +35,16 @@ body {
     align-items: center;
     padding-left: 10px;
   }
-  
-  
+  /* Styling for main navigation */
   .header-main-nav {
     height: 100%;
-
     display: flex;
     align-items: center;
     justify-content: space-between;
     align-items: center;
     gap: 40px;
   }
-
+/* Styling for navigation list */
   .header-main-nav ul{
     list-style: none;
     width: fit-content;
@@ -52,7 +52,7 @@ body {
     padding: 0;
     margin: 0;
   }
-
+/* Styling for navigation links */
   .header-main-nav a{
     width: 100%;
     height: 100%;
@@ -63,19 +63,19 @@ body {
     font-weight: 600;
     transition: all 0.1s ease;
   }
-
+/* Styling for navigation links on hover */
   .header-main-nav a:hover{
     color: #ff9600;
     transition: all 0.1s ease;
   }
-  
+  /* Styling for the main header title */
   .header-main-title {
     font-size: 40px;
     font-weight: bold;
     margin: 0;
     color: white;
   }
-
+/* Styling for the search bar */
 .main-header-search {
     width: 30%;
     height: 100%;
@@ -85,7 +85,7 @@ body {
     position: relative;
     display: none;
 }
-
+/* Styling for the search input */
 .main-header-search input {
     width: 100%;
     height: 50px;
@@ -101,12 +101,13 @@ body {
     display: none;
     z-index: 2;
 }
-
+/* Styling for the mobile menu button */
 .header-main-menu-button{
     width: 0;
     height: 0;
     display: none;
 }
+/* Styling for the dropdown menu */
 #myMenu {
     list-style-type: none;
     padding: 0;
@@ -118,7 +119,7 @@ body {
     width: 100%;
     z-index: 1;
 }
-
+/* Styling for dropdown menu links */
 #myMenu li a {
     width: 90%;
     padding: 12px 20px; 
@@ -129,15 +130,14 @@ body {
     display: inline-block; 
     text-decoration: none;
 }
-
 #myMenu li:last-child a {
     border-bottom-left-radius: 10px;
     border-bottom-right-radius: 10px;
 }
-
 .main-header-search:hover input::placeholder {
     color: transparent;
 }
+/* Styling for dropdown menu links on hover */
 #myMenu li a:hover{
     background-color:#7d2ae8;
     color:white;
@@ -147,6 +147,7 @@ body {
     text-decoration-color: orange; 
     text-decoration-skip-ink: none; 
 }
+/* Styling for icons before dropdown menu links */
 #myMenu li:nth-child(1) a::before {
     content: '\1F522';
     margin-right: 10px;
@@ -190,6 +191,7 @@ body {
     content: '\1F1F9\1F1F2'; 
     margin-right: 10px;
 }
+/* Styling for the search icon */
 .search_icon::before {
     content: '\1F50D'; 
     display: block;
@@ -200,7 +202,6 @@ body {
     text-align: center;
     line-height: 60px; 
 }
-
 .search_icon {
     position: relative;
     width: 60px; 
@@ -211,7 +212,7 @@ body {
     background-color: #ff9600;
 }
 
-/* Responive starts here */
+/* Styling for responsive design */
 @media screen and (max-width: 768px) {
     .header-main-navigation-container {
         padding-left: 5%;
@@ -219,34 +220,27 @@ body {
     .header-main-logo {
         padding-left: 5px; 
     }
-
     .header-main-logo dotlottie-player {
         width: 100px !important; 
         height: 100px !important; 
     }
-
     .header-main-title {
         font-size: 24px; 
         margin-left: 5px;
     }
-
     .header-main-nav ul{
         display: none; 
     }
-
     .header-main-menu-button{
         width: 30px;
         height: 30px;
-
         background-image: url(Photos/menu-bar.png);
         background-repeat: no-repeat;
         background-position: center;
         background-size: cover;
-
         display: block;
         cursor: pointer;
     }
-
     .header-main-menu{
         width: 100%;
         height: fit-content;
@@ -260,7 +254,6 @@ body {
         z-index: 2;
         display: block;
     }
-
     .header-main-menu ul{
         width: 100%;
         height: fit-content;
@@ -273,16 +266,13 @@ body {
         align-content: flex-start;
         /* Align things to the top */
     }
-
     .header-main-menu ul li{
         flex-basis: 100%;
         border-top:1px solid black;
     }
-
     .header-main-menu ul li:last-child{
         border-bottom:1px solid black;
     }
-
     .header-main-menu ul li a{
         width: 100%;
         height: 100%;
@@ -296,9 +286,7 @@ body {
         display: block;
         flex-basis: 100%;
         /* Ensure 1 tab takes up the 1 line */
-
     }
-
     .header-main-menu ul li a:hover{
         /* visual effect when hovered */
         color: #f1f1f1;
@@ -306,17 +294,13 @@ body {
         background-color: rgb(241, 158, 41);
         transition: all 0.1s ease;
     }
-    
-
     #myMenu {
         display: none; 
     }
-
     .main-header-search {
         width: 70%; 
         padding: 0 10px; 
     }
-
     .search_icon {
         width: 50px;
         border-radius: 60%;
@@ -334,39 +318,37 @@ body {
 /* Navigation Styling Ends Here */
 
 /* Footer Starts Here */
+/* Styling for the footer container */
 .ul-nostyle, .ul-nostyle a{
     list-style: none;
     text-decoration: none;
     padding: 0px;
     margin: 0px;
 }
-
+/* Styling for footer headings */
 .main-footer-container{
     width: 100%;
     height: fit-content;
     padding:25px 100px;
     margin-top: 50px;
-
     background-color: #33186B;
-    
     display: flex;
     justify-content: space-around;
     flex-wrap: wrap;
     gap: 20px;
 }
-
+/* Styling for footer links */
 .main-footer-container h1{
     font-size: 40px;
     text-align: center;
     color: white;
 }
-
-
+/* Styling for footer sections */
 .main-footer-container li a{
     color: white;
     transition: all 0.3s ease;
 }
-
+/* Styling for footer sections except the first one */
 .main-footer-container ul li:nth-child(1),.main-footer-app{
     width: max-content;
     margin: 20px 0;
@@ -375,12 +357,11 @@ body {
     color: #ff9600;
     border-bottom: 2px solid #ff9600 ;
 }
-
 .main-footer-container ul li:not(:nth-child(1)){
     margin: 10px 0;
     color: #f1f1f1;
 }
-
+/* Styling for footer links on hover */
 .main-footer-container #main-footer-sitemap li a:hover{
     color: rgb(241, 158, 41);
     padding-left: 10px;
@@ -388,24 +369,20 @@ body {
     border-left: 2px solid #ff9600;
     transition: all 0.3s ease;
 }
-
 #main-footer-sm li:not(:nth-child(1)){
     width: 100%;
     display: flex;
     flex-direction: row;
-
     justify-content: space-between;
     align-items: center;
     gap: 20px
-    
-
 }
 #main-footer-sm li a{
     width: fit-content;
     height: fit-content;
 }
+/* Styling for social media icons in the footer */
 #main-footer-sm li a i{
-
     font-size: 20px;
     width: 40px;
     height: 40px;
@@ -414,27 +391,23 @@ body {
     vertical-align: middle;
     border-radius: 100%;
 }
-
+/* Styling for social media icons on hover */
 #main-footer-sm li a i:hover{
     background-color: #ff7b00;
     border:1px  solid #ff7b00;
     transition: all 0.3s ease;
 }
 .main-footer-container div{
-    
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     align-items: center;
 }
-
 .main-footer-container div i{
     text-align: center;
     font-size: 100px;
     color: white;
 }
-
-
 
 /* Tablet Version */
 @media screen and (max-width: 768px){
@@ -460,141 +433,130 @@ body {
 }
 /* Footer Stops Here */
 
-
 /* Login Page styling Starts Here */
-
+/* Styling for the logo container */
 .login-page-logo-content{
     width: 600px;
     height: auto;
     position: relative;
 }
-
+/* Styling for the main content container */
 .login-page-content1{
     width: 100%;
     height: 100vh;
     padding: 50px;
-    /* background-color: rgb(110, 39, 224); */
-    
     background: linear-gradient(to bottom, rgb(114, 47, 221),rgb(53, 0, 138));
-    background:linear-gradient(to bottom, rgba(114, 47, 221),#33186B);
-      
-    /* background-color: rgb(105, 22, 214); */
-    
+    background:linear-gradient(to bottom, rgba(114, 47, 221),#33186B);  
     display: flex;
     justify-content: center;
     align-items: center;
     gap: 40px;
 }
+/* Styling for the logo and its heading */
 .login-page-logo-content h1{
     font-size: 60px;
     font-weight: 600;
     color: #FFA732;
     text-align: center; 
-
     text-shadow: 0 1px 10px rgba(0, 0, 0, 0.2);
 }
-
+/* Styling for the form container */
 .form-container{
     width: 550px;
     height: fit-content;
     padding: 10px 40px;
-
     background-color: rgb(255, 249, 239);
     border: 1px solid rgb(182, 182, 182);
     border-radius: 20px;
     box-shadow: 0 0 30px rgba(0, 0, 0, 0.7);
-
     position: relative;
     display: flex;
     justify-content: center;
     align-items: center;
-
     overflow: hidden;
 }
-
-
+/* Styling for the login form */
 .form-container #form-container-login{
     transition: all 1s ease;
     transform: translateX(0);
 }
-
+/* Styling for the signup form */
 .form-container.active #form-container-login{
     position: absolute;
     transition: all 1s ease;
     transform: translateX(-600px);
 }
-
+/* Styling for the signup form */
 .form-container #form-container-signup{
     transition: all 1s ease;
     transform: translateX(600px);
 }
-
+/* Styling for the active signup form */
 .form-container.active #form-container-signup{
     position: relative;
     transition: all 1s ease;
     transform: translateX(0);
 }
-
 #form-container-login{
     width: 100%;
 }
-
+/* Styling for form headings */
 .form-container h1{
     width: 100%;
     height: 100%;
-    
     text-align: center;
     color: #C21292;
     font-weight:600;
 }
-
+/* Styling for floating form inputs */
 .form-floating{
     position: relative;
-    
     margin-top: 20px;
     margin-right: 30px;
     border-radius: 24px;
     background-color: #b1d9ff;
 }
+/* Styling for form inputs */
 .form-floating input, .form-floating input:focus{
     color: #C21292;
     font-weight: 600;
     border: 1.5px solid #C21292;
-
 }
+/* Styling for icons inside form inputs */
 .form-floating i{
     font-size: 17px;
     color: #711DB0;
-
     position: absolute;
     top: 50%;
     left: calc(100% - 30px);
     transform: translateY(-50%);
 }
+/* Styling for remember me and forgot password links */
 .form-remember-forget{
     font-size: 15px;
     font-weight: 400;
     margin: -10px 0 30px;
-
     display: flex;
     justify-content: space-between;
 }
-
+/* Styling for checkbox in remember me */
 .form-remember-forget label input{
     accent-color: #C21292;
     margin-right: 3px;
 }
-
+/* Styling for links on hover */
 .form-remember-forget a{
     color: #8447ff;
     font-weight: 600;
     text-decoration: none;
 }
+/* Styling for links on hover */
 .form-remember-forget a:hover{
     color: #C21292;
     text-decoration: underline;
     transition: all 0.2s ease;
 }
+/* Styling for submit buttons */
 #login-submit, #signup-submit{
     font-size: 23px;
     font-weight: 600;
@@ -602,94 +564,118 @@ body {
     padding: 2px 0;
     margin-bottom: 5px;
     background-color: #C21292;
-
     transition: all 0.3s ease;
 }
+/* Styling for submit buttons on hover */
 #login-submit:hover, #signup-submit:hover{
     transform: translateY(-5px);
     background-color: #FFA732;
     box-shadow: 0 5px 7px 0 rgba(0, 0, 0, 0.5);
     transition: all 0.3s ease;
 }
-
+/* Styling for login/signup text */
 #login-signup{
     width: 100%;
     font-size: 15px;
     text-align: center;
 }
-
+/* Styling for login/signup text paragraphs */
 #login-signup p{
     margin: 0;
 }
-
+/* Styling for login/signup text links */
 #login-signup p a{
     color:#8447ff;
     font-weight: 650;
     text-decoration: none;
 }
+/* Styling for login/signup text links on hover */
 #login-signup p a:hover{
     text-decoration: underline;
     color: #C21292;
-
     transition: all 0.2s ease;
 }
-
+/* Styling for the signup form container */
 #form-container-signup{
     width: 100%;
     position: absolute;
     transform: translateX(600px);
 }
-
+/* Styling for error messages */
 #login-username-error, #login-password-error, #signup-username-error, #signup-password-error{
     visibility: hidden;
     /* Hide error message */
 }
-
 /* Validate form with styling */
 .form-control.error{
     border:2px solid rgb(255, 0, 0);
 }
-
 #login-username-error, #login-password-error, #signup-username-error, #signup-password-error{
-
     color: rgb(255, 0, 0);
     font-size: 15px;
     /* Show error message */
 }
-
+/* Styling for success messages */
 .form-control.success{
     border:2px solid rgb(0, 190, 25);
 }
-
+/* Styling for Lottie animation player in form container */
 .form-container .lottie-player{
     width: 100%;
     height: 100%;
-
     position: absolute;
     z-index: -1;
     background-color:transparent;
-
     display: flex;
     justify-content: center;
     align-items: center;
 }
-
+/* Responsive styling for tablets */
+@media screen and (max-width: 768px) {
+    .login-page-logo-content {
+        width: fit-content;
+        height: fit-content;
+    }
+    .login-page-content1 {
+        padding: 15%;
+        height: fit-content;
+        flex-direction: column;
+    }
+    .form-container {
+        width: 100%;
+        height: fit-content;
+        padding: 20px;
+    }
+}
+/* Responsive styling for smaller screens */
+@media screen and (max-width: 576px) {
+    .login-page-content1 {
+        padding: 10%;
+        height: fit-content;
+        flex-direction: column;
+    }
+    .form-remember-forget{
+        display: flex;
+        flex-direction: column;
+    }
+}
 /* Login Page styling Ends Here */
 
 
-/* Background  Styling Starts here Here */
+
+/* Index Page styling */
+/* Index Page Loading Lottie Player styling */
 .index-page-loading-lottie-player{
     width: 100%;
     height: 100%;
-
     position: fixed;
     z-index: 5;
     background-color: #33186B;
-
     display: flex;
     justify-content: center;
     align-items: center;
 }
+/* Background styling */
 .Page_01_background{
     background-image: linear-gradient(rgba(10, 18, 50, 0.7),rgba(4,9,30,0.7 )),url("Photos/index_background_top.jpg");
     }
@@ -701,6 +687,7 @@ body {
     padding: 1px 0;
     position: relative;
 }
+/* Title styling */
 .Page_01_Title{
   color: #fff;
   position: absolute;
@@ -711,7 +698,6 @@ body {
   width: 100%;
   height: auto;
 }
-
 .Page_01_Title h1{
   font-size: 60px;
   font-weight: 400;
@@ -719,11 +705,10 @@ body {
 .Page_01_Title h1 strong {
     border-bottom: 5px solid  #ff9600;
 }
-
 .Page_01_Title p{
   font-size: 25px;
 }
-
+/* Header button styling */
 .header-main-button a ,.start-quiz a {
     font-weight: 600;
     text-decoration: none;
@@ -738,59 +723,37 @@ body {
     margin-left: 5px;
 }
 
-  
 .header-main-button a:hover {
     background-color: #ff7b00;
     color: black;
 }
-
-.index-page-loading-lottie-player{
-    width: 100%;
-    height: 100%;
-
-    position: fixed;
-    z-index: 3;
-    background-color: #33186B;
-
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-/* bckground styling   media queries*/
+/* Media queries for responsive design */
 @media only screen and (max-width: 768px) {
     .Page_01_background{
         height: 500px; 
     }
-
     .Page_01_Title h1 {
         font-size: 35px; 
     }
-
     .Page_01_Title p{
         font-size: 16px; 
     }
 }
-/* Media query for even smaller screens */
 @media only screen and (max-width: 480px) {
 .Page_01_background{
     height: 400px; 
 }
-
-
 .Page_01_Title{
     margin-top: 10px;
     font-size: 20px; 
 }
-
 .Page_01_Title p{
     font-size: 14px;
 }
 }
-/* Background  Styling ends here Here */
 
 /* About_us start here */
-
+/* About Us section styling */
 .about_us {
     width: 100%;
     height: auto;
@@ -800,26 +763,26 @@ body {
     align-items: center;
     flex-wrap: wrap;
 }
-
+/* swiper styling*/
 .swiper {
     max-width: 600px;
     height: 300px;
     border: 2px solid black;
     border-radius: 5%;
 }
-
+/* swiper img styling*/
 .swiper-slide img {
     width: 100%;
     height: 100%;
     object-fit: contain
 }
-
+/* about us text styling*/
 .about_us_text {
     width: 50%;
     margin: 40px;
     box-sizing: border-box; 
 }
-
+/* about us text styling*/
 .about_us_text h1 {
     font-size: 30px; 
     font-weight: 600 !important;
@@ -827,36 +790,33 @@ body {
     border-bottom: 5px solid #ff9600;
     display: inline-block; 
 }
-
+/* about us text styling*/
 .about_us_text p {
     font-size: 20px;
     line-height: 1.6;
     font-weight: 500 !important;
     color: #333;
 }
+/* Media queries for responsive design */
 @media only screen and (max-width: 768px) {
     .about_us {
         flex-direction: column;
         align-items: center;
     }
-
     .swiper {
         width: 90%;
         margin: 5px;
     }
-
     .about_us_text {
         width: 90%;
         margin-top: 10px;
         margin-left: 0px;
         margin-right: 0px;
     }
-
     .about_us_text h1 {
         font-size: 24px;
         margin-bottom: 5px;
     }
-
     .about_us_text p {
         font-size: 18px;
     }
@@ -866,28 +826,24 @@ body {
         flex-direction: column;
         align-items: center;
     }
-
     .swiper {
         width: 70%;
         margin-bottom: 5px;
     }
-
     .about_us_text {
         width: 90%;
     }
-
     .about_us_text h1 {
         font-size: 20px;
         margin-bottom: 5px;
     }
-
     .about_us_text p {
         font-size: 16px;
     }
 }
-/* BAbout us  Styling ends here Here */
-
+/* About us Styling ends here Here */
 /* Main_Content_Different Categories start here */
+/* Main Content - Quiz Categories styling */
 .Page_01_Main_Content_Quiz_Categories{
     width: 100%;
     height: auto;
@@ -911,12 +867,12 @@ body {
     width: 600px;
     height: 100px;
 }
-
+/* Styling for card footer */
 .Page_01_Main_Content_Quiz_Categories .card-footer, .Redemption-page-section .card-footer{
     background-color: #f3e9fc; 
     padding: 15px; 
 }
-
+/* Styling for button inside the card footer */
 .Page_01_Main_Content_Quiz_Categories .btn-hover, .Redemption-page-section .btn-hover {
     font-size: 15px;
     font-weight: 500;
@@ -928,17 +884,17 @@ body {
     cursor: pointer;
     transition: background-color 0.3s;
 }
-
 .Page_01_Main_Content_Quiz_Categories .btn-hover:hover, .Redemption-page-section .btn-hover:hover {
-    background-color: #ff7b00; /* Darker shade on hover */
+    background-color: #ff7b00; 
 }
-
+/* Styling for cards */
 .Page_01_Main_Content_Quiz_Categories .card, .Redemption-page-section .card{
     border: 1px solid black;
     margin-bottom: 30px;
     border-radius: 20px; 
     overflow: hidden; 
 }
+/* Hover effect for cards */
 .Page_01_Main_Content_Quiz_Categories .card:hover,
 .Redemption-page-section .card:hover {
     box-shadow: 0 4px 8px rgba(97, 93, 93, 0.5); 
@@ -946,12 +902,13 @@ body {
     transition: box-shadow 0.3s ease, transform 0.3s ease; 
     border-bottom: 4px solid #2e93f2;
 }
-
+/* Styling for images inside the cards */
 .Page_01_Main_Content_Quiz_Categories .card img, .Redemption-page-section .card-img-top{
     width:auto;
     height:320px;
     object-fit: cover;
 }
+/* Styling for card footer in redemption page section */
 .Redemption-page-section .card-footer {
     background-color: #f3e9fc;
     padding: 15px;
@@ -959,30 +916,25 @@ body {
     align-items: center;
     justify-content: space-between;
 }
-
+/* Styling for Vbucks information */
 .vbucks-info {
     display: flex;
     align-items: center;
 }
-
 .vbucks-info img {
-    width: 50px; /* Adjust image size as needed */
+    width: 50px; 
     height: auto;
-    margin-right: 10px; /* Add space between image and text */
+    margin-right: 10px; 
 }
-
 .vbucks-number {
     font-weight: bold;
     font-size: 16px;
 }
-
-
-/* Main_Content_Different Categories ends here */
+/* Media queries for responsive design */
 @media only screen and (max-width: 768px) {
     .header_quiz_category {
         width: 90%; 
     }
-
     .Page_01_Main_Content_Quiz_Categories .card img {
         height: 250px; 
     }
@@ -999,7 +951,6 @@ body {
         max-width: 50%;
     }
 }
-
 @media screen and (min-width: 1378px) {
     .quiz_category .col-md-4 {
         flex: 0 0 33.33%; 
@@ -1011,7 +962,6 @@ body {
     padding-top: 100px;
 }
 
-
 .Redemption-page-section #quiz_title{
     font-size: 50px;
     font-weight: 600;
@@ -1020,7 +970,9 @@ body {
     margin-right: 10px;
     text-align: center;
 }
+/* Main_Content_Different Categories start here */
 /* Pop up start here */
+/* Styling for the main pop-up container */
 .pop-up{
     position: fixed;
     top: 50%;
@@ -1035,17 +987,21 @@ body {
     max-width: 80%;
     height: auto;
 }
+/* Styling for the pop-up when it is active */
 .pop-up.active,#redemption-pop-up.active{
     transform: translate(-50%,-50%) scale(1);
 }
+/* Flex container for pop-up content */
 .pop_up_flex_box {
     width: 100%;
     display: flex;
     }
+/* Container for left image */
 .pop_up_left_img_container {
     padding: 20px; 
     width: calc(80% - 40px); 
 }
+/* Styling for the image inside the pop-up */
 #pop_up_image{
     height: auto;
     width: 100%;
@@ -1055,12 +1011,14 @@ body {
     padding: 20px; 
     width: calc(80% - 40px); 
 }
+/* Header styling for the pop-up */
 .pop_up_header{
     display: flex;
     justify-content: space-between;
     align-items: center;
     margin: 10px;
 }
+/* Styling for the quiz name */ 
 .quiz_name{
     font-size: 40px;
     font-weight: 600;
@@ -1078,6 +1036,7 @@ body {
     font-size: 20px;
     font-weight: 400;
 }
+/* Styling for the close button */
 .pop_up_header .close-button,#close-redemption-pop-up{
     cursor: pointer;
     border: none;
@@ -1085,6 +1044,7 @@ body {
     font-size: 35px;
     font-weight: bold;
 }
+/* Overlay styles */
 #overlay, #redemption-overlay {
     position: fixed;
     opacity: 0;
@@ -1097,10 +1057,12 @@ body {
     pointer-events: none;
     
 }
+/* Overlay styles when active */
 #overlay.active,#redemption-overlay.active{
     opacity: 1;
     pointer-events: all;
 }
+/* Button styling */
 .start-quiz{
     margin: 0 10px;
     height: 45px;
@@ -1116,56 +1078,58 @@ body {
     border: 2px solid black;
     background-color: darkorange;
   }
-  @media screen and (max-width: 1068px) {
+  
+/* Media queries for responsiveness */
+    @media screen and (max-width: 1068px) {
     .pop-up {
-        width: 70%; 
-        max-width: 90%; 
-        max-height: 90%;
-        overflow-y: auto;
+    width: 70%; 
+    max-width: 90%; 
+    max-height: 90%;
+    overflow-y: auto;
     }
     .pop_up_flex_box{
-        flex-direction: column;
+    flex-direction: column;
     }
     .pop_up_left_img_container,
     .pop_up_right_container {
-        width: 100%; 
+    width: 100%; 
     }
     .pop_up_left_img_container{
-        padding-bottom: 5px;
+    padding-bottom: 5px;
     }
     .pop_up_right_container {
-        padding-top: 5px;
+    padding-top: 5px;
     }
 }
-  @media screen and (max-width: 768px) {
+    @media screen and (max-width: 768px) {
     .pop-up {
-        width: 90%; 
-        max-width: 90%;
+    width: 90%; 
+    max-width: 90%;
     }
     .pop_up_flex_box{
-        flex-direction: column;
+    flex-direction: column;
     }
     .pop_up_left_img_container,
     .pop_up_right_container {
-        width: 100%; 
+    width: 100%; 
     }
     .pop_up_left_img_container{
-        padding-bottom: 5px;
+    padding-bottom: 5px;
     }
     .pop_up_right_container {
-        padding-top: 5px;
+    padding-top: 5px;
     }
     .quiz_name{
-        font-size: 30px
+    font-size: 30px
     }
     .pop-up-body h3{
-        font-size:20px;
+    font-size:20px;
     }
     .pop-up-body ol li{
-        font-size: 15px;
+    font-size: 15px;
     }
 }
-/* Pop-up styles */
+/* Styling for the redemption pop-up container */
 #redemption-pop-up {
     position: fixed;
     top: 50%;
@@ -1181,10 +1145,12 @@ body {
     padding: 20px; /* Adjust padding as needed */
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.3); /* Optional: Add shadow */
 }
+/* Styling for the redemption status message */
 #redemption-status-message{
     font-size: 30px;
     font-weight: 600;
 }
+/* Container for the content inside the redemption pop-up */
 .pop-up-content {
     position: relative;
     width: 100%; 
@@ -1197,41 +1163,29 @@ body {
     justify-content: center;
     align-items: center;
 }
-
+/* Styling for the close button */
 .close-button {
     position: absolute;
     top: 10px;
     right: 10px;
     cursor: pointer;
 }
-
+/* Styling for the redemption status image */
 #redemption-status-img {
     margin-bottom: 20px; 
 }
-
+/* Styling for the image inside the redemption status */
 #redemption-status-img img {
     max-width: 100px; 
 }
-
+/* Additional margin for the redemption status message */
 #redemption-status-message {
     margin-top: 20px;
 }
+/* Index PAGE DONE*/
 
-
-
-
-
-
-
-
-
-
-
-
-
-/* question page Starts Here */
-/* question page Starts Here */
-/* question page Starts Here */
+/* Quiz PAGE starts*/
+/* Styling for the quiz container */
 .quiz{
     background-color:rgb(251, 239, 224);
     position: relative;
@@ -1244,9 +1198,11 @@ body {
     padding: 2px 50px 50px 50px;
     opacity: 1;
 }
+/* Styling for inactive quizzes */
 .quiz.quiz_inactive{
     opacity: 0;
 }
+/* Styling for the question header */
 #question-header{
     position: relative;
     text-align: center;
@@ -1257,14 +1213,15 @@ body {
     margin: 30px 10px;
     padding: 2px 0px;
 }
+/* Styling for the question tracker */
 #tracker{
     position: relative;
     margin: 20px 10px;
     padding: 0px 10px;
     display: flex;
     justify-content: space-between;
-
 }
+/* Styling for question circles */
 #question-circles {
     display: flex;
 }
@@ -1282,6 +1239,7 @@ body {
     margin: 0px 15px;
     border: 1.5px solid rgb(18, 18, 18);
 }
+/* Styling for correct and incorrect circles */
 .question.correct_circle{
     background-color: #98e3a9;
     color: white;
@@ -1290,18 +1248,21 @@ body {
     background-color: rgb(251, 127, 127);
     color: white;
 }
+/* Styling for the score */
 #score {
     text-align: right;
     color: black;
     font-size: 30px;
     font-weight: bold;
 }
+/* Styling for top and bottom lines */
 #topline{
     margin-bottom: 10px;
 }
 #botoomline{
     margin-top: 20px;
 }
+/* Styling for the timeline */
 .time_line{
     background-color: #8447ff;
     height: 3px;
@@ -1309,8 +1270,9 @@ body {
 hr{
     border: 2px solid #B15EFF;
     position: relative;
-    clear: both; /
+    clear: both; 
 }
+/* Styling for the question text */
 #question-text{
     position: relative;
     color:black;
@@ -1319,12 +1281,14 @@ hr{
     text-align: left;
     margin-left: 10px;
 }
+/* Styling for option list */
 .option_list{
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between; 
     margin-top: 15px;
 }
+/* Styling for individual options */
 .option_list .option{
     flex-basis: calc(50% - 20px); 
     position: relative;
@@ -1342,11 +1306,13 @@ hr{
     align-items: center;
     justify-content: space-between;
 }
+/* Styling for option hover effect */
 .option_list .option:hover{
     cursor: pointer;
     background-color: rgb(194, 236, 252);
     border: 1.5px solid black;
 }
+/* Styling for correct and incorrect options */
 .option_list .option.correct{
     color:#155724;
     background-color: #d4edda;
@@ -1359,9 +1325,11 @@ hr{
     border: 1px solid #f5c6cb;
     border: 1.5px solid black;
 }
+/* Styling for disabled options */
 .option_list .option.disabled{
     pointer-events: none;
 }
+/* Styling for icons within options */
 .option_list .option .icon {
     height: 25px;
     width: 25px;
@@ -1372,19 +1340,19 @@ hr{
     pointer-events: none;
     transition: all 0.3s ease;
 }
-
+/* Styling for tick icon */
 .option_list .option .icon.tick {
     color: #23903c;
     border-color: #23903c;
     background-color: #d4edda;
 }
-
+/* Styling for cross icon */
 .option_list .option .icon.cross {
     color: #a42843;
     border-color: #a42843;
     background-color: #f8d7da;
 }
-
+/* Styling for the next question button */
 #next_question{
     position: relative;
     float: right; /* Basically pushes the button the right of the parent element */
@@ -1400,19 +1368,23 @@ hr{
     pointer-events: none;
     opacity: 0;
 }
+/* Styling for the next question button hover effect */
 #next_question:hover{
 cursor: pointer;
   border: 2px solid black;
   background-color: darkorange;
 }
+/* Styling for showing the next question button */
 #next_question.show{
     opacity: 1;
     pointer-events: auto;
 }
+/* Styling for the quiz footer */
 .quiz-footer{
     position: relative;
     margin-bottom: 30px;
 }
+/* Styling for the progress */
 .progress{
     position: relative;
     float: left;
@@ -1421,7 +1393,7 @@ cursor: pointer;
     color:black;
     font-weight: bold;
 }
-
+/* Styling for the timer */
 #timer{
     float: right;
     color:#004085;
@@ -1435,10 +1407,10 @@ cursor: pointer;
     align-items: center;
     justify-content: space-between;
 }
+/* Styling for timer elements */
 #timer .timer_left_txt{
     font-weight: 600;
     font-size: 20px;
-
 }
 #timer .timer_sec{
     font-size: 18px;
@@ -1452,13 +1424,13 @@ cursor: pointer;
     background-color: #343a40;
     border: 1px solid #343a60;
 }
+/* Media query for smaller screens */
 @media screen and (max-width: 768px) {
     .quiz {
         width: 90%;
         padding-left: 15px;
         margin-left: 20px;
     }
-
     .question {
         font-size: 16px; 
         width: 30px; 
@@ -1466,11 +1438,9 @@ cursor: pointer;
         padding: 7px; 
         margin: 0px 10px; 
     }
-
     .option_list {
         flex-direction: column; 
     }
-
     .option_list .option {
         flex-basis: auto; 
         margin: 10px 0; 
@@ -1482,14 +1452,12 @@ cursor: pointer;
         margin: 20px 5px; 
         padding: 10px;
     }
-
     #tracker {
         margin: 5px 5px; 
         padding: 0; 
         flex-direction: column;
         align-items: flex-start;
     }
-
     .question {
         width: 23px; 
         height: 23px; 
@@ -1520,14 +1488,12 @@ cursor: pointer;
         height: 15px;
         font-size: 15px;
     }
-
     #timer .timer_sec {
         font-size: 16px; /* Adjusted font size */
         width: 35px; 
     }
 }
-
-
+/* Styling for the result box container */
 .result_box{
     position: fixed;
     top: 40%;
@@ -1546,15 +1512,18 @@ cursor: pointer;
     justify-content: center;
     pointer-events: none;
 }
+/* Styling for icons */
 .icon{
     font-size: 100px;
     color: #8447ff;
     margin-top: 10px;
 }
+/* Styling for completion text */
 .complete_text{
     font-size: 20px;
     font-weight: 600;
 }
+/* Styling for score text */
 .score_text span{
     display: flex;
     margin: 10px 0;
@@ -1565,6 +1534,8 @@ cursor: pointer;
     padding: 0 4px;
     font-weight: 600;
 }
+
+/* Styling for buttons */
 .buttons{
     display: flex;
     margin: 20px 0;
@@ -1585,16 +1556,19 @@ cursor: pointer;
     border: 2px solid black;
     background-color: darkorange;
   }
+  /* Styling for active result box */
 .result_box.activeResult{
     pointer-events: auto;
     transform: translate(-50%,-50%) scale(1);
 }
+/* Styling for loading animation container */
 #loadingAnimationContainer {
     position: fixed;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
 }
+/* Styling for score container */
 .score_container{
     display:flex;
     width:420px;
@@ -1603,6 +1577,7 @@ cursor: pointer;
     align-items: center;
     justify-content: center;
 }
+/* Styling for circular progress */
 .circular-progress{
     position: relative;
     height: 250px;
@@ -1621,44 +1596,214 @@ cursor: pointer;
     border-radius: 50%;
     background-color: rgb(251, 239, 224);
 }
+/* Styling for progress value */
 .progress-value{
     position:relative;
     font-size: 40px;
     font-weight: 600;
     color:#7d2ae8;
 }
+/* Styling for animation container */
 .animation-container {
     position: absolute;
     z-index: 0; /* Set z-index to place the animation behind other elements */
 }
+/* Styling for leaderboard button */
 .result_box .leaderboard_button a{
-        display: block;
-        font-weight: 600;
-        text-decoration: none;
-        font-size: 18px;
-        color: black;
-        padding: 10px 20px; 
-        border-radius: 5px;
-        background-color: #ff9600;
-        height: 45px;
-        margin: 10px;
-    }
+    display: block;
+    font-weight: 600;
+    text-decoration: none;
+    font-size: 18px;
+    color: black;
+    padding: 10px 20px; 
+    border-radius: 5px;
+    background-color: #ff9600;
+    height: 45px;
+    margin: 10px;
+}
 .leaderboard_button a:hover{
-        border: 2px solid black;
-        background-color: darkorange;
-    }
-    @media screen and (max-width: 768px) {
+    border: 2px solid black;
+    background-color: darkorange;
+}
+/* Media query for smaller screens */
+@media screen and (max-width: 768px) {
 
-        .result_box{
-            width: 400px;
-        }
-        .complete_text{
-            font-size: 15px;
-        }
-        .score_text span{
-            font-size: 10px;
-        }
+    .result_box{
+        width: 400px;
     }
+    .complete_text{
+        font-size: 15px;
+    }
+    .score_text span{
+        font-size: 10px;
+    }
+}
+/* Quiz PAGE DONE*/
+/* Ledaderboard  PAGE starts*/
+
+/* Styling for the leaderboard header */
+.leaderboard-header h1{
+    text-align: center;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    color: #711DB0;
+    font-weight: 600;
+}
+/* Styling for the leaderboard container */
+#leaderboard-container{
+    width: 100%;
+    height: 100%;
+    position: relative;
+}
+/* Styling for the search input group */
+#search-input-group{
+    position: relative;
+}
+#search-input-group input, #search-input-group input:focus{
+    color: #C21292;
+    font-weight: 500;
+}
+#search-input-group i{
+    font-size: 17px;
+    color: #711DB0;
+    position: absolute;
+    top: 50%;
+    left: calc(100% - 30px);
+    transform: translateY(-50%);
+}
+
+/* Styling for the leaderboard table */
+#leaderboard{
+    width: 100%;
+    max-height: 275px;
+    margin: 20px 0;
+    position: relative;
+    background-color: rgb(252, 252, 252);
+    border-radius: 12px;
+    box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.1);
+    overflow: auto;
+}
+/* Styling for the scrollbar */
+#leaderboard::-webkit-scrollbar{
+    width: 8px;
+    height: 8px;
+}
+#leaderboard::-webkit-scrollbar-track{
+    background-color: #d1e5ff;
+}
+#leaderboard::-webkit-scrollbar-thumb{
+    background:linear-gradient(#C21292,#FFA732);
+    border-radius: 10px;
+    /* visibility: hidden; */
+}
+#leaderboard:hover::-webkit-scrollbar-thumb{
+    visibility: visible ;
+}
+
+/* Styling for the leaderboard table and table cells */
+table{
+    width: 100%;
+    min-width: max-content;
+    max-height: 100px;
+    padding: 10px;
+}
+
+#leaderboard table th, #leaderboard table td{
+    border-collapse: collapse;
+    text-align: left;
+    padding: 10px 20px;
+}
+
+/* Styling for the leaderboard header row */
+#leaderboard thead th{
+    position: sticky;
+    background-color: rgb(110, 39, 224);
+    color: white;
+    font-size: large;
+}
+/* Styling for sorting icons */
+#leaderboard thead tr th i{
+    width:20px;
+    height:20px;
+    padding-top: 3px;
+    font-size: small;
+    text-align: center;
+    border-radius: 50%;
+    transition: 0.2s ease-in-out;   
+}
+
+/* Styling for alternating row colors */
+#leaderboard tbody tr:nth-child(even){
+    background-color: rgb(110, 39, 224,0.03);
+}
+
+#leaderboard tbody tr{
+    transition: 0.5s var(--delay) ease-in-out;
+    --delay: 0.1s; 
+}
+
+#leaderboard tbody tr.hide{
+    opacity: 0;
+    transition: 0.5s var(--delay) ease-in-out;
+    transform: translateY(100%);
+    width: 0.1px;
+    height: 0.1px;
+}
+#leaderboard tbody tr.hide td{
+    
+    transition: all 0.5s ease-in-out 1s;
+}
+
+/* Styling for active sorting column */
+#leaderboard thead th.active{
+    color: #C21292;
+    transition: 0.2s ease-in-out;
+}
+#leaderboard thead th.active i{
+    background-color: #b881ff;
+    transition: 0.2s ease-in-out;
+}
+#leaderboard thead th.active.asc i{
+    background-color: #b881ff;
+    transform: rotate(90deg);
+    transition: 0.2s ease-in-out;
+}
+/* Styling for active cells */
+#leaderboard tbody td.active{
+    color: #EF4040;
+    transition: 0.2s ease-in-out;
+}
+/* Styling for leaderboard exit buttons */
+.leaderboard-exit-buttons{
+    display: flex;
+    justify-content: space-around;
+    margin-top: 20px;
+}
+.leaderboard-exit-buttons a{
+    width: max-content;
+    color: white;
+    font-size: 20px;
+    background-color: #C21292;
+    transition: all 0.3s ease;
+}
+.leaderboard-exit-buttons a:hover{
+    color: white;
+    background-color: #FFA732;
+    box-shadow: 0 5px 7px 0 rgba(0, 0, 0, 0.5);
+    transform: translateY(-5px);
+    transition: all 0.3s ease;
+}
+/* Styling for Lottie animation player */
+#leaderboard-container .lottie-player{
+    width: 100%;
+    height: 100%;
+    position: relative;
+    z-index: 1;
+    background-color:transparent;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
 
 
 
