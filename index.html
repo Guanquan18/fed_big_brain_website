@@ -353,7 +353,8 @@
     </footer>
 
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
-     <script>
+    <script>
+
         toggleMobileMenu();
         function toggleMobileMenu(){
             /* Navation menu when device is switched to mobile or tablet */
@@ -378,11 +379,9 @@
         function optainVbucks() {
             //var url= "https://fedassignment-5bdb.restdb.io/rest/account"
             var url2 = "https://fedassignment-85eb.restdb.io/rest/account"
-            var url3 = "https://fedassignment-2f26.restdb.io/rest/account"
 
             //const APIKEY = "65bde101c029b87c5966cdc6";
             const APIKEY2 = "65bdfc153339b13e2a73c82b";
-            const APIKEY3 = "65c3bf2570dd296a0c2630f3";
 
             let vbucksPlaceHolder = document.querySelectorAll(".header-main-vbucks")
             var username = sessionStorage.getItem("username");
@@ -392,12 +391,12 @@
                 method: "GET",
                 headers: {
                     "Content-Type": "application/json",
-                    "x-apikey": APIKEY3,
+                    "x-apikey": APIKEY2,
                     "Cache-Control": "no-cache"
                 },
             }
 
-            fetch(url3, settings)
+            fetch(url2, settings)
                 .then(response => response.json())
                 .then(response => {
                     console.log(response);
@@ -416,24 +415,24 @@
         }
 
         const swiper = new Swiper('.swiper', {
-        // Optional parameters
-        autoplay: {
-            delay: 5000,
-            disableOnInteraction: false,
-        },
-        loop: true,
+            // Optional parameters
+            autoplay: {
+                delay: 5000,
+                disableOnInteraction: false,
+            },
+            loop: true,
 
-        // If we need pagination
-        pagination: {
-            el: '.swiper-pagination',
-            clickable: true,
-        },
+            // If we need pagination
+            pagination: {
+                el: '.swiper-pagination',
+                clickable: true,
+            },
 
-        // Navigation arrows
-        navigation: {
-            nextEl: '.swiper-button-next',
-            prevEl: '.swiper-button-prev',
-        },
+            // Navigation arrows
+            navigation: {
+                nextEl: '.swiper-button-next',
+                prevEl: '.swiper-button-prev',
+            },
         });
 
         // Add event listener to each image
